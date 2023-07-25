@@ -10,7 +10,6 @@ const appRoutes: Routes = [
         { path: 'new', component: EditStaffMemberComponent},
         { path: 'edit/:id', component: EditStaffMemberComponent}
     ]},
-    { path: 'testt', component: StaffMemberTasksComponent},
 	{ path: '**', redirectTo: '/staff-list', pathMatch: 'full' }
 ]
 
