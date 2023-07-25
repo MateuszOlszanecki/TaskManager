@@ -7,6 +7,7 @@ import { StaffMemberTasksComponent } from './staff-member-tasks/staff-member-tas
 import { StaffMemberComponent } from './staff-list/staff-member/staff-member.component';
 import { TaskComponent } from './staff-member-tasks/task/task.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditStaffMemberComponent } from './staff-list/edit-staff-member/edit-staff-member.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     StaffListComponent,
     StaffMemberTasksComponent,
     StaffMemberComponent,
-    TaskComponent
+    TaskComponent,
+    EditStaffMemberComponent
   ],
   imports: [
     BrowserModule,

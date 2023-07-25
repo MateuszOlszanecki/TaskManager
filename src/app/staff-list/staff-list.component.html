@@ -1,15 +1,23 @@
 <div class="container-fluid">
-    <div class="sticky-top">
-        <div class="card header">
-            <div class="card-body">
-                Lista pracowników
+    <div class="row">
+        <div class="sticky-top">
+            <div class="card header">
+                <div class="card-body">
+                  <h5 class="card-title">Lista pracowników</h5>
+                </div>
             </div>
         </div>
     </div>
-    <app-staff-member></app-staff-member>
-    <app-staff-member></app-staff-member>
-    <app-staff-member></app-staff-member>
-    <div class="d-flex">
-        <button class="btn btn-danger ms-auto mt-1">+</button>
+    <div class="row">
+        <app-staff-member
+        *ngFor="let staff_member of staff_list; let i = index"
+        [staff_member]="staff_member"
+        [index]="i"></app-staff-member>
     </div>
+    <div class="row mb-1 mt-1">
+        <div class="d-flex">
+            <button class="btn btn-danger ms-auto">+ !!!</button>
+        </div>
+    </div>
+    <app-edit-staff-member></app-edit-staff-member>
 </div>
