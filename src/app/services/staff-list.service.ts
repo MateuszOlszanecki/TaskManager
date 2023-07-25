@@ -28,13 +28,22 @@ export class StaffListService {
     ])
   ]
 
+  nextStaffListChanged() {
+    this.staff_list_changed$.next(this.staff_list.slice());
+  }
+
   getStaffList() {
     return this.staff_list.slice();
   }
 
   removeStaffMember(index: number) {
     this.staff_list.splice(index, 1);
-    this.staff_list_changed$.next(this.staff_list.slice());
+    this.nextStaffListChanged();
+  }
+
+  addStaffMember(staff_member: StaffMember) {
+    this.staff_list.push(staff_member);
+    this.nextStaffListChanged();
   }
 
   getFinishedTasksNumber(index: number) {
