@@ -13,13 +13,13 @@ export class StaffListService {
   private staff_list: StaffMember[] = [
     new StaffMember("Jan", "Kowalski", "Analityk",
     [
-      new Task("Tworzenie makiet", GlobalVariables.TASK_FINISHED_STATUS, 0),
-      new Task("Analizowanie zadań", GlobalVariables.TASK_NOT_STARTED_STATUS, 25)
+      new Task("Tworzenie makiet", GlobalVariables.TASK_FINISHED_STATUS, 100),
+      new Task("Analizowanie zadań", GlobalVariables.TASK_NOT_STARTED_STATUS, 0)
     ]),
     new StaffMember("Tomasz", "Nowak", "Programista",
     [
       new Task("Instalacja programu ABC", GlobalVariables.TASK_FINISHED_STATUS, 100),
-      new Task("Instalacja programu ABC", GlobalVariables.TASK_FINISHED_STATUS, 100),
+      new Task("Instalacja programu ABC", GlobalVariables.TASK_STARTED_STATUS, 25),
       new Task("Instalacja programu ABC", GlobalVariables.TASK_STARTED_STATUS, 50),
       new Task("Instalacja programu ABC", GlobalVariables.TASK_FINISHED_STATUS, 100)
     ])

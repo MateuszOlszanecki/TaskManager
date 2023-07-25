@@ -27,4 +27,8 @@ export class StaffMemberComponent {
   onEdit() {
     this.router.navigate(['edit', this.index], {relativeTo: this.route});
   }
+
+  onTasks() {
+    this.router.navigate(['tasks', this.index]);
+  }
 }

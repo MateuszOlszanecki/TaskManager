@@ -2,12 +2,15 @@
     <div class="row">
         <div class="card header">
             <div class="card-body">
-              <h5 class="card-title">Jan Kowalski - zadania !!!</h5>
+              <h5 class="card-title">{{ picked_staff_member.name }} {{ picked_staff_member.surname }} - zadania</h5>
             </div>
         </div>
     </div>
     <div class="row">
-        <app-task></app-task>
+        <app-task
+        *ngFor="let task of picked_staff_member.tasks"
+        [task]="task">
+        </app-task>
     </div>
     <div class="row mb-1 mt-1">
         <div class="d-flex">

@@ -1,37 +1,39 @@
-<div class="card mt-1">
-    <div class="card-body">
-        <div class="row mb-1">
-            <div class="col-9">
-                Treść zadania:
+<form>
+    <div class="card mt-1">
+        <div class="card-body">
+            <div class="row mb-1">
+                <div class="col-9">
+                    Treść zadania:
+                </div>
+                <button class="btn btn-primary col-3">Edytuj !!!</button>
             </div>
-            <button class="btn btn-primary col-3">Edytuj !!!</button>
-        </div>
-        <div class="row mb-1">
-            <div class="col-9">
-                Tworzenie makiet
+            <div class="row mb-1">
+                <div class="col-9">
+                    {{ task.description }}
+                </div>
+                <button class="btn btn-secondary col-3">Przenieś !!!</button>
             </div>
-            <button class="btn btn-secondary col-3">Przenieś !!!</button>
-        </div>
-        <div class="row mb-1">
-            <label class="col-3">Status:</label>
-            <div class="col-6">
-                <select class="form-select">
-                    <option selected value="1">{{ TASK_NOT_STARTED_STATUS }}</option>
-                    <option value="2">{{ TASK_STARTED_STATUS }}</option>
-                    <option value="3">{{ TASK_FINISHED_STATUS }}</option>
-                </select>
+            <div class="row mb-1">
+                <label class="col-3">Status:</label>
+                <div class="col-6">
+                    <select class="form-select">
+                        <option value="1" [selected]="task.status === TASK_NOT_STARTED_STATUS">{{ TASK_NOT_STARTED_STATUS }}</option>
+                        <option value="2" [selected]="task.status === TASK_STARTED_STATUS">{{ TASK_STARTED_STATUS }}</option>
+                        <option value="3" [selected]="task.status === TASK_FINISHED_STATUS">{{ TASK_FINISHED_STATUS }}</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-danger col-3">Usuń !!!</button>
             </div>
-            <button class="btn btn-danger col-3">Usuń !!!</button>
-        </div>
-        <div class="row mb-1">
-            <div class="col-3">
-                Zaawansowanie:
+            <div class="row mb-1">
+                <div class="col-3">
+                    Zaawansowanie:
+                </div>
+                <div class="col-4">
+                    <input type="range" class="form-range" min="0" max="100" step="1" [value]="task.status_of_completion">
+                </div>
+                <div class="col-2 text-end">[{{ task.status_of_completion }}]</div>
+                <button type="submit" class="btn btn-success col-3">Zapisz !!!</button>
             </div>
-            <div class="col-4">
-                <input type="range" class="form-range" min="0" max="100" step="1" value="0">
-            </div>
-            <div class="col-2 text-end">[0]</div>
-            <button class="btn btn-success col-3">Zapisz !!!</button>
         </div>
     </div>
-</div>
+</form>
