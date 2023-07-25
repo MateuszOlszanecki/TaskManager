@@ -14,7 +14,7 @@ export class StaffListService {
   staff_list_changed$ = new Subject<StaffMember[]>();
 
   private staff_list: StaffMember[] = [
-    new StaffMember("Jan", "Kowalski", "Programista",
+    new StaffMember("Jan", "Kowalski", "Analityk",
     [
       new Task("Tworzenie makiet", this.TASK_NOT_STARTED, 0),
       new Task("Analizowanie zadań", this.TASK_IN_PROGRESS, 25)
@@ -34,6 +34,15 @@ export class StaffListService {
 
   getStaffList() {
     return this.staff_list.slice();
+  }
+
+  getStaffMember(index: number) {
+    return this.staff_list.slice()[index];
+  }
+
+  updateStaffMember(index: number, staff_member: StaffMember) {
+      this.staff_list[index] = staff_member;
+      this.nextStaffListChanged();
   }
 
   removeStaffMember(index: number) {

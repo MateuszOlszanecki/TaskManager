@@ -1,10 +1,8 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="sticky-top">
-            <div class="card header">
-                <div class="card-body">
-                  <h5 class="card-title">Lista pracowników</h5>
-                </div>
+        <div class="card header">
+            <div class="card-body">
+              <h5 class="card-title">Lista pracowników</h5>
             </div>
         </div>
     </div>
@@ -16,8 +14,8 @@
     </div>
     <div class="row mb-1 mt-1">
         <div class="d-flex">
-            <button class="btn btn-danger ms-auto">+ !!!</button>
+            <button class="btn btn-danger ms-auto" (click)="onEdit()">+</button>
         </div>
     </div>
-    <app-edit-staff-member></app-edit-staff-member>
+    <router-outlet></router-outlet>
 </div>
