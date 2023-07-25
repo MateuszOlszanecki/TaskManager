@@ -5,11 +5,12 @@ import { EditStaffMemberComponent } from "./staff-list/edit-staff-member/edit-st
 import { StaffMemberTasksComponent } from "./staff-member-tasks/staff-member-tasks.component";
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/staff-list', pathMatch: 'full'},
+    { path: '', redirectTo: 'tasks/:id', pathMatch: 'full'},
     { path: 'staff-list', component: StaffListComponent, children: [
         { path: 'new', component: EditStaffMemberComponent},
         { path: 'edit/:id', component: EditStaffMemberComponent}
     ]},
+    { path: 'tasks/:id', component: StaffMemberTasksComponent },
 	{ path: '**', redirectTo: '/staff-list', pathMatch: 'full' }
 ]
 

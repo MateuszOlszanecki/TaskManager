@@ -2,29 +2,26 @@ import { Injectable } from '@angular/core';
 import { StaffMember } from '../models/staff-member.model';
 import { Task } from '../models/task.model';
 import { Subject } from 'rxjs';
+import { GlobalVariables } from '../global-variables';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StaffListService {
-  private TASK_NOT_STARTED = "Nie rozpoczęte";
-  private TASK_IN_PROGRESS = "W realizacji";
-  private TASK_FINISHED = "Zakończone";
-
   staff_list_changed$ = new Subject<StaffMember[]>();
 
   private staff_list: StaffMember[] = [
     new StaffMember("Jan", "Kowalski", "Analityk",
     [
-      new Task("Tworzenie makiet", this.TASK_NOT_STARTED, 0),
-      new Task("Analizowanie zadań", this.TASK_IN_PROGRESS, 25)
+      new Task("Tworzenie makiet", GlobalVariables.TASK_FINISHED_STATUS, 0),
+      new Task("Analizowanie zadań", GlobalVariables.TASK_NOT_STARTED_STATUS, 25)
     ]),
     new StaffMember("Tomasz", "Nowak", "Programista",
     [
-      new Task("Instalacja programu ABC", this.TASK_FINISHED, 100),
-      new Task("Instalacja programu ABC", this.TASK_FINISHED, 100),
-      new Task("Instalacja programu ABC", this.TASK_IN_PROGRESS, 50),
-      new Task("Instalacja programu ABC", this.TASK_FINISHED, 100)
+      new Task("Instalacja programu ABC", GlobalVariables.TASK_FINISHED_STATUS, 100),
+      new Task("Instalacja programu ABC", GlobalVariables.TASK_FINISHED_STATUS, 100),
+      new Task("Instalacja programu ABC", GlobalVariables.TASK_STARTED_STATUS, 50),
+      new Task("Instalacja programu ABC", GlobalVariables.TASK_FINISHED_STATUS, 100)
     ])
   ]
 
@@ -57,7 +54,7 @@ export class StaffListService {
 
   getFinishedTasksNumber(index: number) {
     return this.getStaffList()[index].tasks.filter(task => {
-      if(task.status === this.TASK_FINISHED){
+      if(task.status === GlobalVariables.TASK_FINISHED_STATUS){
         return true;
       }
       return false;
