@@ -1,26 +1,22 @@
 <div class="card mt-1">
     <div class="card-body">
-        <div class="container-floating">
-            <div class="row mb-1 me-0">
-                <div class="col-4">
-                    {{ staff_member.name }} {{ staff_member.surname }}
-                </div>
-                <div class="col-3 offset-2">
-                    {{ finishedToAllTasksRatio() }}
-                </div>
-                <button class="btn btn-success col-3">Zadania !!!</button>
+        <div class="row mb-1">
+            <div class="col-4">
+                {{ staff_member.name }} {{ staff_member.surname }}
             </div>
-            <div class="row mb-1">
-                <div class="col-12">
-                    Stanowisko: {{ staff_member.position }}
-                </div>
+            <div class="col-3 offset-2">
+                {{ finishedToAllTasksRatio() }}
             </div>
-            <div class="row mb-1">
-                <div class="col-12">    
-                    <button class="btn btn-primary col-3 offset-6">Edytuj !!!</button>
-                    <button class="btn btn-danger col-3" (click)="onRemove()">Usuń</button>
-                </div>
+            <button class="btn btn-success col-3">Zadania !!!</button>
+        </div>
+        <div class="row mb-1">
+            <div class="col-12">
+                Stanowisko: {{ staff_member.position }}
             </div>
+        </div>
+        <div class="row mb-1">    
+            <button class="btn btn-primary col-3 offset-6">Edytuj !!!</button>
+            <button class="btn btn-danger col-3" (click)="onRemove()">Usuń</button>
         </div>
     </div>
 </div>
