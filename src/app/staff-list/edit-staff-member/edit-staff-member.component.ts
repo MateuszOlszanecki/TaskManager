@@ -42,5 +42,6 @@ export class EditStaffMemberComponent implements OnInit{
 
   onCancel() {
     console.log("Cancel");
+    this.initForm();
   }
 }
