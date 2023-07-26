@@ -35,6 +35,10 @@ export class StaffListService {
     return this.staff_list.slice()[index];
   }
 
+  getStaffMemberId(staff_member_index: number) {
+    return this.staff_list[staff_member_index].id;
+  }
+
   updateStaffMember(index: number, staff_member: StaffMember) {
     this.staff_list[index] = staff_member;
     this.nextStaffListChanged();

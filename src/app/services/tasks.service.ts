@@ -24,6 +24,11 @@ export class TasksService {
     this.tasks_changed$.next(this.tasks.slice());
   }
 
+  addTask(task: Task) {
+    this.tasks.push(task);
+    this.nextTasksChanged();
+  }
+
   getTaskIndex(task: Task) {
     return this.tasks.indexOf(task);
   }

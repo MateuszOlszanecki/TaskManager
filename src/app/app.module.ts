@@ -9,6 +9,7 @@ import { TaskComponent } from './staff-member-tasks/task/task.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditStaffMemberComponent } from './staff-list/edit-staff-member/edit-staff-member.component';
 import { AppRoutingModule } from './app-routing.module';
+import { EditTaskComponent } from './staff-member-tasks/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
     StaffMemberTasksComponent,
     StaffMemberComponent,
     TaskComponent,
-    EditStaffMemberComponent
+    EditStaffMemberComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,

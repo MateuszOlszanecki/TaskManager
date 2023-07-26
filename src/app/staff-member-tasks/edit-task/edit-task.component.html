@@ -1,0 +1,21 @@
+<div class="position-fixed top-50 start-50 translate-middle container">
+    <div class="row mb-1">
+        <div class="col-12">
+            <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-floating mb-1">
+                            <textarea class="form-control mb-1" rows="5" style="min-height: 138px;"
+                                id="description" placeholder="description" formControlName="description"></textarea>
+                            <label for="description">Treść zadania:</label>
+                        </div>
+                        <div class="row-fluid">
+                            <button type="submit" class="btn btn-primary col-3" [disabled]="!taskForm.valid">Ok</button>
+                            <button type="button" class="btn btn-danger col-3" (click)="onCancel()">Anuluj</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

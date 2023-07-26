@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { StaffMember } from '../models/staff-member.model';
 import { StaffListService } from '../services/staff-list.service';
 import { Task } from '../models/task.model';
@@ -18,6 +18,7 @@ export class StaffMemberTasksComponent implements OnInit {
   subscription!: Subscription;
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private staffListService: StaffListService,
               private tasksService: TasksService) {}
 
@@ -38,5 +39,9 @@ export class StaffMemberTasksComponent implements OnInit {
 
   getGlobalTaskIndex(task: Task) {
     return this.tasksService.getTaskIndex(task);
+  }
+
+  onEdit() {
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
 }

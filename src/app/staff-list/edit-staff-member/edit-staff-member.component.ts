@@ -9,7 +9,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   templateUrl: './edit-staff-member.component.html',
   styleUrls: ['./edit-staff-member.component.css']
 })
-export class EditStaffMemberComponent implements OnInit{
+export class EditStaffMemberComponent implements OnInit {
   staffMemberForm!: FormGroup;
   index!: number;
   editMode!: boolean;
@@ -55,7 +55,7 @@ export class EditStaffMemberComponent implements OnInit{
       this.staffMemberForm.value['position']
     );
     if(this.editMode){
-      staff_member.id = this.staffListService.getStaffMember(this.index).id;
+      staff_member.id = this.staffListService.getStaffMemberId(this.index);
       this.staffListService.updateStaffMember(this.index, staff_member);
     }
     else{
