@@ -1,11 +1,11 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="card header">
-            <div class="card-body">
-              <h5 class="card-title">Lista pracowników</h5>
-            </div>
+<div class="container-fixed">
+    <nav class="navbar navbar-dark header">
+        <div class="container-fluid">
+            <h5 class="navbar-brand">Lista pracowników</h5>
         </div>
-    </div>
+    </nav>
+</div>
+<div class="container-fluid">
     <div class="row">
         <app-staff-member
         *ngFor="let staff_member of staff_list; let i = index"
@@ -13,7 +13,7 @@
         [id]="staff_member.id"
         [index]="i"></app-staff-member>
     </div>
-    <div class="row mb-1 mt-1">
+    <div class="row mt-1 mb-1">
         <div class="d-flex">
             <button class="btn btn-danger ms-auto" (click)="onEdit()">+</button>
         </div>

@@ -44,4 +44,8 @@ export class StaffMemberTasksComponent implements OnInit {
   onEdit() {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
+
+  onBack() {
+    this.router.navigate(['staff-list']);
+  }
 }

@@ -44,10 +44,8 @@ export class TasksService {
   }
 
   removeTask(task_index: number) {
-    console.log(this.tasks);
     this.tasks.splice(task_index, 1);
     this.nextTasksChanged();
-    console.log(this.tasks);
   }
 
   removeStaffMemberTasks(staff_member_id: number) {

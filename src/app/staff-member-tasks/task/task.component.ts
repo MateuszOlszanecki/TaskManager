@@ -18,7 +18,6 @@ export class TaskComponent {
   constructor(private tasksService: TasksService) {}
 
   onRemove() {
-    console.log(this.task_index)
     this.tasksService.removeTask(this.task_index);
   }
 }
