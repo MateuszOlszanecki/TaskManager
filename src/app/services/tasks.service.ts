@@ -18,6 +18,12 @@ export class TasksService {
     return this.tasks.slice();
   }
 
+  getStaffMemberTasks(staff_member_id: number) {
+    return this.tasks.filter(task => {
+      return task.staff_member_id === staff_member_id;
+    })
+  }
+
   removeStaffMemberTasks(staff_member_id: number) {
     for(let i = this.tasks.length - 1; i >= 0; i--){
       if(this.tasks[i].staff_member_id === staff_member_id){
@@ -27,9 +33,7 @@ export class TasksService {
   }
 
   getFinishedTasksRatio(staff_member_id: number) {
-    let all_staff_member_tasks = this.tasks.filter(task => {
-      return task.staff_member_id === staff_member_id;
-    })
+    let all_staff_member_tasks = this.getStaffMemberTasks(staff_member_id);
     let all_staff_member_finished_tasks = all_staff_member_tasks.filter(task => {
       return task.status === GlobalVariables.TASK_FINISHED_STATUS;
     })
