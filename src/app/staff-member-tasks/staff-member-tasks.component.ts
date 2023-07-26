@@ -9,7 +9,7 @@ import { StaffListService } from '../services/staff-list.service';
   styleUrls: ['./staff-member-tasks.component.css']
 })
 export class StaffMemberTasksComponent implements OnInit {
-  id!: number;
+  index!: number;
   picked_staff_member!: StaffMember;
 
   constructor(private route: ActivatedRoute,
@@ -18,9 +18,9 @@ export class StaffMemberTasksComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.id = +params['id'];
+        this.index = +params['index'];
       }
     )
-    this.picked_staff_member = this.staffListService.getStaffMember(this.id);
+    this.picked_staff_member = this.staffListService.getStaffMember(this.index);
   }
 }

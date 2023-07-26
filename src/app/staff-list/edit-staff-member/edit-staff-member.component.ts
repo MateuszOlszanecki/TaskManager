@@ -11,7 +11,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 export class EditStaffMemberComponent implements OnInit{
   staffMemberForm!: FormGroup;
-  id!: number;
+  index!: number;
   editMode!: boolean;
 
   constructor(private staffListService: StaffListService,
@@ -21,8 +21,8 @@ export class EditStaffMemberComponent implements OnInit{
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.id = +params['id']
-        this.editMode = params['id'] != null
+        this.index = +params['index']
+        this.editMode = params['index'] != null
         this.initForm();
       }
     )
@@ -34,7 +34,7 @@ export class EditStaffMemberComponent implements OnInit{
     let position = "";
     
     if(this.editMode){
-      const recipe = this.staffListService.getStaffMember(this.id);
+      const recipe = this.staffListService.getStaffMember(this.index);
       name = recipe.name;
       surname = recipe.surname;
       position = recipe.position;
@@ -49,12 +49,13 @@ export class EditStaffMemberComponent implements OnInit{
 
   onSubmit(){
     let staff_member = new StaffMember(
+      this.staffListService.getNextId(),
       this.staffMemberForm.value['name'],
       this.staffMemberForm.value['surname'],
       this.staffMemberForm.value['position']
     );
     if(this.editMode){
-      this.staffListService.updateStaffMember(this.id, staff_member);
+      this.staffListService.updateStaffMember(this.index, staff_member);
     }
     else{
       this.staffListService.addStaffMember(staff_member);
