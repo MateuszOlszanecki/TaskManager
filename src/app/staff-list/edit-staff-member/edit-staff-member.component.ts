@@ -29,9 +29,9 @@ export class EditStaffMemberComponent implements OnInit {
   }
 
   initForm() {
-    let name = "TEST";
-    let surname = "TEST";
-    let position = "TEST";
+    let name = "";
+    let surname = "";
+    let position = "";
     
     if(this.editMode){
       const staff_member = this.staffListService.getStaffMember(this.index);
