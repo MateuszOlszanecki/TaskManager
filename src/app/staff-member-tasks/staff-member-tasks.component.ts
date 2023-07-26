@@ -15,6 +15,7 @@ export class StaffMemberTasksComponent implements OnInit {
   index!: number;
   picked_staff_member!: StaffMember;
   picked_staff_member_tasks!: Task[];
+  subscription!: Subscription;
 
   constructor(private route: ActivatedRoute,
               private staffListService: StaffListService,
@@ -28,5 +29,14 @@ export class StaffMemberTasksComponent implements OnInit {
     )
     this.picked_staff_member = this.staffListService.getStaffMember(this.index);
     this.picked_staff_member_tasks = this.tasksService.getStaffMemberTasks(this.picked_staff_member.id);
+    this.subscription = this.tasksService.tasks_changed$.subscribe(
+      () => {
+        this.picked_staff_member_tasks = this.tasksService.getStaffMemberTasks(this.picked_staff_member.id);
+      }
+    )
+  }
+
+  getGlobalTaskIndex(task: Task) {
+    return this.tasksService.getTaskIndex(task);
   }
 }

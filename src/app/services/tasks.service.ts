@@ -7,16 +7,26 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class TasksService {
+  tasks_changed$ = new Subject<Task[]>();
+
   private tasks: Task[] = [
     new Task("Jan Task1", 0, GlobalVariables.TASK_FINISHED_STATUS, 100),
     new Task("Jan Task2", 0, GlobalVariables.TASK_STARTED_STATUS, 50),
     new Task("Tomasz Task1", 1, GlobalVariables.TASK_FINISHED_STATUS, 100),
     new Task("Tomasz Task2", 1, GlobalVariables.TASK_NOT_STARTED_STATUS, 0),
     new Task("Tomasz Task3", 1, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task("Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task("Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task("Jacek Task1", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task("Jacek Task2", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
     new Task("Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100)
   ];
+
+  nextTasksChanged() {
+    this.tasks_changed$.next(this.tasks.slice());
+  }
+
+  getTaskIndex(task: Task) {
+    return this.tasks.indexOf(task);
+  }
 
   getAllTasks() {
     return this.tasks.slice();
@@ -28,12 +38,20 @@ export class TasksService {
     })
   }
 
+  removeTask(task_index: number) {
+    console.log(this.tasks);
+    this.tasks.splice(task_index, 1);
+    this.nextTasksChanged();
+    console.log(this.tasks);
+  }
+
   removeStaffMemberTasks(staff_member_id: number) {
     for(let i = this.tasks.length - 1; i >= 0; i--){
       if(this.tasks[i].staff_member_id === staff_member_id){
-        this.tasks.splice(i, 1);
+        this.removeTask(i);
       }
     }
+    this.nextTasksChanged();
   }
 
   getFinishedTasksRatio(staff_member_id: number) {

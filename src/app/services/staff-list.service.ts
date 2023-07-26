@@ -19,12 +19,12 @@ export class StaffListService {
 
   constructor(private tasksService: TasksService) {}
 
-  getNextId() {
-    return this.first_free_id++;
-  }
-
   nextStaffListChanged() {
     this.staff_list_changed$.next(this.staff_list.slice());
+  }
+
+  getNextId() {
+    return this.first_free_id++;
   }
 
   getStaffList() {

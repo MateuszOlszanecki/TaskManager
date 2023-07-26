@@ -9,7 +9,8 @@
     <div class="row">
         <app-task
         *ngFor="let task of picked_staff_member_tasks"
-        [task]="task">
+        [task]="task"
+        [task_index]="getGlobalTaskIndex(task)">
         </app-task>
     </div>
     <div class="row mb-1 mt-1">

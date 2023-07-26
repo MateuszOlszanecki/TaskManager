@@ -22,7 +22,7 @@
                         <option value="3" [selected]="task.status === TASK_FINISHED_STATUS">{{ TASK_FINISHED_STATUS }}</option>
                     </select>
                 </div>
-                <button type="button" class="btn btn-danger col-3">Usuń !!!</button>
+                <button type="button" class="btn btn-danger col-3" (click)="onRemove()">Usuń</button>
             </div>
             <div class="row mb-1">
                 <div class="col-3">
