@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../models/task.model';
 import { GlobalVariables } from '../global-variables';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,11 @@ export class TasksService {
     new Task("Jan Task2", 0, GlobalVariables.TASK_STARTED_STATUS, 50),
     new Task("Tomasz Task1", 1, GlobalVariables.TASK_FINISHED_STATUS, 100),
     new Task("Tomasz Task2", 1, GlobalVariables.TASK_NOT_STARTED_STATUS, 0),
-    new Task("Tomasz Task3", 1, GlobalVariables.TASK_FINISHED_STATUS, 100)
+    new Task("Tomasz Task3", 1, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task("Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task("Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task("Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task("TEST Task3", 3, GlobalVariables.TASK_FINISHED_STATUS, 100)
   ];
 
   getAllTasks() {
