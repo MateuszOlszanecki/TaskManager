@@ -7,11 +7,11 @@ import { GlobalVariables } from '../global-variables';
 })
 export class TasksService {
   private tasks: Task[] = [
-    new Task("Tworzenie makie", 0, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task("Analizowanie za", 1, GlobalVariables.TASK_NOT_STARTED_STATUS, 0),
-    new Task("Analizowanie ff", 1, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task("Analizowanie tt", 0, GlobalVariables.TASK_STARTED_STATUS, 50),
-    new Task("Analizowanie 33", 1, GlobalVariables.TASK_FINISHED_STATUS, 100)
+    new Task("Jan Task1", 0, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task("Jan Task2", 0, GlobalVariables.TASK_STARTED_STATUS, 50),
+    new Task("Tomasz Task1", 1, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task("Tomasz Task2", 1, GlobalVariables.TASK_NOT_STARTED_STATUS, 0),
+    new Task("Tomasz Task3", 1, GlobalVariables.TASK_FINISHED_STATUS, 100)
   ];
 
   getAllTasks() {
@@ -19,7 +19,7 @@ export class TasksService {
   }
 
   removeStaffMemberTasks(staff_member_id: number) {
-    for(let i = 0; i < this.tasks.length; i++){
+    for(let i = this.tasks.length - 1; i >= 0; i--){
       if(this.tasks[i].staff_member_id === staff_member_id){
         this.tasks.splice(i, 1);
       }
