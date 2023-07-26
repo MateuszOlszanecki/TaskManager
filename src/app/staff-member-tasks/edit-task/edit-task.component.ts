@@ -34,6 +34,11 @@ export class EditTaskComponent implements OnInit {
   
   initForm() {
     let description = "";
+
+    if(this.editMode){
+      const task = this.tasksService.getTask(this.task_index);
+      description = task.description;
+    }
     
     this.taskForm = new FormGroup({
       'description': new FormControl(description, Validators.required),
@@ -41,16 +46,28 @@ export class EditTaskComponent implements OnInit {
   }
 
   onSubmit() {
-    let task = new Task(
-      this.taskForm.value['description'],
-      this.staffListService.getStaffMemberId(this.staffMemberTasksComponent.index)
-    );
-    this.tasksService.addTask(task);
+    if(this.editMode){
+      let task = this.tasksService.getTask(this.task_index);
+      task.description = this.taskForm.value['description'],
+      this.tasksService.updateTask(this.task_index, task);
+    }
+    else{
+      let task = new Task(
+        this.taskForm.value['description'],
+        this.staffListService.getStaffMemberId(this.staffMemberTasksComponent.index)
+      );
+      this.tasksService.addTask(task);
+    }
     this.onCancel();
   }
   
   onCancel() {
-    this.router.navigate(['../'], {relativeTo: this.route});
+    if(this.editMode){
+      this.router.navigate(['../../'], {relativeTo: this.route});
+    }
+    else{
+      this.router.navigate(['..'], {relativeTo: this.route});
+    }
     this.initForm();
   }
 }

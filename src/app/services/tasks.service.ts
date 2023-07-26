@@ -28,9 +28,12 @@ export class TasksService {
     this.tasks.push(task);
     this.nextTasksChanged();
   }
-
   getTaskIndex(task: Task) {
     return this.tasks.indexOf(task);
+  }
+
+  getTask(task_index: number) {
+    return this.tasks.slice()[task_index];
   }
 
   getAllTasks() {
@@ -54,6 +57,11 @@ export class TasksService {
         this.removeTask(i);
       }
     }
+    this.nextTasksChanged();
+  }
+
+  updateTask(task_index: number, task: Task) {
+    this.tasks[task_index] = task;
     this.nextTasksChanged();
   }
 

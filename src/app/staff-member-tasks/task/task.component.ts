@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { GlobalVariables } from '../../global-variables';
 import { Task } from 'src/app/models/task.model';
 import { TasksService } from 'src/app/services/tasks.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-task',
@@ -15,9 +16,15 @@ export class TaskComponent {
   @Input() task!: Task;
   @Input() task_index!: number;
 
-  constructor(private tasksService: TasksService) {}
+  constructor(private tasksService: TasksService,
+              private route: ActivatedRoute,
+              private router: Router,) {}
 
   onRemove() {
     this.tasksService.removeTask(this.task_index);
+  }
+
+  onEdit() {
+    this.router.navigate(['edit', this.task_index], {relativeTo: this.route});
   }
 }
