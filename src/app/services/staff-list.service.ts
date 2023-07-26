@@ -39,13 +39,4 @@ export class StaffListService {
     this.staff_list.push(staff_member);
     this.nextStaffListChanged();
   }
-
-  // getFinishedTasksNumber(index: number) {
-  //   return this.getStaffList()[index].tasks.filter(task => {
-  //     if(task.status === GlobalVariables.TASK_FINISHED_STATUS){
-  //       return true;
-  //     }
-  //     return false;
-  //   }).length;
-  // }
 }
