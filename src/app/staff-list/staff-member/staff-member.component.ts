@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { StaffMember } from 'src/app/models/staff-member.model';
 import { StaffListService } from 'src/app/services/staff-list.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'app-staff-member',
@@ -13,11 +14,12 @@ export class StaffMemberComponent {
   @Input() index!: number;
 
   constructor(private staffListService: StaffListService,
+              private tasksService: TasksService,
               private router: Router,
               private route: ActivatedRoute) {}
 
   finishedToAllTasksRatio() {
-    return "[" + this.staffListService.getFinishedTasksNumber(this.index) + "/" + this.staff_member.tasks.length + "]";
+    return this.tasksService.getFinishedTasksRatio(this.index);
   }
 
   onRemove() {

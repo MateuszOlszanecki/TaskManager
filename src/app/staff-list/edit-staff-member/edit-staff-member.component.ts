@@ -51,8 +51,7 @@ export class EditStaffMemberComponent implements OnInit{
     let staff_member = new StaffMember(
       this.staffMemberForm.value['name'],
       this.staffMemberForm.value['surname'],
-      this.staffMemberForm.value['position'],
-      []
+      this.staffMemberForm.value['position']
     );
     if(this.editMode){
       this.staffListService.updateStaffMember(this.id, staff_member);
