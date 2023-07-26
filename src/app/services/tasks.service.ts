@@ -15,8 +15,7 @@ export class TasksService {
     new Task("Tomasz Task3", 1, GlobalVariables.TASK_FINISHED_STATUS, 100),
     new Task("Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
     new Task("Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task("Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task("TEST Task3", 3, GlobalVariables.TASK_FINISHED_STATUS, 100)
+    new Task("Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100)
   ];
 
   getAllTasks() {

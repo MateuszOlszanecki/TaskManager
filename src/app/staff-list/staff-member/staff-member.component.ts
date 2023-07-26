@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './staff-member.component.html',
   styleUrls: ['./staff-member.component.css']
 })
-export class StaffMemberComponent implements OnInit, OnDestroy {
+export class StaffMemberComponent implements OnInit {
   @Input() staff_member!: StaffMember;
   @Input() id!: number;
   @Input() index!: number;
@@ -35,9 +35,5 @@ export class StaffMemberComponent implements OnInit, OnDestroy {
 
   onTasks() {
     this.router.navigate(['tasks', this.index]);
-  }
-
-  ngOnDestroy() {
-    // this.subscription.unsubscribe();
   }
 }
