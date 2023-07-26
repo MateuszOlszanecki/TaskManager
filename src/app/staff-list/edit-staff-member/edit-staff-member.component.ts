@@ -34,10 +34,10 @@ export class EditStaffMemberComponent implements OnInit{
     let position = "TEST";
     
     if(this.editMode){
-      const recipe = this.staffListService.getStaffMember(this.index);
-      name = recipe.name;
-      surname = recipe.surname;
-      position = recipe.position;
+      const staff_member = this.staffListService.getStaffMember(this.index);
+      name = staff_member.name;
+      surname = staff_member.surname;
+      position = staff_member.position;
     }
     
     this.staffMemberForm = new FormGroup({
@@ -49,15 +49,17 @@ export class EditStaffMemberComponent implements OnInit{
 
   onSubmit(){
     let staff_member = new StaffMember(
-      this.staffListService.getNextId(),
+      -1,
       this.staffMemberForm.value['name'],
       this.staffMemberForm.value['surname'],
       this.staffMemberForm.value['position']
     );
     if(this.editMode){
+      staff_member.id = this.staffListService.getStaffMember(this.index).id;
       this.staffListService.updateStaffMember(this.index, staff_member);
     }
     else{
+      staff_member.id = this.staffListService.getNextId();
       this.staffListService.addStaffMember(staff_member);
     }
     this.onCancel();
