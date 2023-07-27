@@ -11,7 +11,6 @@ import { TasksService } from 'src/app/services/tasks.service';
 })
 export class StaffMemberComponent implements OnInit {
   @Input() staff_member!: StaffMember;
-  @Input() id!: number;
   finishedToAllTasksRatio!: string;
 
   constructor(private staffListService: StaffListService,
@@ -20,18 +19,18 @@ export class StaffMemberComponent implements OnInit {
               private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.finishedToAllTasksRatio = this.tasksService.getFinishedTasksRatio(this.id);
+    this.finishedToAllTasksRatio = this.tasksService.getFinishedTasksRatio(this.staff_member.id);
   }
 
   onRemove() {
-    this.staffListService.removeStaffMember(this.id);
+    this.staffListService.removeStaffMember(this.staff_member.id);
   }
 
   onEdit() {
-    this.router.navigate(['edit', this.id], {relativeTo: this.route});
+    this.router.navigate(['edit', this.staff_member.id], {relativeTo: this.route});
   }
 
   onTasks() {
-    this.router.navigate(['tasks', this.id]);
+    this.router.navigate(['tasks', this.staff_member.id]);
   }
 }
