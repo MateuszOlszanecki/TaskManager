@@ -33,21 +33,23 @@ export class StaffListService {
     return deepCopy(this.staff_list);
   }
 
-  getStaffMember(index: number) {
-    return this.staff_list[index];
+  getStaffMember(id: number) {
+    return this.staff_list.find(staff_member => {return staff_member.id === id});
   }
 
-  getStaffMemberId(index: number) {
-    return this.staff_list[index].id;
+  getStaffMemberIndex(id: number) {
+    return this.staff_list.findIndex(staff_member => {return staff_member.id === id});
   }
 
-  updateStaffMember(index: number, staff_member: StaffMember) {
+  updateStaffMember(id: number, staff_member: StaffMember) {
+    let index = this.getStaffMemberIndex(id);
     this.staff_list[index] = staff_member;
     this.nextStaffListChanged();
   }
 
-  removeStaffMember(index: number) {
-    this.tasksService.removeStaffMemberTasks(this.staff_list[index].id);
+  removeStaffMember(id: number) {
+    let index = this.getStaffMemberIndex(id);
+    this.tasksService.removeStaffMemberTasks(id);
     this.staff_list.splice(index, 1);
     this.nextStaffListChanged();
   }

@@ -12,7 +12,6 @@ import { TasksService } from 'src/app/services/tasks.service';
 export class StaffMemberComponent implements OnInit {
   @Input() staff_member!: StaffMember;
   @Input() id!: number;
-  @Input() index!: number;
   finishedToAllTasksRatio!: string;
 
   constructor(private staffListService: StaffListService,
@@ -25,14 +24,14 @@ export class StaffMemberComponent implements OnInit {
   }
 
   onRemove() {
-    this.staffListService.removeStaffMember(this.index);
+    this.staffListService.removeStaffMember(this.id);
   }
 
   onEdit() {
-    this.router.navigate(['edit', this.index], {relativeTo: this.route});
+    this.router.navigate(['edit', this.id], {relativeTo: this.route});
   }
 
   onTasks() {
-    this.router.navigate(['tasks', this.index]);
+    this.router.navigate(['tasks', this.id]);
   }
 }

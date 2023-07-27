@@ -8,10 +8,10 @@
 <div class="container-fluid">
     <div class="row">
         <app-staff-member
-        *ngFor="let staff_member of staff_list; let i = index"
+        *ngFor="let staff_member of staff_list"
         [staff_member]="staff_member"
         [id]="staff_member.id"
-        [index]="i"></app-staff-member>
+        ></app-staff-member>
     </div>
     <div class="row mt-1 mb-1">
         <div class="d-flex">
