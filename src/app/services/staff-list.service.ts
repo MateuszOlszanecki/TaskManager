@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { StaffMember } from '../models/staff-member.model';
 import { Subject } from 'rxjs';
 import { TasksService } from './tasks.service';
+import { deepCopy } from '@angular-devkit/core/src/utils/object';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class StaffListService {
   constructor(private tasksService: TasksService) {}
 
   nextStaffListChanged() {
-    this.staff_list_changed$.next(this.staff_list.slice());
+    this.staff_list_changed$.next(this.getStaffList());
   }
 
   getNextId() {
@@ -28,11 +29,12 @@ export class StaffListService {
   }
 
   getStaffList() {
-    return this.staff_list.slice();
+    //deepcopy array
+    return deepCopy(this.staff_list);
   }
 
   getStaffMember(index: number) {
-    return this.staff_list.slice()[index];
+    return this.getStaffList()[index];
   }
 
   getStaffMemberId(index: number) {

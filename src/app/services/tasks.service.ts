@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Task } from '../models/task.model';
 import { GlobalVariables } from '../global-variables';
 import { Subject } from 'rxjs';
+import { deepCopy } from '@angular-devkit/core/src/utils/object';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class TasksService {
   ];
 
   nextTasksChanged() {
-    this.tasks_changed$.next(this.tasks.slice());
+    this.tasks_changed$.next(this.getAllTasks());
   }
 
   addTask(task: Task) {
@@ -32,12 +33,13 @@ export class TasksService {
     return this.tasks.indexOf(task);
   }
 
-  getTask(task_index: number) {
-    return this.tasks.slice()[task_index];
+  getAllTasks() {
+    //deepcopy array
+    return deepCopy(this.tasks);
   }
 
-  getAllTasks() {
-    return this.tasks.slice();
+  getTask(task_index: number) {
+    return this.getAllTasks()[task_index];
   }
 
   getStaffMemberTasks(staff_member_id: number) {

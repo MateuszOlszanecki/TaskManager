@@ -3,7 +3,6 @@ import { StaffMember } from 'src/app/models/staff-member.model';
 import { StaffListService } from 'src/app/services/staff-list.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TasksService } from 'src/app/services/tasks.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-staff-member',
