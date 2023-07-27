@@ -7,8 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-staff-list',
-  templateUrl: './staff-list.component.html',
-  styleUrls: ['./staff-list.component.css']
+  templateUrl: './staff-list.component.html'
 })
 export class StaffListComponent implements OnInit, OnDestroy {
   staff_list!: StaffMember[];

@@ -6,8 +6,7 @@ import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'app-staff-member',
-  templateUrl: './staff-member.component.html',
-  styleUrls: ['./staff-member.component.css']
+  templateUrl: './staff-member.component.html'
 })
 export class StaffMemberComponent implements OnInit {
   @Input() staff_member!: StaffMember;

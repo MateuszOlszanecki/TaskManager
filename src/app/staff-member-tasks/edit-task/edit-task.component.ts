@@ -8,8 +8,7 @@ import { Task } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-edit-task',
-  templateUrl: './edit-task.component.html',
-  styleUrls: ['./edit-task.component.css']
+  templateUrl: './edit-task.component.html'
 })
 export class EditTaskComponent implements OnInit {
   taskForm!: FormGroup;

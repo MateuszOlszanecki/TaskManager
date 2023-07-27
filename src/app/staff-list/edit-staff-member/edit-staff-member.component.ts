@@ -6,8 +6,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-edit-staff-member',
-  templateUrl: './edit-staff-member.component.html',
-  styleUrls: ['./edit-staff-member.component.css']
+  templateUrl: './edit-staff-member.component.html'
 })
 export class EditStaffMemberComponent implements OnInit {
   staffMemberForm!: FormGroup;

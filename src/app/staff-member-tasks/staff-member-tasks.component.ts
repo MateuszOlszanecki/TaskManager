@@ -8,8 +8,7 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-staff-member-tasks',
-  templateUrl: './staff-member-tasks.component.html',
-  styleUrls: ['./staff-member-tasks.component.css']
+  templateUrl: './staff-member-tasks.component.html'
 })
 export class StaffMemberTasksComponent implements OnInit, OnDestroy {
   staff_member_id!: number;

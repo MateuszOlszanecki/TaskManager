@@ -6,8 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-task',
-  templateUrl: './task.component.html',
-  styleUrls: ['./task.component.css']
+  templateUrl: './task.component.html'
 })
 export class TaskComponent {
   public TASK_NOT_STARTED_STATUS = GlobalVariables.TASK_NOT_STARTED_STATUS;
