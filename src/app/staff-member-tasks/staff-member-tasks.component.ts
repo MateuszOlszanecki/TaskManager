@@ -14,7 +14,7 @@ export class StaffMemberTasksComponent implements OnInit, OnDestroy {
   staff_member_id!: number;
   picked_staff_member!: StaffMember;
   picked_staff_member_tasks!: Task[];
-  subscription!: Subscription;
+  private subscription!: Subscription;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
