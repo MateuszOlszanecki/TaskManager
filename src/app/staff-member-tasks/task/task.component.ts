@@ -32,9 +32,14 @@ export class TaskComponent implements OnInit {
   }
 
   onSubmit() {
-    this.task.status = this.taskStatusForm.value['status'];
-    this.task.status_of_completion = this.taskStatusForm.value['status_of_completion'];
-    this.tasksService.updateTask(this.task.id, this.task);
+    let task = new Task(
+      this.task.id,
+      this.task.description,
+      this.task.staff_member_id,
+      this.taskStatusForm.value['status'],
+      this.taskStatusForm.value['status_of_completion']
+    )
+    this.tasksService.updateTask(task.id, task);
     this.onCancel();
   }
 
