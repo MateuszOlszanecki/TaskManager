@@ -39,7 +39,7 @@ export class TasksService {
   }
 
   getTask(task_index: number) {
-    return this.getAllTasks()[task_index];
+    return this.tasks[task_index];
   }
 
   getStaffMemberTasks(staff_member_id: number) {

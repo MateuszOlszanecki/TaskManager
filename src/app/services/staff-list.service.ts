@@ -34,7 +34,7 @@ export class StaffListService {
   }
 
   getStaffMember(index: number) {
-    return this.getStaffList()[index];
+    return this.staff_list[index];
   }
 
   getStaffMemberId(index: number) {
