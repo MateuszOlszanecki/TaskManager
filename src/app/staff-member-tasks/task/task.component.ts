@@ -16,7 +16,7 @@ export class TaskComponent {
 
   constructor(private tasksService: TasksService,
               private route: ActivatedRoute,
-              private router: Router,) {}
+              private router: Router) {}
 
   onRemove() {
     this.tasksService.removeTask(this.task.id);
