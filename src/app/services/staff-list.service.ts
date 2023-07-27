@@ -16,7 +16,7 @@ export class StaffListService {
     new StaffMember(2, "Jacek", "Nowak", "Programista")
   ];
 
-  first_free_id = this.staff_list.length;
+  first_free_id = 3;
 
   constructor(private tasksService: TasksService) {}
 
