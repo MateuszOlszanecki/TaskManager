@@ -13,7 +13,7 @@ import { Task } from 'src/app/models/task.model';
 })
 export class EditTaskComponent implements OnInit {
   taskForm!: FormGroup;
-  task_index!: number;
+  task_id!: number;
   editMode!: boolean;
   
   constructor(private router: Router,
@@ -25,8 +25,8 @@ export class EditTaskComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.task_index = +params['task_index']
-        this.editMode = params['task_index'] != null
+        this.task_id = +params['task_id']
+        this.editMode = params['task_id'] != null
         this.initForm();
       }
     )
@@ -36,8 +36,8 @@ export class EditTaskComponent implements OnInit {
     let description = "";
 
     if(this.editMode){
-      const task = this.tasksService.getTask(this.task_index);
-      description = task.description;
+      const task = this.tasksService.getTask(this.task_id);
+      description = task!.description;
     }
     
     this.taskForm = new FormGroup({
@@ -47,12 +47,13 @@ export class EditTaskComponent implements OnInit {
 
   onSubmit() {
     if(this.editMode){
-      let task = this.tasksService.getTask(this.task_index);
-      task.description = this.taskForm.value['description'],
-      this.tasksService.updateTask(this.task_index, task);
+      let task = this.tasksService.getTask(this.task_id);
+      task!.description = this.taskForm.value['description'],
+      this.tasksService.updateTask(this.task_id, task!);
     }
     else{
       let task = new Task(
+        this.tasksService.getNextId(),
         this.taskForm.value['description'],
         this.staffMemberTasksComponent.id
       );

@@ -14,17 +14,16 @@ export class TaskComponent {
   public TASK_STARTED_STATUS = GlobalVariables.TASK_STARTED_STATUS;
   public TASK_FINISHED_STATUS = GlobalVariables.TASK_FINISHED_STATUS;
   @Input() task!: Task;
-  @Input() task_index!: number;
 
   constructor(private tasksService: TasksService,
               private route: ActivatedRoute,
               private router: Router,) {}
 
   onRemove() {
-    this.tasksService.removeTask(this.task_index);
+    this.tasksService.removeTask(this.task.id);
   }
 
   onEdit() {
-    this.router.navigate(['edit', this.task_index], {relativeTo: this.route});
+    this.router.navigate(['edit', this.task.id], {relativeTo: this.route});
   }
 }

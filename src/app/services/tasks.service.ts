@@ -11,26 +11,29 @@ export class TasksService {
   tasks_changed$ = new Subject<Task[]>();
 
   private tasks: Task[] = [
-    new Task("Jan Task1", 0, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task("Jan Task2", 0, GlobalVariables.TASK_STARTED_STATUS, 50),
-    new Task("Tomasz Task1", 1, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task("Tomasz Task2", 1, GlobalVariables.TASK_NOT_STARTED_STATUS, 0),
-    new Task("Tomasz Task3", 1, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task("Jacek Task1", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task("Jacek Task2", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task("Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100)
+    new Task(0, "Jan Task1", 0, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task(1, "Jan Task2", 0, GlobalVariables.TASK_STARTED_STATUS, 50),
+    new Task(2, "Tomasz Task1", 1, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task(3, "Tomasz Task2", 1, GlobalVariables.TASK_NOT_STARTED_STATUS, 0),
+    new Task(4, "Tomasz Task3", 1, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task(5, "Jacek Task1", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task(6, "Jacek Task2", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task(7, "Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100)
   ];
+
+  first_free_id = 8;
 
   nextTasksChanged() {
     this.tasks_changed$.next(this.getAllTasks());
   }
 
+  getNextId() {
+    return this.first_free_id++;
+  }
+
   addTask(task: Task) {
     this.tasks.push(task);
     this.nextTasksChanged();
-  }
-  getTaskIndex(task: Task) {
-    return this.tasks.indexOf(task);
   }
 
   getAllTasks() {
@@ -38,8 +41,8 @@ export class TasksService {
     return deepCopy(this.tasks);
   }
 
-  getTask(task_index: number) {
-    return this.tasks[task_index];
+  getTask(id: number) {
+    return this.tasks.find(task => {return task.id === id});
   }
 
   getStaffMemberTasks(staff_member_id: number) {
@@ -47,9 +50,20 @@ export class TasksService {
       return task.staff_member_id === staff_member_id;
     })
   }
+  
+  getTasksIndex(id: number) {
+    return this.tasks.findIndex(task => {return task.id === id});
+  }
 
-  removeTask(task_index: number) {
-    this.tasks.splice(task_index, 1);
+  updateTask(id: number, task: Task) {
+    let index = this.getTasksIndex(id);
+    this.tasks[index] = task;
+    this.nextTasksChanged();
+  }
+
+  removeTask(id: number) {
+    let index = this.getTasksIndex(id);
+    this.tasks.splice(index, 1);
     this.nextTasksChanged();
   }
 
@@ -59,11 +73,6 @@ export class TasksService {
         this.removeTask(i);
       }
     }
-    this.nextTasksChanged();
-  }
-
-  updateTask(task_index: number, task: Task) {
-    this.tasks[task_index] = task;
     this.nextTasksChanged();
   }
 

@@ -37,10 +37,6 @@ export class StaffMemberTasksComponent implements OnInit, OnDestroy {
     )
   }
 
-  getGlobalTaskIndex(task: Task) {
-    return this.tasksService.getTaskIndex(task);
-  }
-
   onEdit() {
     this.router.navigate(['new'], {relativeTo: this.route});
   }

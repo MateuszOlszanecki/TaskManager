@@ -13,7 +13,7 @@ const appRoutes: Routes = [
     ]},
     { path: 'tasks/:id', component: StaffMemberTasksComponent , children: [
         { path: 'new', component: EditTaskComponent},
-        { path: 'edit/:task_index', component: EditTaskComponent}
+        { path: 'edit/:task_id', component: EditTaskComponent}
     ]}
 	//{ path: '**', redirectTo: '/staff-list', pathMatch: 'full' }
 ]
