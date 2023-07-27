@@ -68,12 +68,12 @@ export class TasksService {
   }
 
   removeStaffMemberTasks(staff_member_id: number) {
-    for(let i = this.tasks.length - 1; i >= 0; i--){
-      if(this.tasks[i].staff_member_id === staff_member_id){
-        this.removeTask(i);
+    console.log(this.tasks)
+    this.tasks.forEach(task => {
+      if(task.staff_member_id === staff_member_id){
+        this.removeTask(task.id);
       }
-    }
-    this.nextTasksChanged();
+    });
   }
 
   getFinishedTasksRatio(staff_member_id: number) {
