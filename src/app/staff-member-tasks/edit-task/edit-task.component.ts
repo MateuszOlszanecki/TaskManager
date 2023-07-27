@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { StaffListService } from 'src/app/services/staff-list.service';
 import { TasksService } from 'src/app/services/tasks.service';
 import { StaffMemberTasksComponent } from '../staff-member-tasks.component';
 import { Task } from 'src/app/models/task.model';
@@ -17,7 +16,6 @@ export class EditTaskComponent implements OnInit {
   
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private staffListService: StaffListService,
               private tasksService: TasksService,
               private staffMemberTasksComponent: StaffMemberTasksComponent) {}
 
