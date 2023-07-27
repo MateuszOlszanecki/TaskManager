@@ -54,7 +54,7 @@ export class EditStaffMemberComponent implements OnInit {
       this.staffMemberForm.value['position']
     );
     if(this.editMode){
-      staff_member.id = this.staff_member_id
+      staff_member.id = this.staff_member_id;
       this.staffListService.updateStaffMember(this.staff_member_id, staff_member);
     }
     else{

@@ -45,7 +45,7 @@ export class EditTaskComponent implements OnInit {
   onSubmit() {
     if(this.editMode){
       let task = this.tasksService.getTask(this.task_id);
-      task!.description = this.taskForm.value['description'],
+      task!.description = this.taskForm.value['description'];
       this.tasksService.updateTask(this.task_id, task!);
     }
     else{
