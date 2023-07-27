@@ -68,7 +68,6 @@ export class TasksService {
   }
 
   removeStaffMemberTasks(staff_member_id: number) {
-    console.log(this.tasks)
     this.tasks.forEach(task => {
       if(task.staff_member_id === staff_member_id){
         this.removeTask(task.id);
