@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./staff-member-tasks.component.css']
 })
 export class StaffMemberTasksComponent implements OnInit, OnDestroy {
-  id!: number;
+  staff_member_id!: number;
   picked_staff_member!: StaffMember;
   picked_staff_member_tasks!: Task[];
   subscription!: Subscription;
@@ -25,14 +25,14 @@ export class StaffMemberTasksComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.id = +params['id'];
+        this.staff_member_id = +params['staff_member_id'];
       }
     )
-    this.picked_staff_member = this.staffListService.getStaffMember(this.id)!;
-    this.picked_staff_member_tasks = this.tasksService.getStaffMemberTasks(this.picked_staff_member.id);
+    this.picked_staff_member = this.staffListService.getStaffMember(this.staff_member_id)!;
+    this.picked_staff_member_tasks = this.tasksService.getStaffMemberTasks(this.staff_member_id);
     this.subscription = this.tasksService.tasks_changed$.subscribe(
       () => {
-        this.picked_staff_member_tasks = this.tasksService.getStaffMemberTasks(this.picked_staff_member.id);
+        this.picked_staff_member_tasks = this.tasksService.getStaffMemberTasks(this.staff_member_id);
       }
     )
   }

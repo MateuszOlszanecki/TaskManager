@@ -9,9 +9,9 @@ const appRoutes: Routes = [
     { path: '', redirectTo: 'staff-list', pathMatch: 'full'},
     { path: 'staff-list', component: StaffListComponent, children: [
         { path: 'new', component: EditStaffMemberComponent},
-        { path: 'edit/:id', component: EditStaffMemberComponent}
+        { path: 'edit/:staff_member_id', component: EditStaffMemberComponent}
     ]},
-    { path: 'tasks/:id', component: StaffMemberTasksComponent , children: [
+    { path: 'tasks/:staff_member_id', component: StaffMemberTasksComponent , children: [
         { path: 'new', component: EditTaskComponent},
         { path: 'edit/:task_id', component: EditTaskComponent}
     ]}
