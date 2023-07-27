@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { StaffMember } from '../models/staff-member.model';
 import { StaffListService } from '../services/staff-list.service';
@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './staff-member-tasks.component.html',
   styleUrls: ['./staff-member-tasks.component.css']
 })
-export class StaffMemberTasksComponent implements OnInit {
+export class StaffMemberTasksComponent implements OnInit, OnDestroy {
   index!: number;
   picked_staff_member!: StaffMember;
   picked_staff_member_tasks!: Task[];
@@ -47,5 +47,9 @@ export class StaffMemberTasksComponent implements OnInit {
 
   onBack() {
     this.router.navigate(['staff-list']);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
