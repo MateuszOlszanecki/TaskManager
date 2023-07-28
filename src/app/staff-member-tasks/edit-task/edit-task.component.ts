@@ -12,7 +12,7 @@ import { Task } from 'src/app/models/task.model';
 export class EditTaskComponent implements OnInit {
   taskForm!: FormGroup;
   task_id!: number;
-  editMode!: boolean;
+  edit_mode!: boolean;
   
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -23,7 +23,7 @@ export class EditTaskComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         this.task_id = +params['task_id']
-        this.editMode = params['task_id'] != null
+        this.edit_mode = params['task_id'] != null
         this.initForm();
       }
     )
@@ -32,7 +32,7 @@ export class EditTaskComponent implements OnInit {
   initForm() {
     let description = "";
 
-    if(this.editMode){
+    if(this.edit_mode){
       const task = this.tasksService.getTask(this.task_id);
       description = task!.description;
     }
@@ -43,7 +43,7 @@ export class EditTaskComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.editMode){
+    if(this.edit_mode){
       let task = new Task(
         this.tasksService.getTask(this.task_id)!.id,
         this.taskForm.value['description'],
@@ -65,7 +65,7 @@ export class EditTaskComponent implements OnInit {
   }
   
   onCancel() {
-    if(this.editMode){
+    if(this.edit_mode){
       this.router.navigate(['../../'], {relativeTo: this.route});
     }
     else{
