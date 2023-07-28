@@ -12,15 +12,13 @@ export class TasksService {
   private tasks: Task[] = [
     new Task(0, "Jan Task1", 0, GlobalVariables.TASK_FINISHED_STATUS, 100),
     new Task(1, "Jan Task2", 0, GlobalVariables.TASK_STARTED_STATUS, 50),
-    new Task(2, "Tomasz Task1", 1, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task(3, "Tomasz Task2", 1, GlobalVariables.TASK_NOT_STARTED_STATUS, 0),
-    new Task(4, "Tomasz Task3", 1, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task(5, "Jacek Task1", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task(6, "Jacek Task2", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
-    new Task(7, "Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100)
+    new Task(2, "Tomasz Task1", 1, GlobalVariables.TASK_NOT_STARTED_STATUS, 0),
+    new Task(3, "Jacek Task1", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task(4, "Jacek Task2", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
+    new Task(5, "Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100)
   ];
 
-  first_free_id = 8;
+  first_free_id = 6;
 
   nextTasksChanged() {
     this.tasks_changed$.next(this.getAllTasks());
