@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Task } from '../models/task.model';
 import { GlobalVariables } from '../global-variables';
 import { Subject } from 'rxjs';
-import { deepCopy } from '@angular-devkit/core/src/utils/object';
 
 @Injectable({
   providedIn: 'root'
