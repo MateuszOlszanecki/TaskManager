@@ -4,6 +4,7 @@ import { Task } from 'src/app/models/task.model';
 import { TasksService } from 'src/app/services/tasks.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CustomValidators } from 'src/app/custom.validators';
 
 @Component({
   selector: 'app-task',
@@ -28,7 +29,7 @@ export class TaskComponent implements OnInit {
     this.taskStatusForm = new FormGroup({
       'status': new FormControl(this.task.status),
       'status_of_completion': new FormControl(this.task.status_of_completion)
-    })
+    }, CustomValidators.statusValid.bind(this))
   }
 
   onSubmit() {
