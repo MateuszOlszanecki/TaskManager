@@ -29,16 +29,20 @@ export class StaffListService {
   }
 
   getStaffList() {
-    //deepcopy array
-    return deepCopy(this.staff_list);
+    return this.staff_list.slice();
   }
 
   getStaffMember(id: number) {
-    return this.staff_list.find(staff_member => {return staff_member.id === id});
+    return this.getStaffList().find(staff_member => {return staff_member.id === id});
   }
 
   getStaffMemberIndex(id: number) {
-    return this.staff_list.findIndex(staff_member => {return staff_member.id === id});
+    return this.getStaffList().findIndex(staff_member => {return staff_member.id === id});
+  }
+
+  addStaffMember(staff_member: StaffMember) {
+    this.staff_list.push(staff_member);
+    this.nextStaffListChanged();
   }
 
   updateStaffMember(id: number, staff_member: StaffMember) {
@@ -51,11 +55,6 @@ export class StaffListService {
     let index = this.getStaffMemberIndex(id);
     this.tasksService.removeStaffMemberTasks(id);
     this.staff_list.splice(index, 1);
-    this.nextStaffListChanged();
-  }
-
-  addStaffMember(staff_member: StaffMember) {
-    this.staff_list.push(staff_member);
     this.nextStaffListChanged();
   }
 }

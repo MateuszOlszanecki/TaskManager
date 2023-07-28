@@ -31,28 +31,27 @@ export class TasksService {
     return this.first_free_id++;
   }
 
-  addTask(task: Task) {
-    this.tasks.push(task);
-    this.nextTasksChanged();
-  }
-
   getAllTasks() {
-    //deepcopy array
-    return deepCopy(this.tasks);
+    return this.tasks.slice();
   }
 
   getTask(id: number) {
-    return this.tasks.find(task => {return task.id === id});
-  }
-
-  getStaffMemberTasks(staff_member_id: number) {
-    return this.tasks.filter(task => {
-      return task.staff_member_id === staff_member_id;
-    })
+    return this.getAllTasks().find(task => {return task.id === id});
   }
   
   getTasksIndex(id: number) {
-    return this.tasks.findIndex(task => {return task.id === id});
+    return this.getAllTasks().findIndex(task => {return task.id === id});
+  }
+
+  getStaffMemberTasks(staff_member_id: number) {
+    return this.getAllTasks().filter(task => {
+      return task.staff_member_id === staff_member_id;
+    })
+  }
+
+  addTask(task: Task) {
+    this.tasks.push(task);
+    this.nextTasksChanged();
   }
 
   updateTask(id: number, task: Task) {
