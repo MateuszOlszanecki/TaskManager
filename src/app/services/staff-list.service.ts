@@ -61,9 +61,6 @@ export class StaffListService {
         return staff_member.name.toLowerCase().includes(searchTrimed.split(' ')[0]) && staff_member.surname.toLowerCase().includes(searchTrimed.split(' ')[1])
       }));
     }
-    else{
-      this.nextStaffListSearched(this.getStaffList());
-    }
   }
 
   addStaffMember(staff_member: StaffMember) {
