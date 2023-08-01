@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { CustomValidators } from 'src/app/custom-validators';
 import { GlobalVariables } from 'src/app/global-variables';
 import { StaffMember } from 'src/app/models/staff-member.model';
+import { Task } from 'src/app/models/task.model';
 import { StaffListService } from 'src/app/services/staff-list.service';
 import { TasksService } from 'src/app/services/tasks.service';
 
@@ -17,6 +18,7 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
   public TASK_STARTED_STATUS = GlobalVariables.TASK_STARTED_STATUS;
   public TASK_FINISHED_STATUS = GlobalVariables.TASK_FINISHED_STATUS;
   task_id!: number;
+  task!: Task;
   searchForm!: FormGroup;
   staff_list_searched!: StaffMember[];
   private subscription_staff_list_searched!: Subscription;
@@ -32,6 +34,7 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
     this.route.params.subscribe(
       (params: Params) => {
         this.task_id = +params['task_id'];
+        this.task = this.tasksService.getTask(this.task_id)!;
         this.initSubmitForm();
       }
     )
