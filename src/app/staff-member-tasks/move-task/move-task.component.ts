@@ -50,7 +50,7 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
 
   initSubmitForm() {
     this.searchForm = new FormGroup({
-      'searchText': new FormControl('', [Validators.required, CustomValidators.searchValid.bind(this), CustomValidators.onlySpaces.bind(this)]),
+      'searchText': new FormControl('', CustomValidators.searchValid.bind(this)),
     })
   }
 
