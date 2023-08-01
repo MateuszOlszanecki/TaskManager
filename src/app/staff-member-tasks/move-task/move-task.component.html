@@ -3,7 +3,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form [formGroup]="searchForm" (ngSubmit)="onSubmitSearch()">
+                    <form [formGroup]="searchForm" (ngSubmit)="onSubmitSearchForm()">
                         <div class="form-floating mb-1">
                             <input type="text" class="form-control" id="name" placeholder="name" formControlName="searchText">
                             <label for="name">Wyszukaj pracownika:</label>
@@ -22,7 +22,7 @@
                         [picked_staff_member]="picked_staff_member">
                         </app-search-result>
                     </div>
-                    <form>
+                    <form [formGroup]="moveForm" (ngSubmit)="onSubmitMoveForm()">
                         <div class="row mb-3">
                             <div class="col-10">
                                 Wybrano pracownika: {{picked_staff_member ? picked_staff_member.name + " " + picked_staff_member.surname : ""}}
@@ -31,7 +31,7 @@
                         <div class="row mb-1">
                             <label class="col-5">Nowy status zadania:</label>
                             <div class="col-7">
-                                <select class="form-select">
+                                <select class="form-select" formControlName="status">
                                     <option [value]="TASK_NOT_STARTED_STATUS" [selected]="task.status === TASK_NOT_STARTED_STATUS">{{ TASK_NOT_STARTED_STATUS }}</option>
                                     <option [value]="TASK_STARTED_STATUS" [selected]="task.status === TASK_STARTED_STATUS">{{ TASK_STARTED_STATUS }}</option>
                                     <option [value]="TASK_FINISHED_STATUS" [selected]="task.status === TASK_FINISHED_STATUS">{{ TASK_FINISHED_STATUS }}</option>

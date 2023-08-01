@@ -24,6 +24,7 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
   private subscription_staff_list_searched!: Subscription;
   private subscription_staff_member_picked!: Subscription;
   picked_staff_member!: StaffMember | null;
+  moveForm!: FormGroup;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -36,6 +37,7 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
         this.task_id = +params['task_id'];
         this.task = this.tasksService.getTask(this.task_id)!;
         this.initSubmitForm();
+        this.initMoveForm();
       }
     )
     this.staff_list_searched = this.staffListService.getStaffList();
@@ -57,14 +59,48 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
     })
   }
 
-  onSubmitSearch() {
+  initMoveForm() {
+    this.moveForm = new FormGroup({
+      'status': new FormControl(this.task.status)
+    })
+  }
+
+  onSubmitSearchForm() {
     this.staffListService.getSearchedStaffMembers(this.searchForm.value['searchText']);
     this.initSubmitForm();
+  }
+
+  onSubmitMoveForm() {
+    let status_of_completion = this.task.status_of_completion;
+    let status = this.moveForm.value['status'];
+    if(status !== this.task.status){
+      switch (status) {
+        case GlobalVariables.TASK_NOT_STARTED_STATUS:
+          status_of_completion = 0;
+          break;
+        case GlobalVariables.TASK_STARTED_STATUS:
+          status_of_completion = 25;
+          break;
+        case GlobalVariables.TASK_FINISHED_STATUS:
+          status_of_completion = 100;
+          break;
+      }
+    }
+    let movedTask = new Task(
+      this.task_id,
+      this.task.description,
+      this.picked_staff_member!.id,
+      status,
+      status_of_completion
+    )
+    this.tasksService.updateTask(this.task_id, movedTask);
+    this.onCancel();
   }
 
   onCancel() {
     this.router.navigate(['../../'], {relativeTo: this.route});
     this.initSubmitForm();
+    this.initMoveForm();
   }
 
   ngOnDestroy() {
