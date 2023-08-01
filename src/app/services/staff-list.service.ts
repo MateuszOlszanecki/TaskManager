@@ -79,7 +79,6 @@ export class StaffListService {
 
   removeStaffMember(id: number) {
     let index = this.getStaffMemberIndex(id);
-    this.tasksService.removeStaffMemberTasks(id);
     this.staff_list.splice(index, 1);
     this.nextStaffListChanged();
   }
