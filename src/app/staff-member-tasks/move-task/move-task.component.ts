@@ -36,9 +36,7 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
     this.staff_list_searched = this.staffListService.getStaffList();
     this.subscription = this.staffListService.staff_list_searched$.subscribe(
       (staff_list_searched: StaffMember[]) => {
-        console.log(this.staff_list_searched)
         this.staff_list_searched = staff_list_searched;
-        console.log(this.staff_list_searched)
       }
     )
   }

@@ -56,7 +56,7 @@ export class StaffListService {
         return staff_member.name.includes(searchTrimed.split(' ')[0]) && staff_member.surname.includes(searchTrimed.split(' ')[1])
       }));
     }
-    else if(search === ''){
+    else{
       this.nextStaffListSearched(this.getStaffList());
     }
   }
