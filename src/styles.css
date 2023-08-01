@@ -5,3 +5,10 @@
 .picked {
     background: orange;
 }
+
+.blockBackground {
+    background: black;
+    opacity: 75%;
+    width: 100%;
+    height: 100%;
+}
