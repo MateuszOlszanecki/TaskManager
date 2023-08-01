@@ -51,6 +51,10 @@ export class TaskComponent implements OnInit {
   onEdit() {
     this.router.navigate(['edit', this.task.id], {relativeTo: this.route});
   }
+
+  onMove() {
+    this.router.navigate(['move', this.task.id], {relativeTo: this.route});
+  }
   
   onCancel() {
     this.initForm();
