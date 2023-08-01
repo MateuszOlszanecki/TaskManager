@@ -14,10 +14,11 @@ export class StaffListService {
   private staff_list: StaffMember[] = [
     new StaffMember(0, "Jan", "Kowalski", "Analityk"),
     new StaffMember(1, "Tomasz", "Nowak", "Programista"),
-    new StaffMember(2, "Jacek", "Nowak", "Programista")
+    new StaffMember(2, "Jacek", "Nowak", "Tester"),
+    new StaffMember(3, "Mateusz", "Olszanecki", "Programista")
   ];
 
-  first_free_id = 3;
+  first_free_id = 4;
 
   constructor(private tasksService: TasksService) {}
 
