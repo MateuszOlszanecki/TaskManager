@@ -22,3 +22,7 @@
     text-align: center;
     line-height: 0px;
 }
+
+.bold {
+    font-weight: bold;
+}

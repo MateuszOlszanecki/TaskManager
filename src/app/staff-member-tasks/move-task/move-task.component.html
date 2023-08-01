@@ -25,8 +25,11 @@
                     </div>
                     <form [formGroup]="moveForm" (ngSubmit)="onSubmitMoveForm()">
                         <div class="row mb-3">
-                            <div class="col-10">
-                                Wybrano pracownika: {{picked_staff_member ? picked_staff_member.name + " " + picked_staff_member.surname : ""}}
+                            <div class="col-5">
+                                Wybrano pracownika:
+                            </div>
+                            <div class="col bold">
+                                {{picked_staff_member ? picked_staff_member.name + " " + picked_staff_member.surname : ""}}
                             </div>
                         </div>
                         <div class="row mb-1">
