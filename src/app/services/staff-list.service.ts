@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StaffMember } from '../models/staff-member.model';
 import { Subject } from 'rxjs';
-import { TasksService } from './tasks.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +18,6 @@ export class StaffListService {
   ];
 
   first_free_id = 4;
-
-  constructor(private tasksService: TasksService) {}
 
   nextStaffListChanged() {
     this.staff_list_changed$.next(this.getStaffList());
