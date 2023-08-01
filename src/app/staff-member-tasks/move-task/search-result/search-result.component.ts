@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { StaffMember } from 'src/app/models/staff-member.model';
 
 @Component({
   selector: 'app-search-result',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-result.component.css']
 })
 export class SearchResultComponent {
-
+  @Input() staff_member_searched!: StaffMember;
 }

@@ -3,13 +3,13 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form>
+                    <form [formGroup]="searchForm" (ngSubmit)="onSubmitSearch()">
                         <div class="form-floating mb-1">
-                            <input type="text" class="form-control" id="name" placeholder="name">
+                            <input type="text" class="form-control" id="name" placeholder="name" formControlName="searchText">
                             <label for="name">Wyszukaj pracownika:</label>
                         </div>
                         <div class="row-fluid mb-1">
-                            <button type="submit" class="btn btn-primary col-3">Szukaj</button>
+                            <button type="submit" class="btn btn-primary col-3" [disabled]="!searchForm.valid">Szukaj</button>
                         </div>
                     </form>
                     <form>
@@ -17,15 +17,10 @@
                             <div class="col">Wynik wyszukiwania:</div>
                         </div>
                         <div class="overflow-y-auto" style="height: 150px;">
-                            <app-search-result></app-search-result>
-                            <app-search-result></app-search-result>
-                            <app-search-result></app-search-result>
-                            <app-search-result></app-search-result>
-                            <app-search-result></app-search-result>
-                            <app-search-result></app-search-result>
-                            <app-search-result></app-search-result>
-                            <app-search-result></app-search-result>
-                            <app-search-result></app-search-result>
+                            <app-search-result
+                            *ngFor="let staff_member_searched of staff_list_searched"
+                            [staff_member_searched]="staff_member_searched">
+                            </app-search-result>
                         </div>
                         <div class="row mb-3">
                             <div class="col-10">

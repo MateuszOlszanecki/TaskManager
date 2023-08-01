@@ -8,6 +8,7 @@ import { TasksService } from './tasks.service';
 })
 export class StaffListService {
   staff_list_changed$ = new Subject<StaffMember[]>();
+  staff_list_searched$ = new Subject<StaffMember[]>();
 
   private staff_list: StaffMember[] = [
     new StaffMember(0, "Jan", "Kowalski", "Analityk"),
@@ -21,6 +22,10 @@ export class StaffListService {
 
   nextStaffListChanged() {
     this.staff_list_changed$.next(this.getStaffList());
+  }
+
+  nextStaffListSearched(searched_list: StaffMember[]) {
+    this.staff_list_searched$.next(searched_list);
   }
 
   getNextId() {
@@ -37,6 +42,23 @@ export class StaffListService {
 
   getStaffMemberIndex(id: number) {
     return this.getStaffList().findIndex(staff_member => {return staff_member.id === id});
+  }
+
+  getSearchedStaffMembers(search: string) {
+    let searchTrimed = search.trim();
+    if(searchTrimed.split(' ').length === 1){
+      this.nextStaffListSearched(this.getStaffList().filter(staff_member => {
+        return staff_member.name.includes(searchTrimed) || staff_member.surname.includes(searchTrimed)
+      }));
+    }
+    else if(searchTrimed.split(' ').length === 2){
+      this.nextStaffListSearched(this.getStaffList().filter(staff_member => {
+        return staff_member.name.includes(searchTrimed.split(' ')[0]) && staff_member.surname.includes(searchTrimed.split(' ')[1])
+      }));
+    }
+    else if(search === ''){
+      this.nextStaffListSearched(this.getStaffList());
+    }
   }
 
   addStaffMember(staff_member: StaffMember) {

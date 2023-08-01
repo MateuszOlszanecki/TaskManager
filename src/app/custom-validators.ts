@@ -18,6 +18,22 @@ export class CustomValidators {
                 && status_of_completion < 100){
             return null
         }
-        return {'valid': false};
+        return {'statusValid': false};
+    }
+    
+    static searchValid(control: AbstractControl): {[s: string]: boolean} | null {
+        let search: String = control.value.trim();
+        if(search.split(' ').length < 3 && search != '') {
+            return null;
+        }
+        return {'searchValid': false};
+    }
+
+    static onlySpacesValid(control: AbstractControl): {[s: string]: boolean} | null {
+        let text: String = control.value.trim();
+        if(text != ''){
+            return null;
+        }
+        return {'onlySpacesValid': false};
     }
 }

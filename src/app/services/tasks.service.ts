@@ -57,6 +57,12 @@ export class TasksService {
     this.nextTasksChanged();
   }
 
+  moveTask(id: number, staff_member_id_new: number) {
+    let index = this.getTasksIndex(id);
+    this.tasks[index].staff_member_id = staff_member_id_new;
+    this.nextTasksChanged();
+  }
+
   removeTask(id: number) {
     let index = this.getTasksIndex(id);
     this.tasks.splice(index, 1);

@@ -1,21 +1,65 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { CustomValidators } from 'src/app/custom-validators';
 import { GlobalVariables } from 'src/app/global-variables';
+import { StaffMember } from 'src/app/models/staff-member.model';
+import { StaffListService } from 'src/app/services/staff-list.service';
+import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'app-move-task',
   templateUrl: './move-task.component.html'
 })
-export class MoveTaskComponent {
+export class MoveTaskComponent implements OnInit, OnDestroy {
   public TASK_NOT_STARTED_STATUS = GlobalVariables.TASK_NOT_STARTED_STATUS;
   public TASK_STARTED_STATUS = GlobalVariables.TASK_STARTED_STATUS;
   public TASK_FINISHED_STATUS = GlobalVariables.TASK_FINISHED_STATUS;
+  task_id!: number;
+  searchForm!: FormGroup;
+  staff_list_searched!: StaffMember[];
+  private subscription!: Subscription;
 
   constructor(private router: Router,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private tasksService: TasksService,
+              private staffListService: StaffListService) {}
+
+  ngOnInit() {
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.task_id = +params['task_id'];
+        this.initSubmitForm();
+      }
+    )
+    this.staff_list_searched = this.staffListService.getStaffList();
+    this.subscription = this.staffListService.staff_list_searched$.subscribe(
+      (staff_list_searched: StaffMember[]) => {
+        console.log(this.staff_list_searched)
+        this.staff_list_searched = staff_list_searched;
+        console.log(this.staff_list_searched)
+      }
+    )
+  }
+
+  initSubmitForm() {
+    this.searchForm = new FormGroup({
+      'searchText': new FormControl('', [Validators.required, CustomValidators.searchValid.bind(this)]),
+    })
+  }
+
+  onSubmitSearch() {
+    this.staffListService.getSearchedStaffMembers(this.searchForm.value['searchText']);
+    this.initSubmitForm();
+  }
 
   onCancel() {
     this.router.navigate(['../../'], {relativeTo: this.route});
-    //this.initForm();
+    this.initSubmitForm();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

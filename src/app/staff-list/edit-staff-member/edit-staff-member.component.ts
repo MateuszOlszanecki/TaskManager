@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StaffMember } from 'src/app/models/staff-member.model';
 import { StaffListService } from 'src/app/services/staff-list.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { CustomValidators } from 'src/app/custom-validators';
 
 @Component({
   selector: 'app-edit-staff-member',
@@ -40,9 +41,9 @@ export class EditStaffMemberComponent implements OnInit {
     }
     
     this.staffMemberForm = new FormGroup({
-      'name': new FormControl(name, Validators.required),
-      'surname': new FormControl(surname, Validators.required),
-      'position': new FormControl(position, Validators.required)
+      'name': new FormControl(name, [Validators.required, CustomValidators.onlySpacesValid]),
+      'surname': new FormControl(surname, [Validators.required, CustomValidators.onlySpacesValid]),
+      'position': new FormControl(position, [Validators.required, CustomValidators.onlySpacesValid])
     })
   }
 
