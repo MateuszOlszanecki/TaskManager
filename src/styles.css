@@ -1,3 +1,7 @@
 .header {
     background: blue;
 }
+
+.picked {
+    background: orange;
+}

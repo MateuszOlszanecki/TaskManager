@@ -19,7 +19,8 @@
                         <div class="overflow-y-auto" style="height: 150px;">
                             <app-search-result
                             *ngFor="let staff_member_searched of staff_list_searched"
-                            [staff_member_searched]="staff_member_searched">
+                            [staff_member_searched]="staff_member_searched"
+                            [picked_staff_member]="picked_staff_member">
                             </app-search-result>
                         </div>
                         <div class="row mb-3">

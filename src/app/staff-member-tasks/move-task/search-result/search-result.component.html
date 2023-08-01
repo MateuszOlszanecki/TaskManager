@@ -1,8 +1,8 @@
-<div class="card mb-1 ms-2 me-2">
+<div class="card mb-1 ms-2 me-2" [ngClass]="picked() ? 'picked' : ''">
     <div class="card-body">
         <div class="row">
             <div class="col-9">{{ staff_member_searched.name }} {{ staff_member_searched.surname }}</div>
-            <button class="btn btn-primary col-3" (click)="onPick()">Wybierz</button>
+            <button class="btn btn-primary col-3" (click)="onPick()" [disabled]="picked()">Wybierz</button>
         </div>
     </div>
 </div>
