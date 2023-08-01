@@ -39,7 +39,7 @@ export class EditTaskComponent implements OnInit {
     }
     
     this.taskForm = new FormGroup({
-      'description': new FormControl(description, [Validators.required, CustomValidators.onlySpacesValid]),
+      'description': new FormControl(description, [Validators.required, CustomValidators.onlySpaces]),
     })
   }
 
