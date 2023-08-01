@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GlobalVariables } from '../../global-variables';
+import { GlobalVariables } from '../../shared/global-variables';
 import { Task } from 'src/app/models/task.model';
 import { TasksService } from 'src/app/services/tasks.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
-import { CustomValidators } from 'src/app/custom-validators';
+import { CustomValidators } from 'src/app/shared/custom-validators';
 
 @Component({
   selector: 'app-task',

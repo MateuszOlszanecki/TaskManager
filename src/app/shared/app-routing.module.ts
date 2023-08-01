@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { StaffListComponent } from "./staff-list/staff-list.component";
-import { EditStaffMemberComponent } from "./staff-list/edit-staff-member/edit-staff-member.component";
-import { StaffMemberTasksComponent } from "./staff-member-tasks/staff-member-tasks.component";
-import { EditTaskComponent } from "./staff-member-tasks/edit-task/edit-task.component";
-import { MoveTaskComponent } from "./staff-member-tasks/move-task/move-task.component";
+import { StaffListComponent } from "../staff-list/staff-list.component";
+import { EditStaffMemberComponent } from "../staff-list/edit-staff-member/edit-staff-member.component";
+import { StaffMemberTasksComponent } from "../staff-member-tasks/staff-member-tasks.component";
+import { EditTaskComponent } from "../staff-member-tasks/edit-task/edit-task.component";
+import { MoveTaskComponent } from "../staff-member-tasks/move-task/move-task.component";
 
 const appRoutes: Routes = [
     { path: '', redirectTo: 'staff-list', pathMatch: 'full'},

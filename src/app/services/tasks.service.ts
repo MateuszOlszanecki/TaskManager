@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../models/task.model';
-import { GlobalVariables } from '../global-variables';
+import { GlobalVariables } from '../shared/global-variables';
 import { Subject } from 'rxjs';
 
 @Injectable({

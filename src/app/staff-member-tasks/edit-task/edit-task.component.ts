@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TasksService } from 'src/app/services/tasks.service';
 import { StaffMemberTasksComponent } from '../staff-member-tasks.component';
 import { Task } from 'src/app/models/task.model';
-import { CustomValidators } from 'src/app/custom-validators';
+import { CustomValidators } from 'src/app/shared/custom-validators';
 
 @Component({
   selector: 'app-edit-task',

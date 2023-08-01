@@ -1,4 +1,4 @@
-import { GlobalVariables } from "../global-variables";
+import { GlobalVariables } from "../shared/global-variables";
 
 export class Task {
     constructor(

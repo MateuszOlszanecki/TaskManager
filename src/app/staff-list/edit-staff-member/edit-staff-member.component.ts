@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StaffMember } from 'src/app/models/staff-member.model';
 import { StaffListService } from 'src/app/services/staff-list.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { CustomValidators } from 'src/app/custom-validators';
+import { CustomValidators } from 'src/app/shared/custom-validators';
 
 @Component({
   selector: 'app-edit-staff-member',
