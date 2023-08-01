@@ -19,14 +19,4 @@
     height: 50px;
     width: 50px;
     font-size: 30px;
-    text-align: center;
-    line-height: 0px;
-}
-
-.bold {
-    font-weight: bold;
-}
-
-.italic {
-    font-style: italic;
 }

@@ -1,10 +1,10 @@
 <div class="card mt-1">
     <div class="card-body">
         <div class="row mb-1">
-            <div class="col-4 bold">
+            <div class="col-4 fw-bold">
                 {{ staff_member.name }} {{ staff_member.surname }}
             </div>
-            <div class="col-3 offset-2 bold">
+            <div class="col-3 offset-2 fw-bold">
                 {{ finished_to_all_tasks_ratio }}
             </div>
             <button class="btn btn-success col-3" (click)="onTasks()">Zadania</button>
