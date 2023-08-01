@@ -19,7 +19,9 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
   task_id!: number;
   searchForm!: FormGroup;
   staff_list_searched!: StaffMember[];
-  private subscription!: Subscription;
+  private subscription_staff_list_searched!: Subscription;
+  private subscription_staff_member_picked!: Subscription;
+  picked_staff_member!: StaffMember | null;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -34,9 +36,15 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
       }
     )
     this.staff_list_searched = this.staffListService.getStaffList();
-    this.subscription = this.staffListService.staff_list_searched$.subscribe(
+    this.subscription_staff_list_searched = this.staffListService.staff_list_searched$.subscribe(
       (staff_list_searched: StaffMember[]) => {
         this.staff_list_searched = staff_list_searched;
+      }
+    )
+    this.subscription_staff_member_picked = this.staffListService.staff_member_picked$.subscribe(
+      (picked_staff_member: StaffMember) => {
+        console.log(picked_staff_member)
+        this.picked_staff_member = picked_staff_member;
       }
     )
   }
@@ -58,6 +66,7 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscription_staff_list_searched.unsubscribe();
+    this.subscription_staff_member_picked.unsubscribe();
   }
 }

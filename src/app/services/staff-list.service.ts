@@ -9,6 +9,7 @@ import { TasksService } from './tasks.service';
 export class StaffListService {
   staff_list_changed$ = new Subject<StaffMember[]>();
   staff_list_searched$ = new Subject<StaffMember[]>();
+  staff_member_picked$ = new Subject<StaffMember>();
 
   private staff_list: StaffMember[] = [
     new StaffMember(0, "Jan", "Kowalski", "Analityk"),
@@ -26,6 +27,10 @@ export class StaffListService {
 
   nextStaffListSearched(searched_list: StaffMember[]) {
     this.staff_list_searched$.next(searched_list);
+  }
+
+  nextStaffMemberPicked(staff_member: StaffMember) {
+    this.staff_member_picked$.next(staff_member);
   }
 
   getNextId() {
