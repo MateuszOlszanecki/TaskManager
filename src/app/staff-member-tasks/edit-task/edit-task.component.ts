@@ -47,7 +47,7 @@ export class EditTaskComponent implements OnInit {
     if(this.edit_mode){
       let task = new Task(
         this.tasksService.getTask(this.task_id)!.id,
-        this.taskForm.value['description'],
+        this.taskForm.value['description'].trim(),
         this.tasksService.getTask(this.task_id)!.staff_member_id,
         this.tasksService.getTask(this.task_id)!.status,
         this.tasksService.getTask(this.task_id)!.status_of_completion,
@@ -57,7 +57,7 @@ export class EditTaskComponent implements OnInit {
     else{
       let task = new Task(
         this.tasksService.getNextId(),
-        this.taskForm.value['description'],
+        this.taskForm.value['description'].trim(),
         this.staffMemberTasksComponent.staff_member_id
       );
       this.tasksService.addTask(task);

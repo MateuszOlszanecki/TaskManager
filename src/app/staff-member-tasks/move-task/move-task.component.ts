@@ -66,13 +66,13 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
   }
 
   onSubmitSearchForm() {
-    this.staffListService.getSearchedStaffMembers(this.searchForm.value['searchText']);
+    this.staffListService.getSearchedStaffMembers(this.searchForm.value['searchText'].trim());
     this.initSubmitForm();
   }
 
   onSubmitMoveForm() {
     let status_of_completion = this.task.status_of_completion;
-    let status = this.moveForm.value['status'];
+    let status = this.moveForm.value['status'].trim();
     if(status !== this.task.status){
       switch (status) {
         case GlobalVariables.TASK_NOT_STARTED_STATUS:

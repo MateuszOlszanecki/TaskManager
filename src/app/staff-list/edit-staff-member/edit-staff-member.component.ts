@@ -50,9 +50,9 @@ export class EditStaffMemberComponent implements OnInit {
   onSubmit(){
     let staff_member = new StaffMember(
       -1,
-      this.staffMemberForm.value['name'],
-      this.staffMemberForm.value['surname'],
-      this.staffMemberForm.value['position']
+      this.staffMemberForm.value['name'].trim(),
+      this.staffMemberForm.value['surname'].trim(),
+      this.staffMemberForm.value['position'].trim()
     );
     if(this.edit_mode){
       staff_member.id = this.staff_member_id;

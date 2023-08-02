@@ -22,7 +22,7 @@ export class TaskComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit() {
-    this.onCancel();
+    this.initForm();
   }
 
   initForm() {
@@ -37,8 +37,8 @@ export class TaskComponent implements OnInit {
       this.task.id,
       this.task.description,
       this.task.staff_member_id,
-      this.taskStatusForm.value['status'],
-      this.taskStatusForm.value['status_of_completion']
+      this.taskStatusForm.value['status'].trim(),
+      this.taskStatusForm.value['status_of_completion'] //this is number, so no trim()
     )
     this.tasksService.updateTask(task.id, task);
     this.onCancel();
@@ -46,6 +46,7 @@ export class TaskComponent implements OnInit {
 
   onRemove() {
     this.tasksService.removeTask(this.task.id);
+    this.initForm();
   }
 
   onEdit() {
