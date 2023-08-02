@@ -79,7 +79,7 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
           status_of_completion = 0;
           break;
         case GlobalVariables.TASK_STARTED_STATUS:
-          status_of_completion = 25;
+          status_of_completion = 5;
           break;
         case GlobalVariables.TASK_FINISHED_STATUS:
           status_of_completion = 100;
