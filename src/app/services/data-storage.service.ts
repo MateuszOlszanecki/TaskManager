@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { StaffListService } from './staff-list.service';
 import { map, take } from 'rxjs';
 import { StaffMember } from '../models/staff-member.model';
+import { Task } from '../models/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,32 @@ export class DataStorageService {
         staff_list.push(staff_member);
       });
       return staff_list;
+    }));
+  }
+
+  putTasks(tasks: Task[]) {
+    this.http
+    .put('https://taskmanager-cde83-default-rtdb.firebaseio.com/tasks.json', tasks)
+    .pipe(take(1))
+    .subscribe();
+  }
+
+  getTasks() {
+    return this.http
+    .get<Task[]>('https://taskmanager-cde83-default-rtdb.firebaseio.com/tasks.json')
+    .pipe(take(1), map(res => {
+      const tasks: Task[] = [];
+      res.forEach((element: Task) => {
+        const task = new Task(
+          element.id,
+          element.description,
+          element.staff_member_id,
+          element.status,
+          element.status_of_completion
+        )
+        tasks.push(task);
+      });
+      return tasks;
     }));
   }
 }
