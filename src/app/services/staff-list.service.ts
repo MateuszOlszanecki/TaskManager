@@ -48,15 +48,18 @@ export class StaffListService {
   }
 
   getSearchedStaffMembers(search: string) {
-    let searchTrimed = search.trim().toLowerCase();
-    if(searchTrimed.split(' ').length === 1){
+    let searchArray: string[] = search.toLowerCase().split(' ');
+    searchArray = searchArray.filter(str => {
+        return str !== '';
+    })
+    if(searchArray.length === 1){
       this.nextStaffListSearched(this.getStaffList().filter(staff_member => {
-        return staff_member.name.toLowerCase().includes(searchTrimed) || staff_member.surname.toLowerCase().includes(searchTrimed)
+        return staff_member.name.toLowerCase().includes(searchArray[0]) || staff_member.surname.toLowerCase().includes(searchArray[0])
       }));
     }
-    else if(searchTrimed.split(' ').length === 2){
+    else if(searchArray.length === 2){
       this.nextStaffListSearched(this.getStaffList().filter(staff_member => {
-        return staff_member.name.toLowerCase().includes(searchTrimed.split(' ')[0]) && staff_member.surname.toLowerCase().includes(searchTrimed.split(' ')[1])
+        return staff_member.name.toLowerCase().includes(searchArray[0]) && staff_member.surname.toLowerCase().includes(searchArray[1])
       }));
     }
     else{
