@@ -17,7 +17,7 @@ const appRoutes: Routes = [
         { path: 'edit/:task_id', component: EditTaskComponent},
         { path: 'move/:task_id', component: MoveTaskComponent}
     ]},
-	{ path: '**', redirectTo: '/staff-list', pathMatch: 'full' }
+	{ path: '**', redirectTo: 'staff-list', pathMatch: 'full' }
 ]
 
 @NgModule({
