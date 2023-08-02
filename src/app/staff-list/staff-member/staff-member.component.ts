@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, Input, OnInit } from '@angular/core';
 import { StaffMember } from 'src/app/models/staff-member.model';
 import { StaffListService } from 'src/app/services/staff-list.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -8,7 +8,7 @@ import { TasksService } from 'src/app/services/tasks.service';
   selector: 'app-staff-member',
   templateUrl: './staff-member.component.html'
 })
-export class StaffMemberComponent implements OnInit {
+export class StaffMemberComponent implements AfterContentChecked{
   @Input() staff_member!: StaffMember;
   finished_to_all_tasks_ratio!: string;
 
@@ -17,7 +17,7 @@ export class StaffMemberComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute) {}
 
-  ngOnInit() {
+  ngAfterContentChecked() {
     this.finished_to_all_tasks_ratio = this.tasksService.getFinishedTasksRatio(this.staff_member.id);
   }
 
