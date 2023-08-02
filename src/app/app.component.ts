@@ -5,9 +5,4 @@ import { Router } from '@angular/router';
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit{
-  constructor(private router: Router) {}
-  ngOnInit() {
-    this.router.navigate(['']);
-  }
-}
+export class AppComponent { }
