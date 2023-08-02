@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { StaffListService } from './staff-list.service';
 import { map, take } from 'rxjs';
 import { StaffMember } from '../models/staff-member.model';
 import { Task } from '../models/task.model';
