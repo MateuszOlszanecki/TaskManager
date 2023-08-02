@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StaffMember } from '../models/staff-member.model';
 import { Subject } from 'rxjs';
+import { DataStorageService } from './data-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +11,27 @@ export class StaffListService {
   staff_list_searched$ = new Subject<StaffMember[]>();
   staff_member_picked$ = new Subject<StaffMember>();
 
-  private staff_list: StaffMember[] = [
-    new StaffMember(0, "Jan", "Kowalski", "Analityk"),
-    new StaffMember(1, "Tomasz", "Nowak", "Programista"),
-    new StaffMember(2, "Jacek", "Nowak", "Tester"),
-    new StaffMember(3, "Mateusz", "Olszanecki", "Programista")
-  ];
+  // private staff_list: StaffMember[] = [
+  //   new StaffMember(0, "Jan", "Kowalski", "Analityk"),
+  //   new StaffMember(1, "Tomasz", "Nowak", "Programista"),
+  //   new StaffMember(2, "Jacek", "Nowak", "Tester"),
+  //   new StaffMember(3, "Mateusz", "Olszanecki", "Programista")
+  // ];
 
-  first_free_id = 4;
+  constructor(private dataStorageService: DataStorageService) {}
+
+  private staff_list: StaffMember[] = [];
+
+  putStaffListToDatabase() {
+    this.dataStorageService.putStaffList(this.staff_list);
+  }
+
+  getStaffListFromDatabase() {
+    this.dataStorageService.getStaffList().subscribe(staff_list => {
+      this.staff_list = staff_list
+      this.nextStaffListChanged();
+    });
+  }
 
   nextStaffListChanged() {
     this.staff_list_changed$.next(this.getStaffList());
@@ -32,7 +46,8 @@ export class StaffListService {
   }
 
   getNextId() {
-    return this.first_free_id++;
+    let unique_id: number = new Date().valueOf();
+    return unique_id;
   }
 
   getStaffList() {
@@ -69,18 +84,21 @@ export class StaffListService {
 
   addStaffMember(staff_member: StaffMember) {
     this.staff_list.push(staff_member);
+    this.putStaffListToDatabase();
     this.nextStaffListChanged();
   }
 
   updateStaffMember(id: number, staff_member: StaffMember) {
     let index = this.getStaffMemberIndex(id);
     this.staff_list[index] = staff_member;
+    this.putStaffListToDatabase();
     this.nextStaffListChanged();
   }
 
   removeStaffMember(id: number) {
     let index = this.getStaffMemberIndex(id);
     this.staff_list.splice(index, 1);
+    this.putStaffListToDatabase();
     this.nextStaffListChanged();
   }
 }

@@ -12,6 +12,7 @@ import { AppRoutingModule } from './shared/app-routing.module';
 import { EditTaskComponent } from './staff-member-tasks/edit-task/edit-task.component';
 import { MoveTaskComponent } from './staff-member-tasks/move-task/move-task.component';
 import { SearchResultComponent } from './staff-member-tasks/move-task/search-result/search-result.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SearchResultComponent } from './staff-member-tasks/move-task/search-res
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
