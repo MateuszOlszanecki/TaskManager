@@ -88,6 +88,14 @@ export class TasksService {
     this.nextTasksChanged();
   }
 
+  removeStaffMemberTasks(staff_member_id: number) {
+    this.getAllTasks().forEach(task => {
+      if(task.staff_member_id === staff_member_id){
+        this.removeTask(task.id);
+      }
+    });
+  }
+
   getFinishedTasksRatio(staff_member_id: number) {
     let all_staff_member_tasks = this.getStaffMemberTasks(staff_member_id);
     let all_staff_member_finished_tasks = all_staff_member_tasks.filter(task => {

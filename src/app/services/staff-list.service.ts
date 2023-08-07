@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { StaffMember } from '../models/staff-member.model';
 import { Subject } from 'rxjs';
 import { DataStorageService } from './data-storage.service';
+import { TasksService } from './tasks.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class StaffListService {
   //   new StaffMember(3, "Mateusz", "Olszanecki", "Programista")
   // ];
 
-  constructor(private dataStorageService: DataStorageService) {}
+  constructor(private dataStorageService: DataStorageService,
+              private tasksService: TasksService) {}
 
   private staff_list: StaffMember[] = [];
 
@@ -98,6 +100,7 @@ export class StaffListService {
   removeStaffMember(id: number) {
     let index = this.getStaffMemberIndex(id);
     this.staff_list.splice(index, 1);
+    this.tasksService.removeStaffMemberTasks(id); //removes all staff member's tasks
     this.putStaffListToDatabase();
     this.nextStaffListChanged();
   }
