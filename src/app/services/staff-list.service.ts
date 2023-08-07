@@ -100,7 +100,8 @@ export class StaffListService {
   removeStaffMember(id: number) {
     let index = this.getStaffMemberIndex(id);
     this.staff_list.splice(index, 1);
-    this.tasksService.removeStaffMemberTasks(id); //removes all staff member's tasks
+    //removes all staff member's tasks
+    this.tasksService.removeStaffMemberTasks(id);
     this.putStaffListToDatabase();
     this.nextStaffListChanged();
   }
