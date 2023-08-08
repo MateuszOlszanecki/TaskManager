@@ -4,6 +4,6 @@ import com.TaskManager.backend.entity.StaffMember;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@RepositoryRestResource(path = "staff_list")
+@RepositoryRestResource(path = "staff-list")
 public interface StaffMemberRepository extends JpaRepository<StaffMember, Integer> {
 }
