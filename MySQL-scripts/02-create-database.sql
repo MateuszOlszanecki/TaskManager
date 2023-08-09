@@ -39,6 +39,6 @@ INSERT INTO `tasks` VALUES
 (0, 'Tomasz Nowak Zadanie 2', 2, 'Zakończone', 100),
 (0, 'Tomasz Nowak Zadanie 3', 2, 'Zakończone', 100),
 (0, 'Julia Nowacka Zadanie 1', 3, 'W realizacji', 55),
-(0, 'Julia Nowacka Zadanie 1', 3, 'Zakończone', 100),
-(0, 'Julia Nowacka Zadanie 1', 3, 'Zakończone', 100),
-(0, 'Julia Nowacka Zadanie 1', 3, 'W realizacji', 20);
+(0, 'Julia Nowacka Zadanie 2', 3, 'Zakończone', 100),
+(0, 'Julia Nowacka Zadanie 3', 3, 'Zakończone', 100),
+(0, 'Julia Nowacka Zadanie 4', 3, 'W realizacji', 20);

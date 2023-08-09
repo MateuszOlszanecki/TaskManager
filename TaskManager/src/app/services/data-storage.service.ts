@@ -65,4 +65,49 @@ export class DataStorageService {
   //     return tasks;
   //   }));
   // }
+
+  private API_LINK = 'http://localhost:8080/api';
+
+  constructor(private http: HttpClient) { }
+
+  getStaffList() {
+    return this.http
+    .get<StaffMember[]>(this.API_LINK + '/staff-list')
+    .pipe(take(1), map(res => {
+      const staff_list: StaffMember[] = [];
+      if(res !== null){
+        res.forEach((element: StaffMember) => {
+          const staff_member = new StaffMember(
+            +element.id,
+            element.name,
+            element.surname,
+            element.position
+          );
+          staff_list.push(staff_member);
+        });
+      }
+      return staff_list;
+    }));
+  }
+
+  getTasks() {
+    return this.http
+    .get<Task[]>(this.API_LINK + '/tasks')
+    .pipe(take(1), map(res => {
+      const tasks: Task[] = [];
+      if(res !== null){
+        res.forEach((element: Task) => {
+          const task = new Task(
+            +element.id,
+            element.description,
+            +element.staff_member_id,
+            element.status,
+            +element.status_of_completion
+          )
+          tasks.push(task);
+        });
+      }
+      return tasks;
+    }));
+  }
 }

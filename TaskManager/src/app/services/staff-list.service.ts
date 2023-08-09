@@ -28,12 +28,12 @@ export class StaffListService {
   //   this.dataStorageService.putStaffList(this.staff_list);
   // }
 
-  // getStaffListFromDatabase() {
-  //   this.dataStorageService.getStaffList().subscribe(staff_list => {
-  //     this.staff_list = staff_list
-  //     this.nextStaffListChanged();
-  //   });
-  // }
+  getStaffListFromDatabase() {
+    this.dataStorageService.getStaffList().subscribe(staff_list => {
+      this.staff_list = staff_list
+      this.nextStaffListChanged();
+    });
+  }
 
   nextStaffListChanged() {
     this.staff_list_changed$.next(this.getStaffList());

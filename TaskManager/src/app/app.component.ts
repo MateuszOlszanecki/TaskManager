@@ -14,8 +14,9 @@ export class AppComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit() {
-    //this.staffListService.getStaffListFromDatabase();
-    //this.tasksService.getTasksFromDatabase();
+    this.staffListService.getStaffListFromDatabase();
+    this.tasksService.getTasksFromDatabase();
+
     this.router.navigate(['']);
   }
 }

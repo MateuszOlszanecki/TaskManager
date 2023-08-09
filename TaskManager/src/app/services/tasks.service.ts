@@ -27,12 +27,12 @@ export class TasksService {
   //   this.dataStorageService.putTasks(this.tasks);
   // }
 
-  // getTasksFromDatabase() {
-  //   this.dataStorageService.getTasks().subscribe(tasks => {
-  //     this.tasks = tasks
-  //     this.nextTasksChanged();
-  //   });
-  // }
+  getTasksFromDatabase() {
+    this.dataStorageService.getTasks().subscribe(tasks => {
+      this.tasks = tasks
+      this.nextTasksChanged();
+    });
+  }
 
   nextTasksChanged() {
     this.tasks_changed$.next(this.getAllTasks());
