@@ -23,16 +23,16 @@ export class TasksService {
 
   private tasks: Task[] = [];
   
-  putTasksToDatabase() {
-    this.dataStorageService.putTasks(this.tasks);
-  }
+  // putTasksToDatabase() {
+  //   this.dataStorageService.putTasks(this.tasks);
+  // }
 
-  getTasksFromDatabase() {
-    this.dataStorageService.getTasks().subscribe(tasks => {
-      this.tasks = tasks
-      this.nextTasksChanged();
-    });
-  }
+  // getTasksFromDatabase() {
+  //   this.dataStorageService.getTasks().subscribe(tasks => {
+  //     this.tasks = tasks
+  //     this.nextTasksChanged();
+  //   });
+  // }
 
   nextTasksChanged() {
     this.tasks_changed$.next(this.getAllTasks());
@@ -63,28 +63,28 @@ export class TasksService {
 
   addTask(task: Task) {
     this.tasks.push(task);
-    this.putTasksToDatabase();
+    //this.putTasksToDatabase();
     this.nextTasksChanged();
   }
 
   updateTask(id: number, task: Task) {
     let index = this.getTasksIndex(id);
     this.tasks[index] = task;
-    this.putTasksToDatabase();
+    //this.putTasksToDatabase();
     this.nextTasksChanged();
   }
 
   moveTask(id: number, staff_member_id_new: number) {
     let index = this.getTasksIndex(id);
     this.tasks[index].staff_member_id = staff_member_id_new;
-    this.putTasksToDatabase();
+    //this.putTasksToDatabase();
     this.nextTasksChanged();
   }
 
   removeTask(id: number) {
     let index = this.getTasksIndex(id);
     this.tasks.splice(index, 1);
-    this.putTasksToDatabase();
+    //this.putTasksToDatabase();
     this.nextTasksChanged();
   }
 
