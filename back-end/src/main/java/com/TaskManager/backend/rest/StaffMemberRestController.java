@@ -1,7 +1,9 @@
 package com.TaskManager.backend.rest;
 
 import com.TaskManager.backend.entity.StaffMember;
+import com.TaskManager.backend.entity.Task;
 import com.TaskManager.backend.service.StaffMemberService;
+import com.TaskManager.backend.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,10 +14,12 @@ import java.util.List;
 @RequestMapping("/api")
 public class StaffMemberRestController {
     private StaffMemberService staffMemberService;
+    private TaskService taskService;
 
     @Autowired
-    public StaffMemberRestController(StaffMemberService staffMemberService) {
+    public StaffMemberRestController(StaffMemberService staffMemberService, TaskService taskService) {
         this.staffMemberService = staffMemberService;
+        this.taskService = taskService;
     }
 
     @GetMapping("/staff-list")
@@ -45,15 +49,12 @@ public class StaffMemberRestController {
     }
 
     @DeleteMapping("/staff-list/{id}")
-    public String deleteStaffMember(@PathVariable int id) {
-        StaffMember staff_member = staffMemberService.findById(id);
-
-        if(staff_member == null) {
-            throw new RuntimeException("Staff member not found - id: " + id);
+    public void deleteStaffMember(@PathVariable int id) {
+        List<Task> staff_member_tasks = taskService.findByStaffMemberId(id);
+        for(Task task: staff_member_tasks) {
+            taskService.deleteById(task.getId());
         }
-
+        
         staffMemberService.deleteById(id);
-
-        return "Deleted staff member - id: " + id;
     }
 }

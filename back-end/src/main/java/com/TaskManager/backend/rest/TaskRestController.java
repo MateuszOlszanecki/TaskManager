@@ -45,15 +45,7 @@ public class TaskRestController {
     }
 
     @DeleteMapping("/tasks/{id}")
-    public String deleteTask(@PathVariable int id) {
-        Task task = taskService.findById(id);
-
-        if(task == null) {
-            throw new RuntimeException("Task not found - id: " + id);
-        }
-
+    public void deleteTask(@PathVariable int id) {
         taskService.deleteById(id);
-
-        return "Deleted task - id: " + id;
     }
 }

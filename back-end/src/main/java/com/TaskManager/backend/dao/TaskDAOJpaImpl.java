@@ -32,6 +32,13 @@ public class TaskDAOJpaImpl implements TaskDAO{
     }
 
     @Override
+    public List<Task> findByStaffMemberId(int staff_member_id) {
+        TypedQuery<Task> query = entityManager.createQuery("FROM Task WHERE staff_member_id = " + staff_member_id, Task.class);
+        List<Task> tasks = query.getResultList();
+        return tasks;
+    }
+
+    @Override
     public Task save(Task task) {
         Task db_task = entityManager.merge(task);
         return db_task;

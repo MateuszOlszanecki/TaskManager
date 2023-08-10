@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { StaffMember } from '../models/staff-member.model';
 import { Subject } from 'rxjs';
 import { DataStorageService } from './data-storage.service';
-import { TasksService } from './tasks.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +18,7 @@ export class StaffListService {
   //   new StaffMember(3, "Mateusz", "Olszanecki", "Programista")
   // ];
 
-  constructor(private dataStorageService: DataStorageService,
-              private tasksService: TasksService) {}
+  constructor(private dataStorageService: DataStorageService) {}
 
   private staff_list: StaffMember[] = [];
 
@@ -34,6 +32,16 @@ export class StaffListService {
   postStaffMemberToDatabase(staff_member: StaffMember) {
     this.dataStorageService.postStaffMember(staff_member).subscribe(new_staff_member => {
       this.staff_list.push(new_staff_member);
+      this.nextStaffListChanged();
+    })
+  }
+
+  //code for putStaffMemberToDatabese missing
+
+  deleteStaffMemberFromDatabase(id: number) {
+    this.dataStorageService.deleteStaffMember(id).subscribe(() => {
+      const index = this.getStaffMemberIndex(id);
+      this.staff_list.splice(index, 1);
       this.nextStaffListChanged();
     })
   }
@@ -94,11 +102,6 @@ export class StaffListService {
   }
 
   removeStaffMember(id: number) {
-    let index = this.getStaffMemberIndex(id);
-    this.staff_list.splice(index, 1);
-    //removes all staff member's tasks
-    this.tasksService.removeStaffMemberTasks(id);
-    //this.putStaffListToDatabase();
-    this.nextStaffListChanged();
+    this.deleteStaffMemberFromDatabase(id);
   }
 }

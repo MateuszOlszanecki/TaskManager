@@ -37,6 +37,16 @@ export class TasksService {
     })
   }
 
+  //code for putTaskToDatabese missing
+
+  deleteTaskFromDatabase(id: number) {
+    this.dataStorageService.deleteTask(id).subscribe(() => {
+      const index = this.getTasksIndex(id);
+      this.tasks.splice(index, 1);
+      this.nextTasksChanged();
+    })
+  }
+
   nextTasksChanged() {
     this.tasks_changed$.next(this.getAllTasks());
   }
@@ -71,18 +81,7 @@ export class TasksService {
   }
 
   removeTask(id: number) {
-    let index = this.getTasksIndex(id);
-    this.tasks.splice(index, 1);
-    //this.putTasksToDatabase();
-    this.nextTasksChanged();
-  }
-
-  removeStaffMemberTasks(staff_member_id: number) {
-    this.getAllTasks().forEach(task => {
-      if(task.staff_member_id === staff_member_id){
-        this.removeTask(task.id);
-      }
-    });
+    this.deleteTaskFromDatabase(id);
   }
 
   getFinishedTasksRatio(staff_member_id: number) {

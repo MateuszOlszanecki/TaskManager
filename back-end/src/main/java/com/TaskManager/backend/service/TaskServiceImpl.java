@@ -27,6 +27,11 @@ public class TaskServiceImpl implements TaskService{
         return taskDAO.findById(id);
     }
 
+    @Override
+    public List<Task> findByStaffMemberId(int id) {
+        return taskDAO.findByStaffMemberId(id);
+    }
+
     @Transactional
     @Override
     public Task save(Task task) {

@@ -78,7 +78,7 @@ export class DataStorageService {
       if(res !== null){
         res.forEach((element: StaffMember) => {
           const staff_member = new StaffMember(
-            +element.id,
+            element.id,
             element.name,
             element.surname,
             element.position
@@ -98,11 +98,11 @@ export class DataStorageService {
       if(res !== null){
         res.forEach((element: Task) => {
           const task = new Task(
-            +element.id,
+            element.id,
             element.description,
-            +element.staff_member_id,
+            element.staff_member_id,
             element.status,
-            +element.status_of_completion
+            element.status_of_completion
           )
           tasks.push(task);
         });
@@ -116,7 +116,7 @@ export class DataStorageService {
     .post<StaffMember>(this.API_LINK + '/staff-list', staff_member)
     .pipe(take(1), map(res => {
       const new_staff_member = new StaffMember(
-        +res.id,
+        res.id,
         res.name,
         res.surname,
         res.position
@@ -130,13 +130,27 @@ export class DataStorageService {
     .post<Task>(this.API_LINK + '/tasks', task)
     .pipe(take(1), map(res => {
       const new_task = new Task(
-        +res.id,
+        res.id,
         res.description,
-        +res.staff_member_id,
+        res.staff_member_id,
         res.status,
-        +res.status_of_completion
+        res.status_of_completion
       )
       return new_task;
     }));
+  }
+
+  //code for http.put missing
+
+  deleteStaffMember(id: number) {
+    return this.http
+    .delete(this.API_LINK + '/staff-list/' + id)
+    .pipe(take(1));
+  }
+
+  deleteTask(id: number) {
+    return this.http
+    .delete(this.API_LINK + '/tasks/' + id)
+    .pipe(take(1));
   }
 }
