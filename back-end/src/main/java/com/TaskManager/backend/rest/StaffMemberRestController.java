@@ -23,6 +23,11 @@ public class StaffMemberRestController {
         return staffMemberService.findAll();
     }
 
+    @GetMapping("/staff-list/{id}")
+    public StaffMember findById(@PathVariable int id) {
+        return staffMemberService.findById(id);
+    }
+
     @PostMapping("/staff-list")
     public StaffMember addStaffMember(@RequestBody StaffMember staff_member) {
         //id = 0, because when it is 0, then we create a new row with AUTO_INCREMENT id

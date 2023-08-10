@@ -23,6 +23,11 @@ public class TaskRestController {
         return taskService.findAll();
     }
 
+    @GetMapping("/tasks/{id}")
+    public Task findById(@PathVariable int id) {
+        return taskService.findById(id);
+    }
+
     @PostMapping("/tasks")
     public Task addTask(@RequestBody Task task) {
         //id = 0, because when it is 0, then we create a new row with AUTO_INCREMENT id
