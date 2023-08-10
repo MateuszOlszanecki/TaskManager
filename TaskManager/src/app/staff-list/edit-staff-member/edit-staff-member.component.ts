@@ -49,7 +49,7 @@ export class EditStaffMemberComponent implements OnInit {
 
   onSubmit(){
     let staff_member = new StaffMember(
-      -1,
+      0,
       this.staffMemberForm.value['name'].trim(),
       this.staffMemberForm.value['surname'].trim(),
       this.staffMemberForm.value['position'].trim()
@@ -59,7 +59,6 @@ export class EditStaffMemberComponent implements OnInit {
       this.staffListService.updateStaffMember(staff_member.id, staff_member);
     }
     else{
-      staff_member.id = this.staffListService.getNextId();
       this.staffListService.addStaffMember(staff_member);
     }
     this.onCancel();

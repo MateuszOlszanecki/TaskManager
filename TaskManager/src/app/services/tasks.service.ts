@@ -22,10 +22,6 @@ export class TasksService {
   constructor(private dataStorageService: DataStorageService) {}
 
   private tasks: Task[] = [];
-  
-  // putTasksToDatabase() {
-  //   this.dataStorageService.putTasks(this.tasks);
-  // }
 
   getTasksFromDatabase() {
     this.dataStorageService.getTasks().subscribe(tasks => {
@@ -34,13 +30,15 @@ export class TasksService {
     });
   }
 
-  nextTasksChanged() {
-    this.tasks_changed$.next(this.getAllTasks());
+  postTaskToDatabase(task: Task) {
+    this.dataStorageService.postTask(task).subscribe(new_task => {
+      this.tasks.push(new_task);
+      this.nextTasksChanged();
+    })
   }
 
-  getNextId() {
-    let unique_id: number = new Date().valueOf();
-    return unique_id;
+  nextTasksChanged() {
+    this.tasks_changed$.next(this.getAllTasks());
   }
 
   getAllTasks() {
@@ -62,21 +60,12 @@ export class TasksService {
   }
 
   addTask(task: Task) {
-    this.tasks.push(task);
-    //this.putTasksToDatabase();
-    this.nextTasksChanged();
+    this.postTaskToDatabase(task);
   }
 
   updateTask(id: number, task: Task) {
     let index = this.getTasksIndex(id);
     this.tasks[index] = task;
-    //this.putTasksToDatabase();
-    this.nextTasksChanged();
-  }
-
-  moveTask(id: number, staff_member_id_new: number) {
-    let index = this.getTasksIndex(id);
-    this.tasks[index].staff_member_id = staff_member_id_new;
     //this.putTasksToDatabase();
     this.nextTasksChanged();
   }

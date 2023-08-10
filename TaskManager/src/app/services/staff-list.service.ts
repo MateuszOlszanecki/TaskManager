@@ -24,15 +24,18 @@ export class StaffListService {
 
   private staff_list: StaffMember[] = [];
 
-  // putStaffListToDatabase() {
-  //   this.dataStorageService.putStaffList(this.staff_list);
-  // }
-
   getStaffListFromDatabase() {
     this.dataStorageService.getStaffList().subscribe(staff_list => {
       this.staff_list = staff_list
       this.nextStaffListChanged();
     });
+  }
+
+  postStaffMemberToDatabase(staff_member: StaffMember) {
+    this.dataStorageService.postStaffMember(staff_member).subscribe(new_staff_member => {
+      this.staff_list.push(new_staff_member);
+      this.nextStaffListChanged();
+    })
   }
 
   nextStaffListChanged() {
@@ -45,11 +48,6 @@ export class StaffListService {
 
   nextStaffMemberPicked(staff_member: StaffMember) {
     this.staff_member_picked$.next(staff_member);
-  }
-
-  getNextId() {
-    let unique_id: number = new Date().valueOf();
-    return unique_id;
   }
 
   getStaffList() {
@@ -85,9 +83,7 @@ export class StaffListService {
   }
 
   addStaffMember(staff_member: StaffMember) {
-    this.staff_list.push(staff_member);
-    //this.putStaffListToDatabase();
-    this.nextStaffListChanged();
+    this.postStaffMemberToDatabase(staff_member);
   }
 
   updateStaffMember(id: number, staff_member: StaffMember) {

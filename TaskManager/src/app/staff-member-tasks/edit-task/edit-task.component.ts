@@ -56,7 +56,7 @@ export class EditTaskComponent implements OnInit {
     }
     else{
       let task = new Task(
-        this.tasksService.getNextId(),
+        0,
         this.taskForm.value['description'].trim(),
         this.staffMemberTasksComponent.staff_member_id
       );
