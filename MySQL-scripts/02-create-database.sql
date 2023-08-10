@@ -9,7 +9,7 @@ CREATE TABLE `staff_list` (
   `surname` varchar(64) NOT NULL,
   `position` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) AUTO_INCREMENT=1;
+);
 
 DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE `tasks` (
@@ -20,7 +20,7 @@ CREATE TABLE `tasks` (
   `status_of_completion` int NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`staff_member_id`) REFERENCES staff_list(`id`)
-) AUTO_INCREMENT=1;
+);
 
 INSERT INTO `staff_list` VALUES
 (0, 'Jan', 'Kowalski', 'Programista'),
