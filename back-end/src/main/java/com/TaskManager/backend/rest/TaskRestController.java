@@ -3,10 +3,7 @@ package com.TaskManager.backend.rest;
 import com.TaskManager.backend.entity.Task;
 import com.TaskManager.backend.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +21,34 @@ public class TaskRestController {
     @GetMapping("/tasks")
     public List<Task> findAll() {
         return taskService.findAll();
+    }
+
+    @PostMapping("/tasks")
+    public Task addTask(@RequestBody Task task) {
+        //id = 0, because when it is 0, then we create a new row with AUTO_INCREMENT id
+        task.setId(0);
+        Task db_task = taskService.save(task);
+
+        return db_task;
+    }
+
+    @PutMapping("/tasks")
+    public Task updateTask(@RequestBody Task task) {
+        Task db_task = taskService.save(task);
+
+        return db_task;
+    }
+
+    @DeleteMapping("/tasks/{id}")
+    public String deleteTask(@PathVariable int id) {
+        Task task = taskService.findById(id);
+
+        if(task == null) {
+            throw new RuntimeException("Task not found - id: " + id);
+        }
+
+        taskService.deleteById(id);
+
+        return "Deleted task - id: " + id;
     }
 }

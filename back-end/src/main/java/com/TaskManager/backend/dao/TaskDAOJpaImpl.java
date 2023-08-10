@@ -23,4 +23,23 @@ public class TaskDAOJpaImpl implements TaskDAO{
         List<Task> tasks = query.getResultList();
         return tasks;
     }
+
+    @Override
+    public Task findById(int id) {
+        Task task = entityManager.find(Task.class, id);
+
+        return task;
+    }
+
+    @Override
+    public Task save(Task task) {
+        Task db_task = entityManager.merge(task);
+        return db_task;
+    }
+
+    @Override
+    public void deleteById(int id) {
+        Task task = entityManager.find(Task.class, id);
+        entityManager.remove(task);
+    }
 }

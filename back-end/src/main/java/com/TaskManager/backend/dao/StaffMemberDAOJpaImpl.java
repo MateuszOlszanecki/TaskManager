@@ -23,4 +23,23 @@ public class StaffMemberDAOJpaImpl implements StaffMemberDAO{
         List<StaffMember> staff_list = query.getResultList();
         return staff_list;
     }
+
+    @Override
+    public StaffMember findById(int id) {
+        StaffMember staff_member = entityManager.find(StaffMember.class, id);
+
+        return staff_member;
+    }
+
+    @Override
+    public StaffMember save(StaffMember staff_member) {
+        StaffMember db_staff_member = entityManager.merge(staff_member);
+        return db_staff_member;
+    }
+
+    @Override
+    public void deleteById(int id) {
+        StaffMember staff_member = entityManager.find(StaffMember.class, id);
+        entityManager.remove(staff_member);
+    }
 }
