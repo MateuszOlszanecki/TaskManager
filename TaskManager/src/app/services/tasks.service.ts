@@ -37,7 +37,13 @@ export class TasksService {
     })
   }
 
-  //code for putTaskToDatabese missing
+  putTaskToDatabase(task: Task) {
+    this.dataStorageService.putTask(task).subscribe(() => {
+      let index = this.getTasksIndex(task.id);
+      this.tasks[index] = task;
+      this.nextTasksChanged();
+    })
+  }
 
   deleteTaskFromDatabase(id: number) {
     this.dataStorageService.deleteTask(id).subscribe(() => {
@@ -73,11 +79,8 @@ export class TasksService {
     this.postTaskToDatabase(task);
   }
 
-  updateTask(id: number, task: Task) {
-    let index = this.getTasksIndex(id);
-    this.tasks[index] = task;
-    //this.putTasksToDatabase();
-    this.nextTasksChanged();
+  updateTask(task: Task) {
+    this.putTaskToDatabase(task);
   }
 
   removeTask(id: number) {

@@ -40,7 +40,7 @@ export class TaskComponent implements OnInit {
       this.taskStatusForm.value['status'].trim(),
       this.taskStatusForm.value['status_of_completion'] //this is number, so no trim()
     )
-    this.tasksService.updateTask(task.id, task);
+    this.tasksService.updateTask(task);
     this.onCancel();
   }
 

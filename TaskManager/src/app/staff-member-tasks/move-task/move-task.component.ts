@@ -17,7 +17,6 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
   public TASK_NOT_STARTED_STATUS = GlobalVariables.TASK_NOT_STARTED_STATUS;
   public TASK_STARTED_STATUS = GlobalVariables.TASK_STARTED_STATUS;
   public TASK_FINISHED_STATUS = GlobalVariables.TASK_FINISHED_STATUS;
-  task_id!: number;
   task!: Task;
   searchForm!: FormGroup;
   staff_list_searched!: StaffMember[];
@@ -34,8 +33,8 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.task_id = +params['task_id'];
-        this.task = this.tasksService.getTask(this.task_id)!;
+        const task_id = +params['task_id'];
+        this.task = this.tasksService.getTask(task_id)!;
         this.initSubmitForm();
         this.initMoveForm();
       }
@@ -86,14 +85,14 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
           break;
       }
     }
-    let movedTask = new Task(
-      this.task_id,
+    let moved_task = new Task(
+      this.task.id,
       this.task.description,
       this.picked_staff_member!.id,
       status,
       status_of_completion
     )
-    this.tasksService.updateTask(this.task_id, movedTask);
+    this.tasksService.updateTask(moved_task);
     this.onCancel();
   }
 

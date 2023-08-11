@@ -146,6 +146,12 @@ export class DataStorageService {
     .pipe(take(1));
   }
 
+  putTask(task: Task) {
+    return this.http
+    .put(this.API_LINK + '/tasks', task)
+    .pipe(take(1));
+  }
+
   deleteStaffMember(id: number) {
     return this.http
     .delete(this.API_LINK + '/staff-list/' + id)
