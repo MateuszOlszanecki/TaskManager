@@ -10,6 +10,7 @@
                                 id="description" placeholder="description" formControlName="description"></textarea>
                             <label for="description">Treść zadania:</label>
                         </div>
+                        <app-max-length [length]="descriptionLength()" [maxLength]="MAX_LENGTH_TEXT_AREA"></app-max-length>
                         <div class="row-fluid">
                             <button type="submit" class="btn btn-primary col-3" [disabled]="!taskForm.valid">OK</button>
                             <button type="button" class="btn btn-danger col-3" (click)="onCancel()">Anuluj</button>

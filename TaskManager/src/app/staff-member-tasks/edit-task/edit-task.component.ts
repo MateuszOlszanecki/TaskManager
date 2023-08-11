@@ -5,6 +5,7 @@ import { TasksService } from 'src/app/services/tasks.service';
 import { StaffMemberTasksComponent } from '../staff-member-tasks.component';
 import { Task } from 'src/app/models/task.model';
 import { CustomValidators } from 'src/app/shared/custom-validators';
+import { GlobalVariables } from 'src/app/shared/global-variables';
 
 @Component({
   selector: 'app-edit-task',
@@ -14,6 +15,8 @@ export class EditTaskComponent implements OnInit {
   taskForm!: FormGroup;
   task_id!: number;
   edit_mode!: boolean;
+
+  public MAX_LENGTH_TEXT_AREA = GlobalVariables.MAX_LENGTH_TEXT_AREA;
   
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -39,8 +42,12 @@ export class EditTaskComponent implements OnInit {
     }
     
     this.taskForm = new FormGroup({
-      'description': new FormControl(description, [Validators.required, CustomValidators.onlySpaces]),
+      'description': new FormControl(description, [Validators.required, CustomValidators.onlySpaces, CustomValidators.maxLengthTextArea]),
     })
+  }
+
+  descriptionLength() {
+    return this.taskForm.value['description'].trim().length;
   }
 
   onSubmit() {

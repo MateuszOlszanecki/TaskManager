@@ -5,18 +5,18 @@ USE `taskmanager`;
 DROP TABLE IF EXISTS `staff_list`;
 CREATE TABLE `staff_list` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(64) NOT NULL,
-  `surname` varchar(64) NOT NULL,
-  `position` varchar(64) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `surname` varchar(50) NOT NULL,
+  `position` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
 DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE `tasks` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `description` varchar(512) NOT NULL,
+  `description` varchar(500) NOT NULL,
   `staff_member_id` int NOT NULL,
-  `status` varchar(32) NOT NULL,
+  `status` varchar(50) NOT NULL,
   `status_of_completion` int NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`staff_member_id`) REFERENCES staff_list(`id`)

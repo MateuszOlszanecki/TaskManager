@@ -13,6 +13,7 @@ import { EditTaskComponent } from './staff-member-tasks/edit-task/edit-task.comp
 import { MoveTaskComponent } from './staff-member-tasks/move-task/move-task.component';
 import { SearchResultComponent } from './staff-member-tasks/move-task/search-result/search-result.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MaxLengthComponent } from './shared/max-length/max-length.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     EditStaffMemberComponent,
     EditTaskComponent,
     MoveTaskComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    MaxLengthComponent
   ],
   imports: [
     BrowserModule,
