@@ -53,7 +53,11 @@ export class TasksService {
   }
 
   getAllTasks() {
-    return this.tasks.slice();
+    let tasks: Task[] = [];
+    this.tasks.forEach(task => {
+      tasks.push(task.deepCopy())
+    });
+    return tasks;
   }
 
   getTask(id: number) {

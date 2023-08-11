@@ -60,7 +60,11 @@ export class StaffListService {
   }
 
   getStaffList() {
-    return this.staff_list.slice();
+    let staff_list: StaffMember[] = [];
+    this.staff_list.forEach(staff_member => {
+      staff_list.push(staff_member.deepCopy())
+    });
+    return staff_list;
   }
 
   getStaffMember(id: number) {

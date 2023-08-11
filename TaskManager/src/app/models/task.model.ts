@@ -8,4 +8,14 @@ export class Task {
         public status: string = GlobalVariables.TASK_NOT_STARTED_STATUS,
         public status_of_completion: number = 0
     ) {}
+
+    public deepCopy() {
+        return new Task(
+            this.id,
+            this.description,
+            this.staff_member_id,
+            this.status,
+            this.status_of_completion
+        );
+    }
 }
