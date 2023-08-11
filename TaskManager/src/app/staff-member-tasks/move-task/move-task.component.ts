@@ -70,29 +70,23 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
   }
 
   onSubmitMoveForm() {
-    let status_of_completion = this.task.status_of_completion;
     let status = this.moveForm.value['status'].trim();
     if(status !== this.task.status){
+      this.task.status = status;
       switch (status) {
         case GlobalVariables.TASK_NOT_STARTED_STATUS:
-          status_of_completion = 0;
+          this.task.status_of_completion = 0;
           break;
         case GlobalVariables.TASK_STARTED_STATUS:
-          status_of_completion = 5;
+          this.task.status_of_completion = 5;
           break;
         case GlobalVariables.TASK_FINISHED_STATUS:
-          status_of_completion = 100;
+          this.task.status_of_completion = 100;
           break;
       }
     }
-    let moved_task = new Task(
-      this.task.id,
-      this.task.description,
-      this.picked_staff_member!.id,
-      status,
-      status_of_completion
-    )
-    this.tasksService.updateTask(moved_task);
+    this.task.staff_member_id = this.picked_staff_member!.id;
+    this.tasksService.updateTask(this.task);
     this.onCancel();
   }
 

@@ -33,14 +33,9 @@ export class TaskComponent implements OnInit {
   }
 
   onSubmit() {
-    let task = new Task(
-      this.task.id,
-      this.task.description,
-      this.task.staff_member_id,
-      this.taskStatusForm.value['status'].trim(),
-      this.taskStatusForm.value['status_of_completion'] //this is number, so no trim()
-    )
-    this.tasksService.updateTask(task);
+    this.task.status = this.taskStatusForm.value['status'].trim();
+    this.task.status_of_completion = this.taskStatusForm.value['status_of_completion']; //this is number, so no trim()
+    this.tasksService.updateTask(this.task);
     this.onCancel();
   }
 
