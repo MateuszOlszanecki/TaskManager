@@ -30,26 +30,21 @@ export class StaffListService {
   }
 
   postStaffMemberToDatabase(staff_member: StaffMember) {
-    this.dataStorageService.postStaffMember(staff_member).subscribe(new_staff_member => {
-      this.staff_list.push(new_staff_member);
-      this.nextStaffListChanged();
-    })
+    this.dataStorageService.postStaffMember(staff_member).subscribe(() => {
+      this.getStaffListFromDatabase();
+    });
   }
 
   putStaffMemberToDatabese(staff_member: StaffMember) {
     this.dataStorageService.putStaffMember(staff_member).subscribe(() => {
-      const index = this.getStaffMemberIndex(staff_member.id);
-      this.staff_list[index] = staff_member;
-      this.nextStaffListChanged();
-    })
+      this.getStaffListFromDatabase();
+    });
   }
 
   deleteStaffMemberFromDatabase(id: number) {
     this.dataStorageService.deleteStaffMember(id).subscribe(() => {
-      const index = this.getStaffMemberIndex(id);
-      this.staff_list.splice(index, 1);
-      this.nextStaffListChanged();
-    })
+      this.getStaffListFromDatabase();
+    });
   }
 
   nextStaffListChanged() {

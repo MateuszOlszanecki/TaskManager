@@ -113,31 +113,14 @@ export class DataStorageService {
 
   postStaffMember(staff_member: StaffMember) {
     return this.http
-    .post<StaffMember>(this.API_LINK + '/staff-list', staff_member)
-    .pipe(take(1), map(res => {
-      const new_staff_member = new StaffMember(
-        res.id,
-        res.name,
-        res.surname,
-        res.position
-      )
-      return new_staff_member;
-    }));
+    .post(this.API_LINK + '/staff-list', staff_member)
+    .pipe(take(1));
   }
 
   postTask(task: Task) {
     return this.http
-    .post<Task>(this.API_LINK + '/tasks', task)
-    .pipe(take(1), map(res => {
-      const new_task = new Task(
-        res.id,
-        res.description,
-        res.staff_member_id,
-        res.status,
-        res.status_of_completion
-      )
-      return new_task;
-    }));
+    .post(this.API_LINK + '/tasks', task)
+    .pipe(take(1));
   }
 
   putStaffMember(staff_member: StaffMember) {

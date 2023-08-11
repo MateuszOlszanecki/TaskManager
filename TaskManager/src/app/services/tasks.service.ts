@@ -25,31 +25,26 @@ export class TasksService {
 
   getTasksFromDatabase() {
     this.dataStorageService.getTasks().subscribe(tasks => {
-      this.tasks = tasks
+      this.tasks = tasks;
       this.nextTasksChanged();
     });
   }
 
   postTaskToDatabase(task: Task) {
-    this.dataStorageService.postTask(task).subscribe(new_task => {
-      this.tasks.push(new_task);
-      this.nextTasksChanged();
+    this.dataStorageService.postTask(task).subscribe(() => {
+      this.getTasksFromDatabase();
     })
   }
 
   putTaskToDatabase(task: Task) {
     this.dataStorageService.putTask(task).subscribe(() => {
-      let index = this.getTasksIndex(task.id);
-      this.tasks[index] = task;
-      this.nextTasksChanged();
+      this.getTasksFromDatabase();
     })
   }
 
   deleteTaskFromDatabase(id: number) {
     this.dataStorageService.deleteTask(id).subscribe(() => {
-      const index = this.getTasksIndex(id);
-      this.tasks.splice(index, 1);
-      this.nextTasksChanged();
+      this.getTasksFromDatabase();
     })
   }
 
