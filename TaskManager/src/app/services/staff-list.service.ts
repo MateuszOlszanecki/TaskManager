@@ -36,7 +36,13 @@ export class StaffListService {
     })
   }
 
-  //code for putStaffMemberToDatabese missing
+  putStaffMemberToDatabese(staff_member: StaffMember) {
+    this.dataStorageService.putStaffMember(staff_member).subscribe(() => {
+      const index = this.getStaffMemberIndex(staff_member.id);
+      this.staff_list[index] = staff_member;
+      this.nextStaffListChanged();
+    })
+  }
 
   deleteStaffMemberFromDatabase(id: number) {
     this.dataStorageService.deleteStaffMember(id).subscribe(() => {
@@ -94,11 +100,8 @@ export class StaffListService {
     this.postStaffMemberToDatabase(staff_member);
   }
 
-  updateStaffMember(id: number, staff_member: StaffMember) {
-    let index = this.getStaffMemberIndex(id);
-    this.staff_list[index] = staff_member;
-    //this.putStaffListToDatabase();
-    this.nextStaffListChanged();
+  updateStaffMember(staff_member: StaffMember) {
+    this.putStaffMemberToDatabese(staff_member);
   }
 
   removeStaffMember(id: number) {

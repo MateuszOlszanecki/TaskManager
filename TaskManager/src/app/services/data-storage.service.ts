@@ -140,7 +140,11 @@ export class DataStorageService {
     }));
   }
 
-  //code for http.put missing
+  putStaffMember(staff_member: StaffMember) {
+    return this.http
+    .put(this.API_LINK + '/staff-list', staff_member)
+    .pipe(take(1));
+  }
 
   deleteStaffMember(id: number) {
     return this.http
