@@ -29,7 +29,7 @@ export class TaskComponent implements OnInit {
     this.taskStatusForm = new FormGroup({
       'status': new FormControl(this.task.status),
       'status_of_completion': new FormControl(this.task.status_of_completion)
-    }, CustomValidators.statusValid.bind(this))
+    })
   }
 
   onSubmit() {
@@ -52,6 +52,34 @@ export class TaskComponent implements OnInit {
   onMove() {
     this.router.navigate(['move', this.task.id], {relativeTo: this.route});
     this.onCancel();
+  }
+
+  onSelectChange() {
+    let status = this.taskStatusForm.value['status'].trim();
+    switch(status) {
+      case GlobalVariables.TASK_NOT_STARTED_STATUS:
+        this.taskStatusForm.value['status_of_completion'] = 0;
+        break;
+      case GlobalVariables.TASK_STARTED_STATUS:
+        this.taskStatusForm.value['status_of_completion'] = 5;
+        break;
+      case GlobalVariables.TASK_FINISHED_STATUS:
+        this.taskStatusForm.value['status_of_completion'] = 100;
+        break;
+    }
+  }
+
+  onRangeChange() {
+    let status_of_completion = this.taskStatusForm.value['status_of_completion'];
+    if(status_of_completion === 0) {
+      this.taskStatusForm.value['status'] = GlobalVariables.TASK_NOT_STARTED_STATUS;
+    }
+    else if(0 < status_of_completion && status_of_completion < 100) {
+      this.taskStatusForm.value['status'] = GlobalVariables.TASK_STARTED_STATUS;
+    }
+    else if(status_of_completion === 100) {
+      this.taskStatusForm.value['status'] = GlobalVariables.TASK_FINISHED_STATUS;
+    }
   }
   
   onCancel() {

@@ -16,10 +16,11 @@
             <div class="row mb-1">
                 <label class="col-3">Status:</label>
                 <div class="col-6">
-                    <select class="form-select" formControlName="status">
-                        <option [value]="TASK_NOT_STARTED_STATUS" [selected]="task.status === TASK_NOT_STARTED_STATUS">{{ TASK_NOT_STARTED_STATUS }}</option>
-                        <option [value]="TASK_STARTED_STATUS" [selected]="task.status === TASK_STARTED_STATUS">{{ TASK_STARTED_STATUS }}</option>
-                        <option [value]="TASK_FINISHED_STATUS" [selected]="task.status === TASK_FINISHED_STATUS">{{ TASK_FINISHED_STATUS }}</option>
+                    <select class="form-select" formControlName="status"
+                            (ngModelChange)="onSelectChange()">
+                        <option [value]="TASK_NOT_STARTED_STATUS" [selected]="taskStatusForm.value['status'] === TASK_NOT_STARTED_STATUS">{{ TASK_NOT_STARTED_STATUS }}</option>
+                        <option [value]="TASK_STARTED_STATUS" [selected]="taskStatusForm.value['status'] === TASK_STARTED_STATUS">{{ TASK_STARTED_STATUS }}</option>
+                        <option [value]="TASK_FINISHED_STATUS" [selected]="taskStatusForm.value['status'] === TASK_FINISHED_STATUS">{{ TASK_FINISHED_STATUS }}</option>
                     </select>
                 </div>
                 <button type="button" class="btn btn-danger col-3" (click)="onRemove()">Usuń</button>
@@ -30,6 +31,7 @@
                 </div>
                 <div class="col-4">
                     <input type="range" class="col-12" min="0" max="100" step="5"
+                        (ngModelChange)="onRangeChange()"
                         [value]="taskStatusForm.value['status_of_completion']"
                         formControlName="status_of_completion">
                 </div>

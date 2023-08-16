@@ -73,7 +73,7 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
     let status = this.moveForm.value['status'].trim();
     if(status !== this.task.status){
       this.task.status = status;
-      switch (status) {
+      switch(status) {
         case GlobalVariables.TASK_NOT_STARTED_STATUS:
           this.task.status_of_completion = 0;
           break;
