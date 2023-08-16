@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { StaffMember } from '../models/staff-member.model';
 import { Subject } from 'rxjs';
 import { DataStorageService } from './data-storage.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -18,32 +19,43 @@ export class StaffListService {
   //   new StaffMember(3, "Mateusz", "Olszanecki", "Programista")
   // ];
 
-  constructor(private dataStorageService: DataStorageService) {}
+  constructor(private dataStorageService: DataStorageService,
+              private router: Router) {}
 
   private staff_list: StaffMember[] = [];
 
+  handleError() {
+    this.router.navigate(['error']);
+  }
+
   getStaffListFromDatabase() {
-    this.dataStorageService.getStaffList().subscribe(staff_list => {
-      this.staff_list = staff_list
-      this.nextStaffListChanged();
+    this.dataStorageService.getStaffList().subscribe({
+      next: (staff_list) => {
+        this.staff_list = staff_list
+        this.nextStaffListChanged();
+      },
+      error: () => this.handleError()
     });
   }
 
   postStaffMemberToDatabase(staff_member: StaffMember) {
-    this.dataStorageService.postStaffMember(staff_member).subscribe(() => {
-      this.getStaffListFromDatabase();
+    this.dataStorageService.postStaffMember(staff_member).subscribe({
+      next: () => this.getStaffListFromDatabase(),
+      error: () => this.handleError()
     });
   }
 
   putStaffMemberToDatabese(staff_member: StaffMember) {
-    this.dataStorageService.putStaffMember(staff_member).subscribe(() => {
-      this.getStaffListFromDatabase();
+    this.dataStorageService.putStaffMember(staff_member).subscribe({
+      next: () => this.getStaffListFromDatabase(),
+      error: () => this.handleError()
     });
   }
 
   deleteStaffMemberFromDatabase(id: number) {
-    this.dataStorageService.deleteStaffMember(id).subscribe(() => {
-      this.getStaffListFromDatabase();
+    this.dataStorageService.deleteStaffMember(id).subscribe({
+      next: () => this.getStaffListFromDatabase(),
+      error: () => this.handleError()
     });
   }
 

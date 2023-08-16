@@ -3,6 +3,7 @@ import { Task } from '../models/task.model';
 import { GlobalVariables } from '../shared/global-variables';
 import { Subject } from 'rxjs';
 import { DataStorageService } from './data-storage.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -19,32 +20,43 @@ export class TasksService {
   //   new Task(5, "Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100)
   // ];
 
-  constructor(private dataStorageService: DataStorageService) {}
+  constructor(private dataStorageService: DataStorageService,
+              private router: Router) {}
 
   private tasks: Task[] = [];
 
+  handleError() {
+    this.router.navigate(['error']);
+  }
+
   getTasksFromDatabase() {
-    this.dataStorageService.getTasks().subscribe(tasks => {
-      this.tasks = tasks;
-      this.nextTasksChanged();
+    this.dataStorageService.getTasks().subscribe({
+      next: (tasks) => {
+        this.tasks = tasks;
+        this.nextTasksChanged();
+      },
+      error: () => this.handleError()
     });
   }
 
   postTaskToDatabase(task: Task) {
-    this.dataStorageService.postTask(task).subscribe(() => {
-      this.getTasksFromDatabase();
+    this.dataStorageService.postTask(task).subscribe({
+      next: () => this.getTasksFromDatabase(),
+      error: () => this.handleError()
     })
   }
 
   putTaskToDatabase(task: Task) {
-    this.dataStorageService.putTask(task).subscribe(() => {
-      this.getTasksFromDatabase();
+    this.dataStorageService.putTask(task).subscribe({
+      next: () => this.getTasksFromDatabase(),
+      error: () => this.handleError()
     })
   }
 
   deleteTaskFromDatabase(id: number) {
-    this.dataStorageService.deleteTask(id).subscribe(() => {
-      this.getTasksFromDatabase();
+    this.dataStorageService.deleteTask(id).subscribe({
+      next: () => this.getTasksFromDatabase(),
+      error: () => this.handleError()
     })
   }
 
