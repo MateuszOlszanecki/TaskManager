@@ -13,12 +13,12 @@
         [staff_member]="staff_member"
         ></app-staff-member>
     </div>
-    <div class="row mt-1 mb-1"
-        *ngIf="CONTENT_LOADED">
+    <div class="row mt-1 mb-1" *ngIf="CONTENT_LOADED">
         <div class="d-flex">
             <button
-                class="btn btn-danger rounded-circle ms-auto btn-add"
-                (click)="onEdit()">+</button>
+                class="btn btn-danger rounded-circle ms-auto btn-add bi bi-plus-lg"
+                (click)="onEdit()">
+            </button>
         </div>
     </div>
     <router-outlet></router-outlet>

@@ -1,3 +1,5 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 .header {
     background: #0D6EFD;
 }
@@ -19,6 +21,5 @@
     margin-top: 50px;
     margin-bottom: 20px;
     font-size: 50px;
-    font-weight: bold;
     line-height: 0px;
 }
