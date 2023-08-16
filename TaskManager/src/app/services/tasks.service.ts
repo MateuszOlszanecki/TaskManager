@@ -11,15 +11,6 @@ import { Router } from '@angular/router';
 export class TasksService {
   tasks_changed$ = new Subject<Task[]>();
 
-  // private tasks: Task[] = [
-  //   new Task(0, "Jan Task1", 0, GlobalVariables.TASK_FINISHED_STATUS, 100),
-  //   new Task(1, "Jan Task2", 0, GlobalVariables.TASK_STARTED_STATUS, 50),
-  //   new Task(2, "Tomasz Task1", 1, GlobalVariables.TASK_NOT_STARTED_STATUS, 0),
-  //   new Task(3, "Jacek Task1", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
-  //   new Task(4, "Jacek Task2", 2, GlobalVariables.TASK_FINISHED_STATUS, 100),
-  //   new Task(5, "Jacek Task3", 2, GlobalVariables.TASK_FINISHED_STATUS, 100)
-  // ];
-
   constructor(private dataStorageService: DataStorageService,
               private router: Router) {}
 

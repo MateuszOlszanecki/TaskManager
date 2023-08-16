@@ -12,13 +12,6 @@ export class StaffListService {
   staff_list_searched$ = new Subject<StaffMember[]>();
   staff_member_picked$ = new Subject<StaffMember>();
 
-  // private staff_list: StaffMember[] = [
-  //   new StaffMember(0, "Jan", "Kowalski", "Analityk"),
-  //   new StaffMember(1, "Tomasz", "Nowak", "Programista"),
-  //   new StaffMember(2, "Jacek", "Nowak", "Tester"),
-  //   new StaffMember(3, "Mateusz", "Olszanecki", "Programista")
-  // ];
-
   constructor(private dataStorageService: DataStorageService,
               private router: Router) {}
 
