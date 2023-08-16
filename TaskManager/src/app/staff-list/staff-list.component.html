@@ -6,13 +6,15 @@
     </nav>
 </div>
 <div class="container-fluid">
+    <app-loading *ngIf="!CONTENT_LOADED"></app-loading>
     <div class="row">
         <app-staff-member
         *ngFor="let staff_member of staff_list"
         [staff_member]="staff_member"
         ></app-staff-member>
     </div>
-    <div class="row mt-1 mb-1">
+    <div class="row mt-1 mb-1"
+        *ngIf="CONTENT_LOADED">
         <div class="d-flex">
             <button
                 class="btn btn-danger rounded-circle ms-auto btn-add"

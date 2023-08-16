@@ -15,6 +15,7 @@ import { SearchResultComponent } from './staff-member-tasks/move-task/search-res
 import { HttpClientModule } from '@angular/common/http';
 import { MaxLengthComponent } from './shared/max-length/max-length.component';
 import { ErrorComponent } from './shared/error/error.component';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ErrorComponent } from './shared/error/error.component';
     MoveTaskComponent,
     SearchResultComponent,
     MaxLengthComponent,
-    ErrorComponent
+    ErrorComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
