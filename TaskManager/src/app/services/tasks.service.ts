@@ -77,18 +77,6 @@ export class TasksService {
     })
   }
 
-  addTask(task: Task) {
-    this.postTaskToDatabase(task);
-  }
-
-  updateTask(task: Task) {
-    this.putTaskToDatabase(task);
-  }
-
-  removeTask(id: number) {
-    this.deleteTaskFromDatabase(id);
-  }
-
   getFinishedTasksRatio(staff_member_id: number) {
     let all_staff_member_tasks = this.getStaffMemberTasks(staff_member_id);
     let all_staff_member_finished_tasks = all_staff_member_tasks.filter(task => {

@@ -86,7 +86,7 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
       }
     }
     this.task.staff_member_id = this.picked_staff_member!.id;
-    this.tasksService.updateTask(this.task);
+    this.tasksService.putTaskToDatabase(this.task);
     this.onCancel();
   }
 

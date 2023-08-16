@@ -59,7 +59,7 @@ export class EditTaskComponent implements OnInit {
         this.tasksService.getTask(this.task_id)!.status,
         this.tasksService.getTask(this.task_id)!.status_of_completion,
       )
-      this.tasksService.updateTask(task!);
+      this.tasksService.putTaskToDatabase(task!);
     }
     else{
       let task = new Task(
@@ -67,7 +67,7 @@ export class EditTaskComponent implements OnInit {
         this.taskForm.value['description'].trim(),
         this.staffMemberTasksComponent.staff_member_id
       );
-      this.tasksService.addTask(task);
+      this.tasksService.postTaskToDatabase(task);
     }
     this.onCancel();
   }

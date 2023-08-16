@@ -99,16 +99,4 @@ export class StaffListService {
       this.nextStaffListSearched(this.getStaffList());
     }
   }
-
-  addStaffMember(staff_member: StaffMember) {
-    this.postStaffMemberToDatabase(staff_member);
-  }
-
-  updateStaffMember(staff_member: StaffMember) {
-    this.putStaffMemberToDatabese(staff_member);
-  }
-
-  removeStaffMember(id: number) {
-    this.deleteStaffMemberFromDatabase(id);
-  }
 }

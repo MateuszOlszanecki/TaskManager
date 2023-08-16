@@ -22,7 +22,7 @@ export class StaffMemberComponent implements AfterContentChecked{
   }
 
   onRemove() {
-    this.staffListService.removeStaffMember(this.staff_member.id);
+    this.staffListService.deleteStaffMemberFromDatabase(this.staff_member.id);
   }
 
   onEdit() {
