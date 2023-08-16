@@ -49,10 +49,10 @@ export class TasksService {
   }
 
   nextTasksChanged() {
-    this.tasks_changed$.next(this.getAllTasks());
+    this.tasks_changed$.next(this.getTasks());
   }
 
-  getAllTasks() {
+  getTasks() {
     let tasks: Task[] = [];
     this.tasks.forEach(task => {
       tasks.push(task.deepCopy())
@@ -61,15 +61,15 @@ export class TasksService {
   }
 
   getTask(id: number) {
-    return this.getAllTasks().find(task => {return task.id === id});
+    return this.getTasks().find(task => {return task.id === id});
   }
   
   getTasksIndex(id: number) {
-    return this.getAllTasks().findIndex(task => {return task.id === id});
+    return this.getTasks().findIndex(task => {return task.id === id});
   }
 
   getStaffMemberTasks(staff_member_id: number) {
-    return this.getAllTasks().filter(task => {
+    return this.getTasks().filter(task => {
       return task.staff_member_id === staff_member_id;
     })
   }
