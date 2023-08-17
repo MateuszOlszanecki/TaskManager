@@ -86,8 +86,6 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
 
   onCancel() {
     this.router.navigate(['../../'], {relativeTo: this.route});
-    this.initSubmitForm();
-    this.initMoveForm();
   }
 
   ngOnDestroy() {

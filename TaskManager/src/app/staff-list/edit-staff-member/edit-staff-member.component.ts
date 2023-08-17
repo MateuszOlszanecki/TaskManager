@@ -81,6 +81,5 @@ export class EditStaffMemberComponent implements OnInit {
 
   onCancel() {
     this.router.navigate(['staff-list']);
-    this.initForm();
   }
 }

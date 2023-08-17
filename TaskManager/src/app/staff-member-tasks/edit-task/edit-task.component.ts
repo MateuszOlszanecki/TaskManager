@@ -79,6 +79,5 @@ export class EditTaskComponent implements OnInit {
     else{
       this.router.navigate(['..'], {relativeTo: this.route});
     }
-    this.initForm();
   }
 }

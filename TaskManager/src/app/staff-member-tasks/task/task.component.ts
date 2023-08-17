@@ -33,14 +33,13 @@ export class TaskComponent implements OnInit {
 
   onSubmit() {
     this.task.status = this.taskStatusForm.value['status'].trim();
-    this.task.status_of_completion = this.taskStatusForm.value['status_of_completion']; //this is number, so no trim()
+    this.task.status_of_completion = this.taskStatusForm.value['status_of_completion'];
     this.tasksService.putTaskToDatabase(this.task);
     this.onCancel();
   }
 
   onRemove() {
     this.tasksService.deleteTaskFromDatabase(this.task.id);
-    this.initForm();
   }
 
   onEdit() {
