@@ -8,7 +8,7 @@ import { StaffListService } from 'src/app/services/staff-list.service';
 })
 export class SearchResultComponent {
   @Input() staff_member_searched!: StaffMember;
-  @Input() picked_staff_member!: StaffMember | null;
+  @Input() picked_staff_member!: StaffMember;
 
   constructor(private staffListService: StaffListService) {}
 

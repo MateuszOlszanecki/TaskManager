@@ -20,9 +20,8 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
   task!: Task;
   searchForm!: FormGroup;
   staff_list_searched!: StaffMember[];
-  private subscription_staff_list_searched!: Subscription;
-  private subscription_staff_member_picked!: Subscription;
-  picked_staff_member!: StaffMember | null;
+  private subscription!: Subscription;
+  picked_staff_member!: StaffMember;
   moveForm!: FormGroup;
 
   constructor(private router: Router,
@@ -40,12 +39,7 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
       }
     )
     this.staff_list_searched = this.staffListService.getStaffList();
-    this.subscription_staff_list_searched = this.staffListService.staff_list_searched$.subscribe(
-      (staff_list_searched: StaffMember[]) => {
-        this.staff_list_searched = staff_list_searched;
-      }
-    )
-    this.subscription_staff_member_picked = this.staffListService.staff_member_picked$.subscribe(
+    this.subscription = this.staffListService.staff_member_picked$.subscribe(
       (picked_staff_member: StaffMember) => {
         this.picked_staff_member = picked_staff_member;
       }
@@ -65,7 +59,7 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
   }
 
   onSubmitSearchForm() {
-    this.staffListService.getSearchedStaffMembers(this.searchForm.value['searchText'].trim());
+    this.staff_list_searched = this.staffListService.getSearchedStaffMembers(this.searchForm.value['searchText'].trim());
     this.initSubmitForm();
   }
 
@@ -97,7 +91,6 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription_staff_list_searched.unsubscribe();
-    this.subscription_staff_member_picked.unsubscribe();
+    this.subscription.unsubscribe();
   }
 }

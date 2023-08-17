@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class StaffListService {
   staff_list_changed$ = new Subject<StaffMember[]>();
-  staff_list_searched$ = new Subject<StaffMember[]>();
   staff_member_picked$ = new Subject<StaffMember>();
 
   constructor(private dataStorageService: DataStorageService,
@@ -56,10 +55,6 @@ export class StaffListService {
     this.staff_list_changed$.next(this.getStaffList());
   }
 
-  nextStaffListSearched(searched_list: StaffMember[]) {
-    this.staff_list_searched$.next(searched_list);
-  }
-
   nextStaffMemberPicked(staff_member: StaffMember) {
     this.staff_member_picked$.next(staff_member);
   }
@@ -86,17 +81,17 @@ export class StaffListService {
         return str !== '';
     })
     if(searchArray.length === 1) {
-      this.nextStaffListSearched(this.getStaffList().filter(staff_member => {
+      return this.getStaffList().filter(staff_member => {
         return staff_member.name.toLowerCase().includes(searchArray[0]) || staff_member.surname.toLowerCase().includes(searchArray[0])
-      }));
+      });
     }
     else if(searchArray.length === 2) {
-      this.nextStaffListSearched(this.getStaffList().filter(staff_member => {
+      return this.getStaffList().filter(staff_member => {
         return staff_member.name.toLowerCase().includes(searchArray[0]) && staff_member.surname.toLowerCase().includes(searchArray[1])
-      }));
+      });
     }
     else {
-      this.nextStaffListSearched(this.getStaffList());
+      return this.getStaffList();
     }
   }
 }
