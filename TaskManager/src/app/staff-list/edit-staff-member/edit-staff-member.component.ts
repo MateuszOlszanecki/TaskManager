@@ -44,9 +44,9 @@ export class EditStaffMemberComponent implements OnInit {
     }
     
     this.staffMemberForm = new FormGroup({
-      'name': new FormControl(name, [Validators.required, CustomValidators.onlySpaces, CustomValidators.maxLengthInput]),
-      'surname': new FormControl(surname, [Validators.required, CustomValidators.onlySpaces, CustomValidators.maxLengthInput]),
-      'position': new FormControl(position, [Validators.required, CustomValidators.onlySpaces, CustomValidators.maxLengthInput])
+      'name': new FormControl(name, [Validators.required, Validators.maxLength(GlobalVariables.MAX_LENGTH_INPUT), CustomValidators.onlySpaces]),
+      'surname': new FormControl(surname, [Validators.required, Validators.maxLength(GlobalVariables.MAX_LENGTH_INPUT), CustomValidators.onlySpaces]),
+      'position': new FormControl(position, [Validators.required, Validators.maxLength(GlobalVariables.MAX_LENGTH_INPUT), CustomValidators.onlySpaces])
     })
   }
 
