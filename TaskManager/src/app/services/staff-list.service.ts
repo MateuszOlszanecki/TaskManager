@@ -71,10 +71,6 @@ export class StaffListService {
     return this.getStaffList().find(staff_member => {return staff_member.id === id});
   }
 
-  getStaffMemberIndex(id: number) {
-    return this.getStaffList().findIndex(staff_member => {return staff_member.id === id});
-  }
-
   getSearchedStaffMembers(search: string) {
     let searchArray: string[] = search.toLowerCase().split(' ');
     searchArray = searchArray.filter(str => {

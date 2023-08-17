@@ -18,7 +18,7 @@ export class StaffMemberComponent implements AfterContentChecked{
               private route: ActivatedRoute) {}
 
   ngAfterContentChecked() {
-    this.finished_to_all_tasks_ratio = this.tasksService.getFinishedTasksRatio(this.staff_member.id);
+    this.finished_to_all_tasks_ratio = this.tasksService.getFinishedToAllTasksRatio(this.staff_member.id);
   }
 
   onRemove() {

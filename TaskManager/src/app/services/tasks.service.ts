@@ -66,10 +66,6 @@ export class TasksService {
   getTask(id: number) {
     return this.getTasks().find(task => {return task.id === id});
   }
-  
-  getTasksIndex(id: number) {
-    return this.getTasks().findIndex(task => {return task.id === id});
-  }
 
   getStaffMemberTasks(staff_member_id: number) {
     return this.getTasks().filter(task => {
@@ -77,7 +73,7 @@ export class TasksService {
     })
   }
 
-  getFinishedTasksRatio(staff_member_id: number) {
+  getFinishedToAllTasksRatio(staff_member_id: number) {
     let all_staff_member_tasks = this.getStaffMemberTasks(staff_member_id);
     let all_staff_member_finished_tasks = all_staff_member_tasks.filter(task => {
       return task.status === GlobalVariables.TASK_FINISHED_STATUS;
