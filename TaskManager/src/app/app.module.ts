@@ -42,4 +42,4 @@ import { LoadingComponent } from './shared/loading/loading.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

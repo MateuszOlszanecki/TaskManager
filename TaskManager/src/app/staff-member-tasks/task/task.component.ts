@@ -4,7 +4,6 @@ import { Task } from 'src/app/models/task.model';
 import { TasksService } from 'src/app/services/tasks.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
-import { CustomValidators } from 'src/app/shared/custom-validators';
 
 @Component({
   selector: 'app-task',
@@ -12,7 +11,7 @@ import { CustomValidators } from 'src/app/shared/custom-validators';
 })
 export class TaskComponent implements OnInit {
   public TASK_NOT_STARTED_STATUS = GlobalVariables.TASK_NOT_STARTED_STATUS;
-  public TASK_STARTED_STATUS = GlobalVariables.TASK_STARTED_STATUS;
+  public TASK_IN_PROGRESS_STATUS = GlobalVariables.TASK_IN_PROGRESS_STATUS;
   public TASK_FINISHED_STATUS = GlobalVariables.TASK_FINISHED_STATUS;
   @Input() task!: Task;
   taskStatusForm!: FormGroup;
@@ -60,7 +59,7 @@ export class TaskComponent implements OnInit {
       case GlobalVariables.TASK_NOT_STARTED_STATUS:
         this.taskStatusForm.value['status_of_completion'] = 0;
         break;
-      case GlobalVariables.TASK_STARTED_STATUS:
+      case GlobalVariables.TASK_IN_PROGRESS_STATUS:
         this.taskStatusForm.value['status_of_completion'] = 5;
         break;
       case GlobalVariables.TASK_FINISHED_STATUS:
@@ -75,7 +74,7 @@ export class TaskComponent implements OnInit {
       this.taskStatusForm.value['status'] = GlobalVariables.TASK_NOT_STARTED_STATUS;
     }
     else if(0 < status_of_completion && status_of_completion < 100) {
-      this.taskStatusForm.value['status'] = GlobalVariables.TASK_STARTED_STATUS;
+      this.taskStatusForm.value['status'] = GlobalVariables.TASK_IN_PROGRESS_STATUS;
     }
     else if(status_of_completion === 100) {
       this.taskStatusForm.value['status'] = GlobalVariables.TASK_FINISHED_STATUS;

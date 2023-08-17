@@ -15,7 +15,7 @@ import { TasksService } from 'src/app/services/tasks.service';
 })
 export class MoveTaskComponent implements OnInit, OnDestroy {
   public TASK_NOT_STARTED_STATUS = GlobalVariables.TASK_NOT_STARTED_STATUS;
-  public TASK_STARTED_STATUS = GlobalVariables.TASK_STARTED_STATUS;
+  public TASK_IN_PROGRESS_STATUS = GlobalVariables.TASK_IN_PROGRESS_STATUS;
   public TASK_FINISHED_STATUS = GlobalVariables.TASK_FINISHED_STATUS;
   task!: Task;
   searchForm!: FormGroup;
@@ -77,7 +77,7 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
         case GlobalVariables.TASK_NOT_STARTED_STATUS:
           this.task.status_of_completion = 0;
           break;
-        case GlobalVariables.TASK_STARTED_STATUS:
+        case GlobalVariables.TASK_IN_PROGRESS_STATUS:
           this.task.status_of_completion = 5;
           break;
         case GlobalVariables.TASK_FINISHED_STATUS:

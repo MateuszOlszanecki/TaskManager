@@ -62,18 +62,18 @@ export class EditStaffMemberComponent implements OnInit {
     return this.staffMemberForm.value['position'].trim().length;
   }
 
-  onSubmit(){
+  onSubmit() {
     let staff_member = new StaffMember(
       0,
       this.staffMemberForm.value['name'].trim(),
       this.staffMemberForm.value['surname'].trim(),
       this.staffMemberForm.value['position'].trim()
     );
-    if(this.edit_mode){
+    if(this.edit_mode) {
       staff_member.id = this.staff_member_id;
       this.staffListService.putStaffMemberToDatabese(staff_member);
     }
-    else{
+    else {
       this.staffListService.postStaffMemberToDatabase(staff_member);
     }
     this.onCancel();

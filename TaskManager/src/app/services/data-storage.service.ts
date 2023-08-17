@@ -10,7 +10,7 @@ import { Task } from '../models/task.model';
 export class DataStorageService {
   private API_LINK = 'http://localhost:8080/api';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getStaffList() {
     return this.http

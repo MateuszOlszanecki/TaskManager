@@ -19,7 +19,7 @@
                     <select class="form-select" formControlName="status"
                             (ngModelChange)="onSelectChange()">
                         <option [value]="TASK_NOT_STARTED_STATUS" [selected]="taskStatusForm.value['status'] === TASK_NOT_STARTED_STATUS">{{ TASK_NOT_STARTED_STATUS }}</option>
-                        <option [value]="TASK_STARTED_STATUS" [selected]="taskStatusForm.value['status'] === TASK_STARTED_STATUS">{{ TASK_STARTED_STATUS }}</option>
+                        <option [value]="TASK_IN_PROGRESS_STATUS" [selected]="taskStatusForm.value['status'] === TASK_IN_PROGRESS_STATUS">{{ TASK_IN_PROGRESS_STATUS }}</option>
                         <option [value]="TASK_FINISHED_STATUS" [selected]="taskStatusForm.value['status'] === TASK_FINISHED_STATUS">{{ TASK_FINISHED_STATUS }}</option>
                     </select>
                 </div>

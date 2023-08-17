@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, Input, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, Input } from '@angular/core';
 import { StaffMember } from 'src/app/models/staff-member.model';
 import { StaffListService } from 'src/app/services/staff-list.service';
 import { Router, ActivatedRoute } from '@angular/router';
