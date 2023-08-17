@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TasksService } from 'src/app/services/tasks.service';
-import { StaffMemberTasksComponent } from '../staff-member-tasks.component';
 import { Task } from 'src/app/models/task.model';
 import { CustomValidators } from 'src/app/shared/custom-validators';
 import { GlobalVariables } from 'src/app/shared/global-variables';
@@ -14,20 +13,25 @@ import { GlobalVariables } from 'src/app/shared/global-variables';
 export class EditTaskComponent implements OnInit {
   taskForm!: FormGroup;
   task_id!: number;
+  staff_member_id!: number;
   edit_mode!: boolean;
 
   public MAX_LENGTH_TEXT_AREA = GlobalVariables.MAX_LENGTH_TEXT_AREA;
   
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private tasksService: TasksService,
-              private staffMemberTasksComponent: StaffMemberTasksComponent) {}
+              private tasksService: TasksService) {}
 
   ngOnInit() {
+    this.route.parent!.params.subscribe(
+      (params: Params) => {
+        this.staff_member_id = +params['staff_member_id'];
+      }
+    )
     this.route.params.subscribe(
       (params: Params) => {
-        this.task_id = +params['task_id']
-        this.edit_mode = params['task_id'] != null
+        this.task_id = +params['task_id'];
+        this.edit_mode = params['task_id'] != null;
         this.initForm();
       }
     )
@@ -65,7 +69,7 @@ export class EditTaskComponent implements OnInit {
       let task = new Task(
         0,
         this.taskForm.value['description'].trim(),
-        this.staffMemberTasksComponent.staff_member_id
+        this.staff_member_id
       );
       this.tasksService.postTaskToDatabase(task);
     }
