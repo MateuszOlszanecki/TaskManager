@@ -41,11 +41,13 @@ export class TasksService {
     })
   }
 
-  putTaskToDatabase(task: Task) {
+  putTaskToDatabase(task: Task, next_tasks_changes: boolean = true) {
     this.dataStorageService.putTask(task).subscribe({
       next: () => {
         this.tasks[this.getTaskIndex(task.id)] = task;
-        this.nextTasksChanged();
+        if(next_tasks_changes) {
+          this.nextTasksChanged();
+        }
       },
       error: () => this.handleError()
     })

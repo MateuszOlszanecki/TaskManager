@@ -5,13 +5,13 @@
                 <div class="col-9">
                     Treść zadania:
                 </div>
-                <button type="button" class="btn btn-primary col-3" (click)="onEdit()">Edytuj</button>
+                <button type="button" class="btn btn-primary col-3" (click)="onEdit()" [disabled]="form_changed">Edytuj</button>
             </div>
             <div class="row mb-1">
                 <div class="col-9 fst-italic">
                     {{ task.description }}
                 </div>
-                <button type="button" class="btn btn-secondary col-3" (click)="onMove()">Przenieś</button>
+                <button type="button" class="btn btn-secondary col-3" (click)="onMove()" [disabled]="form_changed">Przenieś</button>
             </div>
             <div class="row mb-1">
                 <div class="col-3">
@@ -39,7 +39,15 @@
                         name="status_of_completion">
                 </div>
                 <div class="col-2 text-end">[{{ taskStatusForm.value['status_of_completion'] }}]</div>
-                <button type="submit" class="btn btn-success col-3" [disabled]="!taskStatusForm.valid">Zapisz</button>
+                <button type="submit" class="btn btn-success col-3" [disabled]="!form_changed">Zapisz</button>
+            </div>
+            <div
+                *ngIf="form_changed"
+                class="p-3 text-warning-emphasis bg-warning-subtle border border-warning-subtle card mt-3">
+                <div class="d-flex align-items-center" style="height: 32px;">
+                    <div>Zapisz aby móc edytować lub przenieść zadanie.</div>
+                    <button class="btn btn-warning ms-auto" type="button" (click)="onCancel()">Cofnij zmiany</button>
+                </div>
             </div>
         </div>
     </div>

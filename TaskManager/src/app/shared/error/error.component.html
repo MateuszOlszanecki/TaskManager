@@ -1,4 +1,4 @@
-<div class="container-fixed">
+<div class="container-fixed mb-3">
     <nav class="navbar navbar-dark header">
         <div class="container-fluid">
             <h5 class="navbar-brand">Błąd</h5>
@@ -6,7 +6,7 @@
     </nav>
 </div>
 <div class="container-fluid">
-    <div class="p-3 text-danger-emphasis bg-danger-subtle border border-danger-subtle card mt-1">
+    <div class="p-3 text-danger-emphasis bg-danger-subtle border border-danger-subtle card">
         <div class="d-flex align-items-center" style="height: 32px;">
             <div *ngIf="auto_refresh">Wystąpił błąd, strona zostanie odświeżona za {{ counter_seconds }} sekund.</div>
             <div *ngIf="!auto_refresh">Wystąpił błąd.</div>

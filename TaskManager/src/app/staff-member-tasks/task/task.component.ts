@@ -15,6 +15,7 @@ export class TaskComponent implements OnInit {
   public TASK_FINISHED_STATUS = GlobalVariables.TASK_FINISHED_STATUS;
   @Input() task!: Task;
   taskStatusForm!: FormGroup;
+  form_changed!: boolean;
 
   constructor(private tasksService: TasksService,
               private route: ActivatedRoute,
@@ -25,6 +26,7 @@ export class TaskComponent implements OnInit {
   }
 
   initForm() {
+    this.form_changed = false;
     this.taskStatusForm = new FormGroup({
       'status': new FormControl(this.task.status),
       'status_of_completion': new FormControl(this.task.status_of_completion)
@@ -34,8 +36,8 @@ export class TaskComponent implements OnInit {
   onSubmit() {
     this.task.status = this.taskStatusForm.value['status'].trim();
     this.task.status_of_completion = this.taskStatusForm.value['status_of_completion'];
-    this.tasksService.putTaskToDatabase(this.task);
-    this.onCancel();
+    this.tasksService.putTaskToDatabase(this.task, false);
+    this.initForm();
   }
 
   onRemove() {
@@ -44,12 +46,10 @@ export class TaskComponent implements OnInit {
 
   onEdit() {
     this.router.navigate(['edit', this.task.id], {relativeTo: this.route});
-    this.onCancel();
   }
 
   onMove() {
     this.router.navigate(['move', this.task.id], {relativeTo: this.route});
-    this.onCancel();
   }
 
   onSelectChange() {
@@ -65,6 +65,13 @@ export class TaskComponent implements OnInit {
         this.taskStatusForm.value['status_of_completion'] = 100;
         break;
     }
+    if(this.taskStatusForm.value['status'] === this.task.status && 
+       this.taskStatusForm.value['status_of_completion'] === this.task.status_of_completion) {
+      this.form_changed = false;
+    }
+    else {
+      this.form_changed = true;
+    }
   }
 
   onRangeChange() {
@@ -77,6 +84,13 @@ export class TaskComponent implements OnInit {
     }
     else if(status_of_completion === 100) {
       this.taskStatusForm.value['status'] = GlobalVariables.TASK_FINISHED_STATUS;
+    }
+    if(this.taskStatusForm.value['status'] === this.task.status && 
+       this.taskStatusForm.value['status_of_completion'] === this.task.status_of_completion) {
+      this.form_changed = false;
+    }
+    else {
+      this.form_changed = true;
     }
   }
   
