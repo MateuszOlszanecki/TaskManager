@@ -25,11 +25,8 @@ CREATE TABLE `tasks` (
 INSERT INTO `staff_list` VALUES
 (0, 'Jan', 'Kowalski', 'Programista'),
 (0, 'Tomasz', 'Nowak', 'Programista'),
-(0, 'Julia', 'Nowacka', 'Analityk biznesowy'),
-(0, 'Tomek', 'Kot', 'Informatyk'),
-(0, 'Adam', 'Drzewo', 'Informatyk'),
-(0, 'Alicja', 'Biała', 'Informatyk'),
-(0, 'Wiktor', 'Krzesło', 'Informatyk');
+(0, 'Julia', 'Nowacka', 'Analityk Biznesowy'),
+(0, 'Mateusz', 'Koń', 'Full-Stack Developer');
     
 INSERT INTO `tasks` VALUES
 (0, 'Jan Kowalski Zadanie 1', 1, 'Nie rozpoczęte', 0),
