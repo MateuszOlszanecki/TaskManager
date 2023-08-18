@@ -7,17 +7,17 @@
                     <div class="card-body">
                         <h5 class="card-title mb-3 fw-bold">{{ edit_mode ? 'Edytuj pracownika' : 'Dodaj pracownika' }}</h5>
                         <div class="form-floating mb-1">
-                            <input type="text" class="form-control" id="name" placeholder="name" formControlName="name">
+                            <input type="text" class="form-control" id="name" placeholder="name" autocomplete="off" formControlName="name">
                             <label for="name">Imię:</label>
                             <app-max-length [length]="nameLength()" [maxLength]="MAX_LENGTH_INPUT"></app-max-length>
                         </div>
                         <div class="form-floating mb-1">
-                            <input type="text" class="form-control" id="surname" placeholder="surname" formControlName="surname">
+                            <input type="text" class="form-control" id="surname" placeholder="surname" autocomplete="off" formControlName="surname">
                             <label for="surname">Nazwisko:</label>
                             <app-max-length [length]="surnameLength()" [maxLength]="MAX_LENGTH_INPUT"></app-max-length>
                         </div>
                         <div class="form-floating mb-1">
-                            <input type="text" class="form-control" id="position" placeholder="position" formControlName="position">
+                            <input type="text" class="form-control" id="position" placeholder="position" autocomplete="off" formControlName="position">
                             <label for="position">Stanowisko:</label>
                             <app-max-length [length]="positionLength()" [maxLength]="MAX_LENGTH_INPUT"></app-max-length>
                         </div>

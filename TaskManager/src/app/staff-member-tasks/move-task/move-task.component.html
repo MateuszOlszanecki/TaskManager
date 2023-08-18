@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <form [formGroup]="searchForm" (ngSubmit)="onSubmitSearchForm()">
                         <div class="form-floating mb-1">
-                            <input type="text" class="form-control" id="name" placeholder="name" formControlName="searchText">
+                            <input type="text" class="form-control" id="name" placeholder="name" autocomplete="on" formControlName="searchText">
                             <label for="name">Wyszukaj pracownika:</label>
                         </div>
                         <div class="row-fluid mb-1">
@@ -33,9 +33,9 @@
                             </div>
                         </div>
                         <div class="row mb-1">
-                            <label class="col-5">Nowy status zadania:</label>
+                            <div class="col-5">Nowy status zadania:</div>
                             <div class="col-7">
-                                <select class="form-select" formControlName="status">
+                                <select class="form-select" formControlName="status" name="status">
                                     <option [value]="TASK_NOT_STARTED_STATUS" [selected]="task.status === TASK_NOT_STARTED_STATUS">{{ TASK_NOT_STARTED_STATUS }}</option>
                                     <option [value]="TASK_IN_PROGRESS_STATUS" [selected]="task.status === TASK_IN_PROGRESS_STATUS">{{ TASK_IN_PROGRESS_STATUS }}</option>
                                     <option [value]="TASK_FINISHED_STATUS" [selected]="task.status === TASK_FINISHED_STATUS">{{ TASK_FINISHED_STATUS }}</option>
