@@ -5,12 +5,22 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './error.component.html'
 })
 export class ErrorComponent implements OnInit {
-  counter: number = 10;
+  counter_seconds: number = 5;
+  auto_refresh = true;
+  interval!: ReturnType<typeof setInterval>;
 
   ngOnInit() {
-    setInterval(() => this.counter--, 1000);
-    setInterval(() => {
-      window.location.reload();
-    }, this.counter * 1000);
+    this.interval = setInterval(() => {
+      this.counter_seconds--;
+      if(this.counter_seconds === 0) {
+        clearInterval(this.interval);
+        window.location.reload();
+      }
+    }, 1000)
+  }
+  
+  onCancel() {
+    clearInterval(this.interval);
+    this.auto_refresh = false;
   }
 }
