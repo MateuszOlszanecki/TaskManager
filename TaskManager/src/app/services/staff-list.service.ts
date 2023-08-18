@@ -32,21 +32,31 @@ export class StaffListService {
 
   postStaffMemberToDatabase(staff_member: StaffMember) {
     this.dataStorageService.postStaffMember(staff_member).subscribe({
-      next: () => this.getStaffListFromDatabase(),
+      next: (id) => {
+        staff_member.id = id;
+        this.staff_list.push(staff_member);
+        this.nextStaffListChanged();
+      },
       error: () => this.handleError()
     });
   }
 
   putStaffMemberToDatabese(staff_member: StaffMember) {
     this.dataStorageService.putStaffMember(staff_member).subscribe({
-      next: () => this.getStaffListFromDatabase(),
+      next: () => {
+        this.staff_list[this.getStaffMemberIndex(staff_member.id)] = staff_member;
+        this.nextStaffListChanged();
+      },
       error: () => this.handleError()
     });
   }
 
   deleteStaffMemberFromDatabase(id: number) {
     this.dataStorageService.deleteStaffMember(id).subscribe({
-      next: () => this.getStaffListFromDatabase(),
+      next: () => {
+        this.staff_list.splice(this.getStaffMemberIndex(id), 1);
+        this.nextStaffListChanged();
+      },
       error: () => this.handleError()
     });
   }
@@ -69,6 +79,10 @@ export class StaffListService {
 
   getStaffMember(id: number) {
     return this.getStaffList().find(staff_member => {return staff_member.id === id});
+  }
+
+  getStaffMemberIndex(id: number) {
+    return this.getStaffList().findIndex(staff_member => {return staff_member.id === id});
   }
 
   getSearchedStaffMembers(search: string) {

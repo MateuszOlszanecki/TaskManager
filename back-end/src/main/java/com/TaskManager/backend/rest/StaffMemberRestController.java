@@ -33,19 +33,17 @@ public class StaffMemberRestController {
     }
 
     @PostMapping("/staff-list")
-    public StaffMember addStaffMember(@RequestBody StaffMember staff_member) {
+    public int addStaffMember(@RequestBody StaffMember staff_member) {
         //id = 0, because when it is 0, then we create a new row with AUTO_INCREMENT id
         staff_member.setId(0);
         StaffMember db_staff_member = staffMemberService.save(staff_member);
 
-        return db_staff_member;
+        return db_staff_member.getId();
     }
 
     @PutMapping("/staff-list")
-    public StaffMember updateStaffMember(@RequestBody StaffMember staff_member) {
-        StaffMember db_staff_member = staffMemberService.save(staff_member);
-
-        return db_staff_member;
+    public void updateStaffMember(@RequestBody StaffMember staff_member) {
+        staffMemberService.save(staff_member);
     }
 
     @DeleteMapping("/staff-list/{id}")

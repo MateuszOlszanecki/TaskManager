@@ -29,19 +29,17 @@ public class TaskRestController {
     }
 
     @PostMapping("/tasks")
-    public Task addTask(@RequestBody Task task) {
+    public int addTask(@RequestBody Task task) {
         //id = 0, because when it is 0, then we create a new row with AUTO_INCREMENT id
         task.setId(0);
         Task db_task = taskService.save(task);
 
-        return db_task;
+        return db_task.getId();
     }
 
     @PutMapping("/tasks")
-    public Task updateTask(@RequestBody Task task) {
-        Task db_task = taskService.save(task);
-
-        return db_task;
+    public void updateTask(@RequestBody Task task) {
+        taskService.save(task);
     }
 
     @DeleteMapping("/tasks/{id}")

@@ -32,21 +32,31 @@ export class TasksService {
 
   postTaskToDatabase(task: Task) {
     this.dataStorageService.postTask(task).subscribe({
-      next: () => this.getTasksFromDatabase(),
+      next: (id) => {
+        task.id = id;
+        this.tasks.push(task);
+        this.nextTasksChanged();
+      },
       error: () => this.handleError()
     })
   }
 
   putTaskToDatabase(task: Task) {
     this.dataStorageService.putTask(task).subscribe({
-      next: () => this.getTasksFromDatabase(),
+      next: () => {
+        this.tasks[this.getTaskIndex(task.id)] = task;
+        this.nextTasksChanged();
+      },
       error: () => this.handleError()
     })
   }
 
   deleteTaskFromDatabase(id: number) {
     this.dataStorageService.deleteTask(id).subscribe({
-      next: () => this.getTasksFromDatabase(),
+      next: () => {
+        this.tasks.splice(this.getTaskIndex(id), 1);
+        this.nextTasksChanged();
+      },
       error: () => this.handleError()
     })
   }
@@ -65,6 +75,10 @@ export class TasksService {
 
   getTask(id: number) {
     return this.getTasks().find(task => {return task.id === id});
+  }
+
+  getTaskIndex(id: number) {
+    return this.getTasks().findIndex(task => {return task.id === id});
   }
 
   getStaffMemberTasks(staff_member_id: number) {

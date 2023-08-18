@@ -55,13 +55,13 @@ export class DataStorageService {
 
   postStaffMember(staff_member: StaffMember) {
     return this.http
-    .post(this.API_LINK + '/staff-list', staff_member)
+    .post<number>(this.API_LINK + '/staff-list', staff_member)
     .pipe(take(1));
   }
 
   postTask(task: Task) {
     return this.http
-    .post(this.API_LINK + '/tasks', task)
+    .post<number>(this.API_LINK + '/tasks', task)
     .pipe(take(1));
   }
 
