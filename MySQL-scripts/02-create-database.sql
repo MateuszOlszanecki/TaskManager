@@ -23,19 +23,19 @@ CREATE TABLE `tasks` (
 );
 
 INSERT INTO `staff_list` VALUES
-(0, 'Jan', 'Kowalski', 'Software Developer'),
-(0, 'Tomasz', 'Nowak', 'Software Developer'),
-(0, 'Julia', 'Nowacka', 'Business Analyst'),
-(0, 'Mateusz', 'Kot', 'Full-Stack Developer');
+(1, 'John', 'Wilson', 'Software Developer'),
+(2, 'Tom', 'Brown', 'Software Developer'),
+(3, 'Jennifer', 'Taylor', 'Business Analyst'),
+(4, 'Emma', 'Davies', 'Full-Stack Developer');
     
 INSERT INTO `tasks` VALUES
-(0, 'Jan Kowalski Task 1', 1, 'Not started', 0),
-(0, 'Jan Kowalski Task 2', 1, 'In progress', 65),
-(0, 'Jan Kowalski Task 3', 1, 'Finished', 100),
-(0, 'Tomasz Nowak Task 1', 2, 'Finished', 100),
-(0, 'Tomasz Nowak Task 2', 2, 'Finished', 100),
-(0, 'Tomasz Nowak Task 3', 2, 'Finished', 100),
-(0, 'Julia Nowacka Task 1', 3, 'In progress', 55),
-(0, 'Julia Nowacka Task 2', 3, 'Finished', 100),
-(0, 'Julia Nowacka Task 3', 3, 'Finished', 100),
-(0, 'Julia Nowacka Task 4', 3, 'In progress', 20);
+(1, 'Task 1', 1, 'Not started', 0),
+(2, 'Task 2', 1, 'In progress', 65),
+(3, 'Task 3', 1, 'Finished', 100),
+(4, 'Task 4', 2, 'Finished', 100),
+(5, 'Task 5', 2, 'Finished', 100),
+(6, 'Task 6', 2, 'Finished', 100),
+(7, 'Task 7', 3, 'In progress', 55),
+(8, 'Task 8', 3, 'Finished', 100),
+(9, 'Task 9', 3, 'Finished', 100),
+(10, 'Task 10', 3, 'Not started', 0);
