@@ -10,7 +10,7 @@
         <div class="d-flex align-items-center" style="height: 32px;">
             <div *ngIf="auto_refresh">Error occured, automatic reload in {{ counter_seconds }} s.</div>
             <div *ngIf="!auto_refresh">Error occured, reload the page.</div>
-            <div *ngIf="auto_refresh" class="bi bi-x-square ms-auto fs-2" style="cursor: pointer;" (click)="onCancel()"></div>
+            <button *ngIf="auto_refresh" class="btn btn btn-outline-dark bi bi-x-lg ms-auto" (click)="onCancel()"></button>
         </div>
     </div>
 </div>
