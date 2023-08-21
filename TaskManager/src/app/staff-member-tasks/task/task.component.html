@@ -3,15 +3,15 @@
         <div class="card-body">
             <div class="row mb-1">
                 <div class="col-9">
-                    Treść zadania:
+                    Description:
                 </div>
-                <button type="button" class="btn btn-primary col-3" (click)="onEdit()" [disabled]="form_changed">Edytuj</button>
+                <button type="button" class="btn btn-primary col-3" (click)="onEdit()" [disabled]="form_changed">Edit</button>
             </div>
             <div class="row mb-1">
                 <div class="col-9 fst-italic">
                     {{ task.description }}
                 </div>
-                <button type="button" class="btn btn-secondary col-3" (click)="onMove()" [disabled]="form_changed">Przenieś</button>
+                <button type="button" class="btn btn-secondary col-3" (click)="onMove()" [disabled]="form_changed">Move</button>
             </div>
             <div class="row mb-1">
                 <div class="col-3">
@@ -25,11 +25,11 @@
                         <option [value]="TASK_FINISHED_STATUS" [selected]="taskStatusForm.value['status'] === TASK_FINISHED_STATUS">{{ TASK_FINISHED_STATUS }}</option>
                     </select>
                 </div>
-                <button type="button" class="btn btn-danger col-3" (click)="onRemove()">Usuń</button>
+                <button type="button" class="btn btn-danger col-3" (click)="onRemove()">Remove</button>
             </div>
             <div class="row mb-1">
                 <div class="col-3">
-                    Zaawansowanie:
+                    Advancement:
                 </div>
                 <div class="col-4">
                     <input type="range" class="col-12" min="0" max="100" step="5"
@@ -39,14 +39,14 @@
                         name="status_of_completion">
                 </div>
                 <div class="col-2 text-end">[{{ taskStatusForm.value['status_of_completion'] }}]</div>
-                <button type="submit" class="btn btn-success col-3" [disabled]="!form_changed">Zapisz</button>
+                <button type="submit" class="btn btn-success col-3" [disabled]="!form_changed">Save</button>
             </div>
             <div
                 *ngIf="form_changed"
                 class="p-3 text-warning-emphasis bg-warning-subtle border border-warning-subtle card mt-3">
                 <div class="d-flex align-items-center" style="height: 32px;">
-                    <div>Zapisz aby móc edytować lub przenieść zadanie.</div>
-                    <button class="btn btn-warning ms-auto" type="button" (click)="onCancel()">Cofnij zmiany</button>
+                    <div>Save to enable edit and move.</div>
+                    <button class="btn btn-warning ms-auto" type="button" (click)="onCancel()">Discard changes</button>
                 </div>
             </div>
         </div>

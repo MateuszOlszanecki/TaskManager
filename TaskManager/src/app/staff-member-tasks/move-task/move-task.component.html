@@ -7,14 +7,14 @@
                     <form [formGroup]="searchForm" (ngSubmit)="onSubmitSearchForm()">
                         <div class="form-floating mb-1">
                             <input type="text" class="form-control" id="name" placeholder="name" autocomplete="on" formControlName="searchText">
-                            <label for="name">Wyszukaj pracownika:</label>
+                            <label for="name">Search staff member:</label>
                         </div>
                         <div class="row-fluid mb-1">
-                            <button type="submit" class="btn btn-primary col-3" [disabled]="!searchForm.valid">Szukaj</button>
+                            <button type="submit" class="btn btn-primary col-3" [disabled]="!searchForm.valid">Search</button>
                         </div>
                     </form>
                     <div class="row mb-1">
-                        <div class="col">Wynik wyszukiwania:</div>
+                        <div class="col">Search results:</div>
                     </div>
                     <div class="overflow-y-auto" style="height: 150px;">
                         <app-search-result
@@ -26,14 +26,14 @@
                     <form [formGroup]="moveForm" (ngSubmit)="onSubmitMoveForm()">
                         <div class="row mb-3">
                             <div class="col-5">
-                                Wybrano pracownika:
+                                Picked staff member:
                             </div>
                             <div class="col fw-bold">
                                 {{picked_staff_member ? picked_staff_member.name + " " + picked_staff_member.surname : ""}}
                             </div>
                         </div>
                         <div class="row mb-1">
-                            <div class="col-5">Nowy status zadania:</div>
+                            <div class="col-5">New status for task:</div>
                             <div class="col-7">
                                 <select class="form-select" formControlName="status" name="status">
                                     <option [value]="TASK_NOT_STARTED_STATUS" [selected]="task.status === TASK_NOT_STARTED_STATUS">{{ TASK_NOT_STARTED_STATUS }}</option>
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="row-fluid">
-                            <button type="submit" class="btn btn-success col-6" [disabled]="!picked_staff_member">Zatwierdź przeniesienie</button>
+                            <button type="submit" class="btn btn-success col-3" [disabled]="!picked_staff_member">Submit</button>
                             <button type="button" class="btn btn-danger col-3" (click)="onCancel()">Anuluj</button>
                         </div>
                     </form>

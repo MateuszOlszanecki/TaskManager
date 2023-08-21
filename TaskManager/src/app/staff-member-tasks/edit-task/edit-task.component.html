@@ -5,16 +5,16 @@
             <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title mb-3 fw-bold">{{ edit_mode ? 'Edytuj zadanie' : 'Dodaj zadanie' }}</h5>
+                        <h5 class="card-title mb-3 fw-bold">{{ edit_mode ? 'Edit' : 'Add' }} task</h5>
                         <div class="form-floating mb-1">
                             <textarea class="form-control mb-1" rows="5" style="min-height: 138px; max-height: 338px;"
                                 id="description" placeholder="description" formControlName="description"></textarea>
-                            <label for="description">Treść zadania:</label>
+                            <label for="description">Description:</label>
                         </div>
                         <app-max-length [length]="descriptionLength()" [maxLength]="MAX_LENGTH_TEXT_AREA"></app-max-length>
                         <div class="row-fluid">
                             <button type="submit" class="btn btn-primary col-3" [disabled]="!taskForm.valid">OK</button>
-                            <button type="button" class="btn btn-danger col-3" (click)="onCancel()">Anuluj</button>
+                            <button type="button" class="btn btn-danger col-3" (click)="onCancel()">Cancel</button>
                         </div>
                     </div>
                 </div>
