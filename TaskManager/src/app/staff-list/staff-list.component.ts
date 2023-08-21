@@ -36,6 +36,10 @@ export class StaffListComponent implements OnInit, OnDestroy {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 
+  onReload() {
+    window.location.reload();
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
