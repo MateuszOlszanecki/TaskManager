@@ -8,7 +8,7 @@
 <div class="container-fluid">
     <div class="p-3 text-danger-emphasis bg-danger-subtle border border-danger-subtle card">
         <div class="d-flex align-items-center" style="height: 32px;">
-            <div *ngIf="auto_refresh">Wystąpił błąd, strona zostanie odświeżona automatycznie za {{ counter_seconds }} sekund.</div>
+            <div *ngIf="auto_refresh">Wystąpił błąd, strona zostanie odświeżona automatycznie za {{ counter_seconds }} s.</div>
             <div *ngIf="!auto_refresh">Wystąpił błąd, odśwież stronę.</div>
             <div *ngIf="auto_refresh" class="bi bi-x-square ms-auto fs-2" style="cursor: pointer;" (click)="onCancel()"></div>
         </div>
