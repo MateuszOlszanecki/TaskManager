@@ -40,6 +40,10 @@ export class StaffMemberTasksComponent implements OnInit, OnDestroy {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 
+  onReload() {
+    window.location.reload();
+  }
+
   onBack() {
     this.router.navigate(['staff-list']);
   }

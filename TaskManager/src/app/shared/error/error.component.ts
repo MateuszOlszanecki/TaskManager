@@ -18,6 +18,10 @@ export class ErrorComponent implements OnInit {
       }
     }, 1000)
   }
+
+  onReload() {
+    window.location.reload();
+  }
   
   onCancel() {
     clearInterval(this.interval);

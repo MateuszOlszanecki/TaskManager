@@ -2,7 +2,10 @@
     <nav class="navbar navbar-dark header">
         <div class="container-fluid">
             <h5 class="navbar-brand overflow-x-auto">{{ picked_staff_member.name }} {{ picked_staff_member.surname }} - tasks</h5>
-            <button class="btn btn btn-outline-light bi bi-arrow-left ms-auto" (click)="onBack()"></button>
+            <div class="ms-auto">
+                <button class="btn btn btn-outline-light bi bi-arrow-left me-1" (click)="onBack()"></button>
+                <button class="btn btn btn-outline-light bi bi-arrow-clockwise" (click)="onReload()"></button>
+            </div>
         </div>
     </nav>
 </div>
