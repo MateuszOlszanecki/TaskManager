@@ -22,8 +22,10 @@ export class StaffListComponent implements OnInit, OnDestroy {
     this.staff_list = this.staffListService.getStaffList();
     this.subscription = this.staffListService.staff_list_changed$.subscribe(
       (staff_list: StaffMember[]) => {
-        GlobalVariables.CONTENT_LOADED = true;
-        this.CONTENT_LOADED = GlobalVariables.CONTENT_LOADED;
+        if(!GlobalVariables.CONTENT_LOADED) {
+          GlobalVariables.CONTENT_LOADED = true;
+          this.CONTENT_LOADED = GlobalVariables.CONTENT_LOADED;
+        }
         
         this.staff_list = staff_list;
       }
