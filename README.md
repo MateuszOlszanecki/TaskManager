@@ -16,6 +16,8 @@ Loading database (shown at the start):
 
 Possible error (every 5 second the page will reload):
 ![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/664b26e6-e3f6-4fb2-a30c-e8713fe47c71)
+
+Possible error (after disabling auto refresh):
 ![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/0da3db4a-246b-413a-8e20-f2a53d4d8cba)
 
 ---
