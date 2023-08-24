@@ -34,17 +34,17 @@ Edit employee (after clicking "Edit" button on any employee):
 ---
 
 Tasks screen (after clicking "Tasks" button on any employee):
-![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/4dc26f60-5a9f-4653-9fdb-7f004dc1f960)
+![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/e1e90c0a-59e0-44ae-bc2f-1817289933fe)
 
 Add task (after clicking "+" button):
-![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/90e06c8b-94b2-4f0f-b990-30ce8e2a754d)
+![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/86b66507-dbcc-4553-af30-836e82a14502)
 
 Edit task (after clicking "Edit" button on a task):
-![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/a31baf7d-d0f3-4569-ac8c-49b4e65a5b8a)
+![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/d887337c-092c-4543-bf84-d564c00c151d)
 
 Move task (after clicking "Move" button on a task):
-![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/6379e71a-3f21-4049-ac42-7897e4b40e3b)
-![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/878be4ae-c06c-4557-b27e-e3a78f6868e4)
+![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/a9ae28c5-6b03-467f-939f-b0a3875ac89b)
+![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/5d4cf0d8-eb5a-4e44-b1b9-ab3dd8e61aaa)
 
 Edit task progress (status/advancement):
-![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/88df3d0f-1e79-4f39-ae71-79aac4e7fb3c)
+![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/ba5edd9a-57e8-456d-b106-4e2a3c8be4ae)
