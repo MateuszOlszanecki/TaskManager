@@ -46,5 +46,5 @@ Move task (after clicking "Move" button on a task):
 ![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/a9ae28c5-6b03-467f-939f-b0a3875ac89b)
 ![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/5d4cf0d8-eb5a-4e44-b1b9-ab3dd8e61aaa)
 
-Edit task progress (status/advancement):
+Edit task progress (status/progress):
 ![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/ba5edd9a-57e8-456d-b106-4e2a3c8be4ae)
