@@ -5,8 +5,7 @@ export class Task {
         public id: number,
         public description: string,
         public staff_member_id: number,
-        public status: string = GlobalVariables.TASK_NOT_STARTED_STATUS,
-        public status_of_completion: number = 0
+        public progress: number = 0
     ) {}
 
     public deepCopy() {
@@ -14,8 +13,17 @@ export class Task {
             this.id,
             this.description,
             this.staff_member_id,
-            this.status,
-            this.status_of_completion
+            this.progress
         );
+    }
+
+    public getStatus() {
+        switch(this.progress) {
+          case 0:
+            return GlobalVariables.TASK_NOT_STARTED_STATUS;
+          case 100:
+            return GlobalVariables.TASK_FINISHED_STATUS;
+        }
+        return GlobalVariables.TASK_IN_PROGRESS_STATUS;
     }
 }

@@ -54,7 +54,7 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
 
   initMoveForm() {
     this.moveForm = new FormGroup({
-      'status': new FormControl(this.task.status)
+      'status': new FormControl(this.task.getStatus())
     })
   }
 
@@ -65,17 +65,16 @@ export class MoveTaskComponent implements OnInit, OnDestroy {
 
   onSubmitMoveForm() {
     let status = this.moveForm.value['status'].trim();
-    if(status !== this.task.status){
-      this.task.status = status;
+    if(status !== this.task.getStatus()){
       switch(status) {
         case GlobalVariables.TASK_NOT_STARTED_STATUS:
-          this.task.status_of_completion = 0;
+          this.task.progress = 0;
           break;
         case GlobalVariables.TASK_IN_PROGRESS_STATUS:
-          this.task.status_of_completion = 5;
+          this.task.progress = 5;
           break;
         case GlobalVariables.TASK_FINISHED_STATUS:
-          this.task.status_of_completion = 100;
+          this.task.progress = 100;
           break;
       }
     }

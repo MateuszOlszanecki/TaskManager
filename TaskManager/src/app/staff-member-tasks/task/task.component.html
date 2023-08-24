@@ -29,16 +29,16 @@
             </div>
             <div class="row mb-1">
                 <div class="col-3">
-                    Advancement:
+                    Progress:
                 </div>
                 <div class="col-4">
                     <input type="range" class="col-12" min="0" max="100" step="5"
                         (ngModelChange)="onRangeChange()"
-                        [value]="taskStatusForm.value['status_of_completion']"
-                        formControlName="status_of_completion"
-                        name="status_of_completion">
+                        [value]="taskStatusForm.value['progress']"
+                        formControlName="progress"
+                        name="progress">
                 </div>
-                <div class="col-2 text-end">[{{ taskStatusForm.value['status_of_completion'] }}]</div>
+                <div class="col-2 text-end">[{{ taskStatusForm.value['progress'] }}]</div>
                 <button type="submit" class="btn btn-success col-3" [disabled]="!form_changed">Save</button>
             </div>
             <div

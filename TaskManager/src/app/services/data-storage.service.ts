@@ -43,8 +43,7 @@ export class DataStorageService {
             element.id,
             element.description,
             element.staff_member_id,
-            element.status,
-            element.status_of_completion
+            element.progress
           )
           tasks.push(task);
         });

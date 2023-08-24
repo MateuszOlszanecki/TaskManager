@@ -37,9 +37,9 @@
                             <div class="col-5">New status for task:</div>
                             <div class="col-7">
                                 <select class="form-select" formControlName="status" name="status">
-                                    <option [value]="TASK_NOT_STARTED_STATUS" [selected]="task.status === TASK_NOT_STARTED_STATUS">{{ TASK_NOT_STARTED_STATUS }}</option>
-                                    <option [value]="TASK_IN_PROGRESS_STATUS" [selected]="task.status === TASK_IN_PROGRESS_STATUS">{{ TASK_IN_PROGRESS_STATUS }}</option>
-                                    <option [value]="TASK_FINISHED_STATUS" [selected]="task.status === TASK_FINISHED_STATUS">{{ TASK_FINISHED_STATUS }}</option>
+                                    <option [value]="TASK_NOT_STARTED_STATUS" [selected]="task.getStatus() === TASK_NOT_STARTED_STATUS">{{ TASK_NOT_STARTED_STATUS }}</option>
+                                    <option [value]="TASK_IN_PROGRESS_STATUS" [selected]="task.getStatus() === TASK_IN_PROGRESS_STATUS">{{ TASK_IN_PROGRESS_STATUS }}</option>
+                                    <option [value]="TASK_FINISHED_STATUS" [selected]="task.getStatus() === TASK_FINISHED_STATUS">{{ TASK_FINISHED_STATUS }}</option>
                                 </select>
                             </div>
                         </div>

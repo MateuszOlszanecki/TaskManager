@@ -62,8 +62,7 @@ export class EditTaskComponent implements OnInit {
     );
     if(this.edit_mode) {
       task.id = this.task_id;
-      task.status = this.tasksService.getTask(this.task_id)!.status;
-      task.status_of_completion = this.tasksService.getTask(this.task_id)!.status_of_completion;
+      task.progress = this.tasksService.getTask(this.task_id)!.progress;
       this.tasksService.putTaskToDatabase(task!);
     }
     else {

@@ -17,19 +17,15 @@ public class Task {
     @Column(name = "staff_member_id")
     private int staff_member_id;
 
-    @Column(name = "status")
-    private String status;
-
-    @Column(name = "status_of_completion")
-    private int status_of_completion;
+    @Column(name = "progress")
+    private int progress;
 
     public Task() {}
 
-    public Task(String description, int staff_member_id, String status, int status_of_completion) {
+    public Task(String description, int staff_member_id, int progress) {
         this.description = description;
         this.staff_member_id = staff_member_id;
-        this.status = status;
-        this.status_of_completion = status_of_completion;
+        this.progress = progress;
     }
 
     public int getId() {
@@ -56,20 +52,12 @@ public class Task {
         this.staff_member_id = staff_member_id;
     }
 
-    public String getStatus() {
-        return status;
+    public int getProgress() {
+        return progress;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public int getStatus_of_completion() {
-        return status_of_completion;
-    }
-
-    public void setStatus_of_completion(int status_of_completion) {
-        this.status_of_completion = status_of_completion;
+    public void setProgress(int progress) {
+        this.progress = progress;
     }
 
     @Override
@@ -77,9 +65,8 @@ public class Task {
         return "Task{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
-                ", staff_member_id='" + staff_member_id + '\'' +
-                ", status='" + status + '\'' +
-                ", status_of_completion='" + status_of_completion + '\'' +
+                ", staff_member_id=" + staff_member_id +
+                ", progress=" + progress +
                 '}';
     }
 }

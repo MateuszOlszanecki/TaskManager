@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../models/task.model';
-import { GlobalVariables } from '../shared/global-variables';
 import { Subject } from 'rxjs';
 import { DataStorageService } from './data-storage.service';
 import { Router } from '@angular/router';
@@ -92,7 +91,7 @@ export class TasksService {
   getFinishedToAllTasksRatio(staff_member_id: number) {
     let all_staff_member_tasks = this.getStaffMemberTasks(staff_member_id);
     let all_staff_member_finished_tasks = all_staff_member_tasks.filter(task => {
-      return task.status === GlobalVariables.TASK_FINISHED_STATUS;
+      return task.progress === 100;
     })
 
     return "[" + all_staff_member_finished_tasks.length + "/" + all_staff_member_tasks.length + "]";
