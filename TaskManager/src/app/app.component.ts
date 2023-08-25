@@ -17,5 +17,8 @@ export class AppComponent implements OnInit {
     this.tasksService.getTasksFromDatabase();
 
     this.router.navigate(['']);
+    window.onbeforeunload = () => {
+      window.scrollTo({top: 0, behavior: 'auto'});
+    }
   }
 }
