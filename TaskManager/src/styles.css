@@ -1,5 +1,9 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
+html {
+    scroll-behavior: auto !important;
+}
+
 .header {
     background: #0D6EFD;
 }
