@@ -31,6 +31,9 @@ Add employee (after clicking "+" button):
 Edit employee (after clicking "Edit" button on any employee):
 ![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/eae50bad-1fda-4b0e-947f-3757824a4fbc)
 
+Remove employee warning (if employee has at least one task):
+![image](https://github.com/MateuszOlszanecki/TaskManager/assets/72543874/d02f4767-d928-42fa-8578-9b5205318ae6)
+
 ---
 
 Tasks screen (after clicking "Tasks" button on any employee):
