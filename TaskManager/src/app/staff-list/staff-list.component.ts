@@ -19,6 +19,7 @@ export class StaffListComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute) {}
 
   ngOnInit() {
+    window.scrollTo({top: 0, behavior: 'auto'});
     this.staff_list = this.staffListService.getStaffList();
     this.subscription = this.staffListService.staff_list_changed$.subscribe(
       (staff_list: StaffMember[]) => {

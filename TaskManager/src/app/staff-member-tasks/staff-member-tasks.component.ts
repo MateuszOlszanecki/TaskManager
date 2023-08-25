@@ -22,6 +22,7 @@ export class StaffMemberTasksComponent implements OnInit, OnDestroy {
               private tasksService: TasksService) {}
 
   ngOnInit() {
+    window.scrollTo({top: 0, behavior: 'auto'});
     this.route.params.subscribe(
       (params: Params) => {
         this.staff_member_id = +params['staff_member_id'];
