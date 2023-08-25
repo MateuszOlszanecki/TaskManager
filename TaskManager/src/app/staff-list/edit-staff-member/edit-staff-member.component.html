@@ -1,29 +1,31 @@
-<div class="position-fixed top-50 start-50 translate-middle container-fluid background-block"></div>
-<div class="position-fixed top-50 start-50 translate-middle container">
-    <form [formGroup]="staffMemberForm" (ngSubmit)="onSubmit()">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title mb-3 fw-bold">{{ edit_mode ? 'Edit' : 'Add' }} staff memeber</h5>
-                <div class="form-floating mb-1">
-                    <input type="text" class="form-control" id="name" placeholder="name" autocomplete="off" formControlName="name">
-                    <label for="name">Name:</label>
-                    <app-max-length [length]="nameLength()" [maxLength]="MAX_LENGTH_INPUT"></app-max-length>
-                </div>
-                <div class="form-floating mb-1">
-                    <input type="text" class="form-control" id="surname" placeholder="surname" autocomplete="off" formControlName="surname">
-                    <label for="surname">Surname:</label>
-                    <app-max-length [length]="surnameLength()" [maxLength]="MAX_LENGTH_INPUT"></app-max-length>
-                </div>
-                <div class="form-floating mb-1">
-                    <input type="text" class="form-control" id="position" placeholder="position" autocomplete="off" formControlName="position">
-                    <label for="position">Position:</label>
-                    <app-max-length [length]="positionLength()" [maxLength]="MAX_LENGTH_INPUT"></app-max-length>
-                </div>
-                <div class="row-fluid">
-                    <button type="submit" class="btn btn-primary col-3" [disabled]="!staffMemberForm.valid">OK</button>
-                    <button type="button" class="btn btn-danger col-3" (click)="onCancel()">Cancel</button>
+<div class="sticky-top">
+    <div class="position-fixed top-50 start-50 translate-middle container-fluid background-block"></div>
+    <div class="position-fixed top-50 start-50 translate-middle container">
+        <form [formGroup]="staffMemberForm" (ngSubmit)="onSubmit()">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-3 fw-bold">{{ edit_mode ? 'Edit' : 'Add' }} staff memeber</h5>
+                    <div class="form-floating mb-1">
+                        <input type="text" class="form-control" id="name" placeholder="name" autocomplete="off" formControlName="name">
+                        <label for="name">Name:</label>
+                        <app-max-length [length]="nameLength()" [maxLength]="MAX_LENGTH_INPUT"></app-max-length>
+                    </div>
+                    <div class="form-floating mb-1">
+                        <input type="text" class="form-control" id="surname" placeholder="surname" autocomplete="off" formControlName="surname">
+                        <label for="surname">Surname:</label>
+                        <app-max-length [length]="surnameLength()" [maxLength]="MAX_LENGTH_INPUT"></app-max-length>
+                    </div>
+                    <div class="form-floating mb-1">
+                        <input type="text" class="form-control" id="position" placeholder="position" autocomplete="off" formControlName="position">
+                        <label for="position">Position:</label>
+                        <app-max-length [length]="positionLength()" [maxLength]="MAX_LENGTH_INPUT"></app-max-length>
+                    </div>
+                    <div class="row-fluid">
+                        <button type="submit" class="btn btn-primary col-3" [disabled]="!staffMemberForm.valid">OK</button>
+                        <button type="button" class="btn btn-danger col-3" (click)="onCancel()">Cancel</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
