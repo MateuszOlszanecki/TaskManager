@@ -1,13 +1,14 @@
 <div class="position-fixed top-50 start-50 translate-middle container-fluid background-block"></div>
 <div class="position-fixed top-50 start-50 translate-middle container">
-    <div class="card">
+    <div class="text-warning-emphasis bg-warning-subtle border border-warning-subtle card">
         <div class="card-body">
             <div class="d-flex">
                 <h5 class="card-title mb-3 fw-bold">Warning</h5>
                 <button class="btn btn-outline-dark bi bi-x-lg ms-auto" (click)="onCancel()"></button>
             </div>
-            <div><b>{{ staff_member.name }} {{ staff_member.surname }}</b> has assigned tasks.</div>
-            <div class="mb-1">Removing this staff member will remove all their tasks.</div>
+            <div>
+                All tasks assigned to <b>{{ staff_member.name }} {{ staff_member.surname }}</b> will be removed as well.
+            </div>
             <div class="row-fluid">
                 <button class="btn btn-danger offset-9 col-3" (click)="onRemove()">Remove</button>
             </div>
