@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaxLengthComponent } from './shared/max-length/max-length.component';
 import { ErrorComponent } from './shared/error/error.component';
 import { LoadingComponent } from './shared/loading/loading.component';
+import { WarningComponent } from './shared/warning/warning.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LoadingComponent } from './shared/loading/loading.component';
     SearchResultComponent,
     MaxLengthComponent,
     ErrorComponent,
-    LoadingComponent
+    LoadingComponent,
+    WarningComponent
   ],
   imports: [
     BrowserModule,
