@@ -22,11 +22,11 @@ export class StaffMemberComponent implements AfterContentChecked{
   }
 
   onRemove() {
-    if(!(this.tasksService.getStaffMemberTasks(this.staff_member.id).length === 0)) {
-      this.router.navigate(['warning', this.staff_member.id], {relativeTo: this.route});
+    if(this.tasksService.getStaffMemberTasks(this.staff_member.id).length === 0) {
+      this.staffListService.deleteStaffMemberFromDatabase(this.staff_member.id);
     }
     else {
-      this.staffListService.deleteStaffMemberFromDatabase(this.staff_member.id);
+      this.router.navigate(['warning', this.staff_member.id], {relativeTo: this.route});
     }
   }
 
